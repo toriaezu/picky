@@ -18,9 +18,16 @@
         %p The combinatorial small-text search engine in Ruby.
       .grid_1
         %h2 What it is not
-        %p A full-text search engine.
+        %p A full-text search engine. If you need that, look at
+        %a{ :href => 'http://sphinxsearch.com/' } Sphinx
+        or
+        %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
+        \.
         %h2 What it is
         %p A small-text search engine.
+        %h2 Huh?
+        %p A small-text search engine does not operate on huge blobs of text, but instead on clearly defined fields.
+        %p For example:
         %h2 How it works
         %p Hoo boy.
         %h2 See me show it off
@@ -30,41 +37,36 @@
           This depends on many factors, but generally we recommend using Picky with maximally 120 million data points. The area around 20 millions is probably optimal. 
       .grid_1
         %h2 Try it now!
-        %p
-          %code
+        %code
+          %pre
             gem install picky
-            %br/
-            %br/
-            \# Generates the search engine in ./app
-            %br/
-            \# including lots of commented code to use.
-            %br/
-            picky generate app
-            %br/
-            %br/
-            \# If you intend to use Unicorn
-            %br/
-            gem install unicorn
+          %pre
+            :preserve
+              # Generates the search engine in ./app
+              # including lots of commented code to use.
+              picky generate app
+          %pre
+            :preserve
+              # If you intend to use Unicorn
+              gem install unicorn
         %h2 Adapt the generated code
         %h3 Define some indexes!
-        %p
+        %code
           In application.rb:
           %br/
-          %code
-            indexes do
-            %br/
-              ...
-            %br/
-            end
+          %pre
+            :preserve
+              indexes do
+                ...
+              end
         %h3 Index!
-        %p
-          %code
+        %code
+          %pre
             rake index
         %h3 Let's go!
-        %p
-          %code
-            rake start
-            %br/
-            \# Query for the word test.
-            %br/
-            curl localhost:6000/live?query=test
+        %code
+          %pre
+            :preserve
+              rake start
+              # Quick query for the word test.
+              curl localhost:6000/live?query=test

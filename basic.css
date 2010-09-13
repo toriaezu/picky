@@ -15,9 +15,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   vertical-align: baseline;
   background: transparent; }
 
-body {
-  line-height: 1; }
-
 ol, ul {
   list-style: none; }
 
@@ -31,7 +28,7 @@ q:before, q:after {
 
 body {
   /* :width 600px */
-  margin: 1em auto;
+  /* :margin 1em auto */
   font-family: Verdana, Arial, sans-serif;
   line-height: 1.4; }
 
@@ -78,7 +75,9 @@ a:active {
   color: #224466; }
 
 pre {
-  background-color: #EEEEEE; }
+  background-color: #EEEEEE;
+  margin: 10px 0;
+  padding: 10px; }
 
 img {
   float: left;
