@@ -4,7 +4,7 @@
     <meta content='text/html; charset=utf-8' http-equiv='Content-type' />
     <link href='basic.css' rel='stylesheet' type='text/css' />
     <link href='grid.css' rel='stylesheet' type='text/css' />
-    <title>Picky, the small text search engine.</title>
+    <title>Picky, the small text search engine in Ruby.</title>
   </head>
   <body>
     <ol class='nav'>
@@ -18,8 +18,8 @@
     </ol>
     <h1>Picky</h1>
     <div class='container_2'>
-      <div class='grid_2 centered'>
-        <p>The combinatorial small-text search engine</p>
+      <div class='grid_2'>
+        <p>The combinatorial small-text search engine in Ruby.</p>
       </div>
       <div class='grid_1'>
         <h2>What it is not</h2>
@@ -37,22 +37,43 @@
       </div>
       <div class='grid_1'>
         <h2>Try it now!</h2>
-        <code>gem install picky
-        <br />
-        <br />
-        # Generates the search engine in ./app
-        <br />
-        # including lots of commented code to use.
-        <br />
-        picky generate app
-        <br />
-        <br />
-        # If you intend to use Unicorn
-        <br />
-        gem install unicorn</code>
-        <h2>Adapt the generated code!</h2>
+        <p>
+          <code>gem install picky
+          <br />
+          <br />
+          # Generates the search engine in ./app
+          <br />
+          # including lots of commented code to use.
+          <br />
+          picky generate app
+          <br />
+          <br />
+          # If you intend to use Unicorn
+          <br />
+          gem install unicorn</code>
+        </p>
+        <h2>Adapt the generated code</h2>
+        <h3>Define some indexes!</h3>
         <p>
           In application.rb:
+          <br />
+          <code>indexes do
+          <br />
+            ...
+          <br />
+          end</code>
+        </p>
+        <h3>Index!</h3>
+        <p>
+          <code>rake index</code>
+        </p>
+        <h3>Let's go!</h3>
+        <p>
+          <code>rake start
+          <br />
+          # Query for the word test.
+          <br />
+          curl localhost:6000/live?query=test</code>
         </p>
       </div>
     </div>
