@@ -22,7 +22,7 @@
         %a{ :href => 'http://sphinxsearch.com/' } Sphinx
         or
         %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
-        \.
+        \. They will help.
         %h2 What it is
         %p A small-text search engine.
         %h2 Huh?
@@ -44,29 +44,44 @@
             :preserve
               # Generates the search engine in ./app
               # including lots of commented code to use.
+              #
               picky generate app
           %pre
             :preserve
               # If you intend to use Unicorn
+              #
               gem install unicorn
-        %h2 Adapt the generated code
-        %h3 Define some indexes!
+        %h2 Adapt the generated code!
+        %h3 Define some indexes
         %code
-          In application.rb:
-          %br/
           %pre
             :preserve
+              # In application.rb (The examples will help)
+              #
               indexes do
                 ...
               end
-        %h3 Index!
-        %code
-          %pre
-            rake index
-        %h3 Let's go!
+        %h3 Show Picky the way to the database
         %code
           %pre
             :preserve
-              rake start
+              # In application.rb (The examples will help)
+              #
+              db do
+                ...
+              end
+        %h3 Indexing
+        %code
+          %pre
+            rake index
+        %h3 Start the engines
+        %code
+          %pre
+            rake start
+        %h3 Try your first query
+        %code
+          %pre
+            :preserve
               # Quick query for the word test.
+              #
               curl localhost:6000/live?query=test
