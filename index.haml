@@ -3,41 +3,48 @@
   %head
     %meta{ :'http-equiv' => "Content-type", :content => "text/html; charset=utf-8" }
     %link{ :rel => 'stylesheet', :href => 'basic.css', :type => 'text/css' }
-    %title Florian Hanke on Github
+    %link{ :rel => 'stylesheet', :href => 'grid.css', :type => 'text/css' }
+    %title Picky, the small text search engine.
   %body
     %ol.nav
       %li
         %a{ :href => 'http://floere.github.com/' } home
         •
       %li
-        %a{ :href => 'http://floere.github.com/view_models' } view models
-    %h1 Florian «Flöre» Hanke
-    %div
-      %img{ :src => 'http://www.gravatar.com/avatar/de2d64478e715fb02266f77a3f5641f6?size=120' }
-      %p Me in three words:
-      %p Lover. Fighter. Computer Scientist.
-      %p Biker. Book Devourer. Language aficionado. Film enthusiast. Electronics hobbyist. Runner. Penciller. Speaker. Listener. Thinker. Seeker and Finder. Eat. Sleep. Ponies.
-      %p Amount of large calibre handguns in his possession: 0
-    %h2 Projects
-    %h3 Code
-    %ol
-      %li
-        %a{ :href => "http://floere.github.com/view_models" } View Models
-        The glue between M, V, and C in Ruby on Rails.
-      %li
-        %a{ :href => "http://github.com/floere/contexts" } Contexts
-        For easy to use Sidebars/Carts/Navigations in Ruby on Rails.
-    %h3 Others
-    %p Many. But the code projects are most important right now.
-    %h2 The talking tubes
-    %p
-      %ol
-        %li
-          %a{ :href => "http://codeiscode.tumblr.com" } Code is Code
-          Quick blasts from the code side.
-        %li
-          %a{ :href => "http://twitter.com/hanke" } Wittier
-          Messages from the void, compressed in 140 very small pieces.
-        %li
-          %a{ :href => "http://florianhanke.blogspot.com" } Blag
-          Letting the keyboard roam free. Warning: In the germanic tongue. Babylonic to some, revealing to others.
+        %a{ :href => 'http://floere.github.com/picky' } picky home
+    %h1 Picky
+    .container_2
+      .grid_2.centered
+        %p The combinatorial small-text search engine
+      .grid_1
+        %h2 What it is not
+        %p A full-text search engine.
+        %h2 What it is
+        %p A small-text search engine.
+        %h2 How it works
+        %p Hoo boy.
+        %h2 See me show it off
+        %iframe{ :src => "http://player.vimeo.com/video/12614970", :width => "500", :height => "375", :frameborder => "0" }
+        %h2 How does it perform
+        %p
+          This depends on many factors, but generally we recommend using Picky with maximally 120 million data points. The area around 20 millions is probably optimal. 
+      .grid_1
+        %h2 Try it now!
+        %code
+          gem install picky
+          %br/
+          %br/
+          \# Generates the search engine in ./app
+          %br/
+          \# including lots of commented code to use.
+          %br/
+          picky generate app
+          %br/
+          %br/
+          \# If you intend to use Unicorn
+          %br/
+          gem install unicorn
+        %h2 Adapt the generated code!
+        %p
+          In application.rb:
+          

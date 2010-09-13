@@ -30,7 +30,7 @@ q:before, q:after {
   content: none; }
 
 body {
-  width: 600px;
+  /* :width 600px */
   margin: 1em auto;
   font-family: Verdana, Arial, sans-serif;
   line-height: 1.4; }
