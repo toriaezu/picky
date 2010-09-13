@@ -22,8 +22,14 @@
         %h2 What it is
         %p A small-text search engine.
         %h2 Huh?
-        %p A small-text search engine does not operate on huge blobs of text, but instead on clearly defined fields.
-        %p For example:
+        %p A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
+        %h2 Why?
+        %p
+          Picky helps your user find data which in a full-text search engine would be buried in a heap of results. Also, it lets him do so with a Google-y single search field.
+        %p
+          Sure the word "peter" is found most often in document #7, but he actually just wants documents by someone with surname "Peter", and not everything related to peters.
+        %p
+          Picky helps him refine his search by way of a comfortable interface to get exactly what he wants.
         %h2 How it works
         %p Hoo boy.
         %h2 See me show (it) off
@@ -44,6 +50,10 @@
           Glad you asked. But first, read this
           %a{ :href => 'http://en.wikipedia.org/wiki/Octopus' } Wiki entry about octopuses
           \. Finished? Well, I think that sums it up pretty well. And it's cuuuute, don't you think? :)
+        %h2 Feedback?
+        %p Bring it.
+        %code
+          %pre florian • hanke / gmail • com
       .grid_1
         %h2 Try it now!
         %code
@@ -66,34 +76,19 @@
         %code
           %pre
             :preserve
-              # In application.rb (The examples will help)
+              # In app/application.rb, find this stub
+              # and adapt the examples.
               #
               indexes do
-                title  = field(
-                  :title,
-                  :similarity => Similarity::DoubleLevenshtone.new(3),
-                  :qualifiers => [:t, :title, :titre]
-                )
-                author = field :author,
-                               :qualifiers => [:a, :author, :auteur]
-                year   = field :year,
-                               :partial => Cacher::Partial::None.new,
-                               :qualifiers => [:y, :year, :annee]
-
-                type :main,
-                     "SELECT title, author, year FROM books",
-                     title_with_similarity,
-                     author_with_similarity,
-                     year,
-                     :heuristics => Query::Heuristics.new(
-                       [:title, :author] => 5, [:author, :year] => 2
-                     )
+                ...
               end
         %h3 Show Picky the way to the database
+        %p …or use a simple CSV file.
         %code
           %pre
             :preserve
-              # In application.rb (The examples will help)
+              # In application.rb, find this stub
+              # and adapt the examples.
               #
               db do
                 ...
@@ -113,3 +108,9 @@
               # Quick query for the word test.
               #
               curl localhost:6000/live?query=test
+        %h3 Refine!
+        %p Define similarity searches, more specific indexes, more searches, etc.
+        %h2 Need help?
+        %p Right here.
+        %code
+          %pre florian • hanke / gmail • com
