@@ -7,19 +7,12 @@
     <title>Picky, the small text search engine in Ruby.</title>
   </head>
   <body>
-    <ol class='nav'>
-      <li>
-        <a href='http://floere.github.com/'>home</a>
-        •
-      </li>
-      <li>
-        <a href='http://floere.github.com/picky'>picky home</a>
-      </li>
-    </ol>
-    <h1>Picky</h1>
+    <div class='header'></div>
+    <div class='picky'></div>
     <div class='container_2'>
       <div class='grid_2'>
-        <p>The combinatorial small-text search engine in Ruby.</p>
+        <h1>Picky</h1>
+        <h2>The combinatorial small-text search engine in Ruby.</h2>
       </div>
       <div class='grid_1'>
         <h2>What it is not</h2>
@@ -35,11 +28,21 @@
         <p>For example:</p>
         <h2>How it works</h2>
         <p>Hoo boy.</p>
-        <h2>See me show it off</h2>
-        <iframe frameborder='0' height='375' src='http://player.vimeo.com/video/12614970' width='500'></iframe>
-        <h2>How does it perform</h2>
+        <h2>See me show (it) off</h2>
         <p>
-          This depends on many factors, but generally we recommend using Picky with maximally 120 million data points. The area around 20 millions is probably optimal.
+          Using a real
+          <a href='http://twixtel.ch'>telephone search</a>
+          as an example.
+        </p>
+        <iframe frameborder='0' height='375' src='http://player.vimeo.com/video/12614970' width='480'></iframe>
+        <p>
+          This was at the fantastic
+          <a href='http://euruko2010.org/'>EuRuKo 2010</a>
+          Conference.
+        </p>
+        <h2>How it performs</h2>
+        <p>
+          This depends on many factors, but generally we recommend using Picky with maximally 120 million data points. The area around 20 millions is probably optimal. Your mileage may vary, of course.
         </p>
       </div>
       <div class='grid_1'>
@@ -49,7 +52,8 @@
         <pre># If you intend to use Unicorn&#x000A;#&#x000A;gem install unicorn</pre></code>
         <h2>Adapt the generated code!</h2>
         <h3>Define some indexes</h3>
-        <code><pre># In application.rb (The examples will help)&#x000A;#&#x000A;indexes do&#x000A;  ...&#x000A;end</pre></code>
+        <p>It's easy.</p>
+        <code><pre># In application.rb (The examples will help)&#x000A;#&#x000A;indexes do&#x000A;  title  = field(&#x000A;    :title,&#x000A;    :similarity => Similarity::DoubleLevenshtone.new(3),&#x000A;    :qualifiers => [:t, :title, :titre]&#x000A;  )&#x000A;  author = field :author,&#x000A;                 :qualifiers => [:a, :author, :auteur]&#x000A;  year   = field :year,&#x000A;                 :partial => Cacher::Partial::None.new,&#x000A;                 :qualifiers => [:y, :year, :annee]&#x000A;&#x000A;  type :main,&#x000A;       "SELECT title, author, year FROM books",&#x000A;       title_with_similarity,&#x000A;       author_with_similarity,&#x000A;       year,&#x000A;       :heuristics => Query::Heuristics.new(&#x000A;         [:title, :author] => 5, [:author, :year] => 2&#x000A;       )&#x000A;end</pre></code>
         <h3>Show Picky the way to the database</h3>
         <code><pre># In application.rb (The examples will help)&#x000A;#&#x000A;db do&#x000A;  ...&#x000A;end</pre></code>
         <h3>Indexing</h3>

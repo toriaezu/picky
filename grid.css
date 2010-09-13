@@ -42,7 +42,9 @@
 ----------------------------------------------------------------------------------------------------*/
 
 .container_2 .grid_1 {
-	width:500px;
+  padding: 0px 10px;
+  background-color: #F5F5EA;
+  width:480px;
 }
 
 .container_2 .grid_2 {
