@@ -15,11 +15,11 @@
   width: 348px;
   height: 127px;
   margin: -64px auto -33px;
-  background-image: url('images/picky.png'); }
+  background-image: url("images/picky.png"); }
 
 body {
-  /* :width 600px */
-  /* :margin 1em auto */
+  /*  :width 600px */
+  /*  :margin 1em auto */
   font-family: Verdana, Arial, sans-serif;
   line-height: 1.4;
   background-color: beige; }
