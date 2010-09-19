@@ -16,17 +16,18 @@
         <h2>The combinatorial small-text search engine in Ruby.</h2>
       </div>
       <div class='grid_1'>
-        <h2>What it is not</h2>
+        <h2>Overview</h2>
+        <h3>What it is not</h3>
         <p>A full-text search engine. If you need that, look at</p>
         <a href='http://sphinxsearch.com/'>Sphinx</a>
         or
         <a href='http://lucene.apache.org/solr/'>Solr (Lucene)</a>
         . They will help.
-        <h2>What it is</h2>
+        <h3>What it is</h3>
         <p>A small-text search engine (web) service.</p>
-        <h2>Huh?</h2>
+        <h3>Huh?</h3>
         <p>A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.</p>
-        <h2>Why?</h2>
+        <h3>Why?</h3>
         <p>
           Picky helps your user find data which in a full-text search engine would be buried in a heap of results. Also, it lets him do so with a Google-y single search field.
         </p>
@@ -36,9 +37,9 @@
         <p>
           Picky helps him refine his search by way of a comfortable interface to get exactly what he wants.
         </p>
-        <h2>How it works</h2>
+        <h3>How it works</h3>
         <p>Hoo boy.</p>
-        <h2>See me show (it) off</h2>
+        <h3>See me show (it) off</h3>
         <p>
           Using a real
           <a href='http://twixtel.ch'>telephone search</a>
@@ -50,11 +51,11 @@
           <a href='http://euruko2010.org/'>EuRuKo 2010</a>
           Conference.
         </p>
-        <h2>How it performs</h2>
+        <h3>How it performs</h3>
         <p>
           This depends on many factors, but generally we recommend using Picky with a maximum of 120 million data points (we used it there). The area under 20 millions is probably best, indexing-performance wise. Your mileage may vary, of course.
         </p>
-        <h2>Why the octopus?</h2>
+        <h3>Why the octopus?</h3>
         <p>
           Glad you asked. But first, read this
           <a href='http://en.wikipedia.org/wiki/Octopus'>Wikipedia entry about octopuses</a>
@@ -63,20 +64,21 @@
         <p>
           But don't call him that. He likes to be called "Octor the Destroyer".
         </p>
-        <h2>Feedback?</h2>
+        <h3>Feedback?</h3>
         <p>Bring it.</p>
         <code><pre>florian • hanke / gmail • com</pre></code>
       </div>
       <div class='grid_1'>
         <h2>Try it now!</h2>
+        <h3>Installation</h3>
         <code><pre>gem install picky</pre>
         <pre># Generates the search engine in ./app&#x000A;# including lots of commented code to use.&#x000A;#&#x000A;picky generate app</pre>
         <pre># If you intend to use Unicorn&#x000A;#&#x000A;gem install unicorn</pre></code>
-        <h2>Adapt the generated code!</h2>
-        <h3>Define some indexes</h3>
+        <h3>Adapt the generated code!</h3>
+        <h4>Define some indexes</h4>
         <p>It's easy.</p>
         <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;indexes do&#x000A;  ...&#x000A;end</pre></code>
-        <h3>Show Picky the way to the database</h3>
+        <h4>Show Picky the way to the database</h4>
         <p>…or use a simple CSV file.</p>
         <code><pre># In application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;source do&#x000A;  ...&#x000A;end</pre></code>
         <h3>Indexing</h3>
@@ -87,15 +89,12 @@
         <code><pre># Quick query for the word test.&#x000A;#&#x000A;curl localhost:6000/live?query=test</pre></code>
         <h3>Refine!</h3>
         <p>Define similarity searches, more specific indexes, more searches, etc.</p>
-        <h2>Need help?</h2>
+        <h3>Need help?</h3>
         <p>Right here.</p>
         <code><pre>florian • hanke / gmail • com</pre></code>
       </div>
       <div class='grid_2'>
-        <h1></h1>
-      </div>
-      <div class='grid_2'>
-         
+        <div class='decoration'></div>
       </div>
     </div>
     <div class='footer'></div>
