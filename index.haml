@@ -104,7 +104,7 @@
         %code
           %pre
             rake index
-        %h3 Start the engines, gentlemen
+        %h3 Gentlemen, start your engines
         %code
           %pre
             rake start
@@ -120,10 +120,36 @@
           %pre
             :preserve
               rake try:both[MyWordThatDoesNotWork]
-        %p
-          Words to find should be indexed in basically the same way as the query processes them.
+        %p Words to find should be indexed in basically the same way as the query processes them.
         %h3 Refine!
         %p Define similarity searches, more specific indexes, more searches, etc.
+        %h3 Become a Picky master
+        %p 1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)
+        %code
+          %pre
+            part* # also finds partial, party, partogenesology
+        %p 2. The last word in a query is always partially searched.
+        %code
+          %pre
+            my beautiful query
+        %p is actually
+        %code
+          %pre
+            my beautiful query*
+        %p 3. If you have defined a similarity index, a tilde (~) will look for similar matches.
+        %code
+          %pre
+            my beoootiful~ query # will also find your "beautiful" query
+        %p 4. Qualifiers can be used with a colon (:)
+        %code
+          %pre
+            title:ulysses author:joyce
+        %p will narrow the search space.
+        %p 5. The above options can be combined.
+        %code
+          %pre
+            name:flurion~ hank* # will find me.
+        %p That is all, young grasshopper. Be on your way.
         %h3 Need help?
         %p Right here. I'm happy to help!
         %code

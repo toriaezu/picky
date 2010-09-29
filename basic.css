@@ -32,7 +32,8 @@ h1, h2, h3, h4 {
   border-bottom: 1px solid #777777; }
 
 h2, h3, h4, p {
-  margin-top: 1em; }
+  margin-top: 1em;
+  font-size: 0.9em; }
 
 ul, ol {
   margin-top: 0.5em; }
