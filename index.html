@@ -72,25 +72,34 @@
         <h2>Try it now!</h2>
         <h3>Installation</h3>
         <code><pre>gem install picky</pre>
-        <pre># Generates the search engine in ./app&#x000A;# including lots of commented code to use.&#x000A;#&#x000A;picky generate app</pre>
-        <pre># If you intend to use Unicorn&#x000A;#&#x000A;gem install unicorn</pre></code>
+        <pre># Generates the search engine in ./app_name with&#x000A;# lots of commented code to help you get going.&#x000A;#&#x000A;picky project app_name</pre>
+        <pre>cd app_name&#x000A;bundle install</pre></code>
         <h3>Adapt the generated code!</h3>
-        <h4>Define some indexes</h4>
+        <h4>Define indexes</h4>
         <p>It's easy.</p>
         <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;indexes do&#x000A;  ...&#x000A;end</pre></code>
-        <h4>Show Picky the way to the database</h4>
-        <p>…or use a simple CSV file.</p>
-        <code><pre># In application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;source do&#x000A;  ...&#x000A;end</pre></code>
+        <h4>Define queries.</h4>
+        <p>After having defined indexes, this is a piece of cake.</p>
+        <p>
+          How is a query split into tokens? To which query is an url routed? What query uses which indexes?
+        </p>
+        <code><pre># In application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;queries do&#x000A;  ...&#x000A;end</pre></code>
         <h3>Indexing</h3>
+        <p>Let picky have a look at the data!</p>
         <code><pre>rake index</pre></code>
-        <h3>Start the engines</h3>
+        <h3>Start the engines, gentlemen</h3>
         <code><pre>rake start</pre></code>
         <h3>Try your first query</h3>
-        <code><pre># Quick query for the word test.&#x000A;#&#x000A;curl localhost:6000/live?query=test</pre></code>
+        <code><pre># Assuming this url is defined in application.rb.&#x000A;#&#x000A;curl localhost:6000/books/live?query=test</pre></code>
+        <h3>Something not indexed as it should?</h3>
+        <code><pre>rake try:both[MyWordThatDoesNotWork]</pre></code>
+        <p>
+          Words to find should be indexed in basically the same way as the query processes them.
+        </p>
         <h3>Refine!</h3>
         <p>Define similarity searches, more specific indexes, more searches, etc.</p>
         <h3>Need help?</h3>
-        <p>Right here.</p>
+        <p>Right here. I'm happy to help!</p>
         <code><pre>florian • hanke / gmail • com</pre></code>
       </div>
       <div class='grid_2'>

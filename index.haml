@@ -66,17 +66,16 @@
             gem install picky
           %pre
             :preserve
-              # Generates the search engine in ./app
-              # including lots of commented code to use.
+              # Generates the search engine in ./app_name with
+              # lots of commented code to help you get going.
               #
-              picky generate app
+              picky project app_name
           %pre
             :preserve
-              # If you intend to use Unicorn
-              #
-              gem install unicorn
+              cd app_name
+              bundle install
         %h3 Adapt the generated code!
-        %h4 Define some indexes
+        %h4 Define indexes
         %p It's easy.
         %code
           %pre
@@ -87,22 +86,25 @@
               indexes do
                 ...
               end
-        %h4 Show Picky the way to the database
-        %p …or use a simple CSV file.
+        %h4 Define queries.
+        %p After having defined indexes, this is a piece of cake.
+        %p
+          How is a query split into tokens? To which query is an url routed? What query uses which indexes?
         %code
           %pre
             :preserve
               # In application.rb, find this stub
               # and adapt the examples.
               #
-              source do
+              queries do
                 ...
               end
         %h3 Indexing
+        %p Let picky have a look at the data!
         %code
           %pre
             rake index
-        %h3 Start the engines
+        %h3 Start the engines, gentlemen
         %code
           %pre
             rake start
@@ -110,13 +112,20 @@
         %code
           %pre
             :preserve
-              # Quick query for the word test.
+              # Assuming this url is defined in application.rb.
               #
-              curl localhost:6000/live?query=test
+              curl localhost:6000/books/live?query=test
+        %h3 Something not indexed as it should?
+        %code
+          %pre
+            :preserve
+              rake try:both[MyWordThatDoesNotWork]
+        %p
+          Words to find should be indexed in basically the same way as the query processes them.
         %h3 Refine!
         %p Define similarity searches, more specific indexes, more searches, etc.
         %h3 Need help?
-        %p Right here.
+        %p Right here. I'm happy to help!
         %code
           %pre florian • hanke / gmail • com
       .grid_2
