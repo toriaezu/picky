@@ -17,17 +17,24 @@
         %h2 The combinatorial small-text search engine in Ruby.
       .grid_1
         %h2 Overview
+        %h3 Where it is
+        %p
+          %a{ :href => 'http://github.com/floere/picky' } The Github Repo
         %h3 What it is not
-        %p A full-text search engine. If you need that, look at
-        %a{ :href => 'http://sphinxsearch.com/' } Sphinx
-        or
-        %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
-        \. They will help.
+        %p
+          A full-text search engine. If you need that, look at
+          %a{ :href => 'http://sphinxsearch.com/' } Sphinx
+          or
+          %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
+          \. They will help.
         %h3 What it is
         %p A small-text search engine (web) service.
         %h3 Huh?
-        %p A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
-        %h3 Why?
+        %p
+          A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
+        %p
+          If your data isn't categorized well (like text from a book), then you should instead choose one of the above full-text search engines.
+        %h3 Then why use it?
         %p
           Picky helps your user find data which in a full-text search engine would be buried in a heap of results. Also, it lets him do so with a Google-y single search field.
         %p
