@@ -26,9 +26,8 @@
           A more
           %a{ :href => 'http://www.twixtel.com/' } complicated example
           with a telephone search.
-        %h3 Where it is
-        %p
-          %a{ :href => 'http://github.com/floere/picky' } The Github Repo
+        %h3 What it is
+        %p A small-text search engine (web) service.
         %h3 What it is not
         %p
           A full-text search engine. If you need that, look at
@@ -36,9 +35,7 @@
           or
           %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
           \. They will help.
-        %h3 What it is
-        %p A small-text search engine (web) service.
-        %h3 Huh?
+        %h3 Huh? What's a small-text search engine?
         %p
           A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
         %p
@@ -50,6 +47,13 @@
           Sure the word "peter" is found most often in document #7, but he actually just wants documents by someone with surname "Peter", and not everything related to peters.
         %p
           Picky helps him refine his search by way of a comfortable interface to get exactly what he wants.
+        %h3 But why not just use a full-text search engine?
+        %p
+          Full-Text search engines do one thing especially well: Making full (i.e. uncategorized heaps of) text searchable.
+        %p
+          For small, highly categorized text, we simply need new ideas. Picky is one of them.
+        %p
+          Ok, that was my elevator pitch ;)
         %h3 How it works
         %p Hoo boy.
         %h3 See me show (it) off
@@ -57,19 +61,32 @@
           Using a real
           %a{ :href => 'http://twixtel.ch' } telephone search
           as an example.
-        %iframe{ :src => "http://player.vimeo.com/video/12614970", :width => "480", :height => "375", :frameborder => "0" }
+        %iframe{ :src => "http://player.vimeo.com/video/12614970", :width => "460", :height => "365", :frameborder => "0" }
         %p
           This was at the fantastic
           %a{ :href => 'http://euruko2010.org/' } EuRuKo 2010
-          Conference.
-        %h3 How it performs
+          Conference in
+          %a{ :href => 'http://www.google.ch/images?q=krakow+poland' } beautiful
+          Krakow.
+        %h3 Why would one write a search engine in Ruby?
         %p
-          This depends on many factors, but generally we recommend using Picky with a maximum of 120 million data points (we used it there). The area under 20 millions is probably best, indexing-performance wise. Your mileage may vary, of course.
+          It's fast enough and the high level really helped understanding it as it evolved. There are some parts that have been written in pedal-to-the-metal C code.
+        %h3 How does it perform?
+        %p
+          This depends on many factors, but generally we recommend using Picky with a maximum of 120 million data points (we used it there).
+          The area under 20 millions is probably best. Your mileage may vary, of course, depending on how many partial indexes you use etc.
+        %p
+          Indexing is not too fast, and I'd be glad if it were faster. However, you get the full power of Ruby and fully customizable indexing.
+        %h3 Where it is
+        %p
+          Picky lives in a little cave called
+          %a{ :href => 'http://github.com/floere/picky' } The Github Repo
+          \. He usually pays his rent on time.
         %h3 Why the octopus?
         %p
           Glad you asked. But first, read this
           %a{ :href => 'http://en.wikipedia.org/wiki/Octopus' } Wikipedia entry about octopuses
-          \. Finished? Well, I think that sums it up pretty well. And it's cuuuute, don't you think? :)
+          \. Finished? I think that sums it up pretty well. And it's cuuute, don't you think? :)
         %p
           But don't call him that. He likes to be called "Octor the Destroyer".
         %h3 Examples in the wild
@@ -81,7 +98,7 @@
         %code
           %pre florian • hanke / gmail • com
       .grid_1
-        %h2 Try it now!
+        %h2 Getting started
         %h3 Installation
         %code
           %pre
@@ -161,7 +178,7 @@
         %p 3. If you have defined a similarity index, a tilde (~) will look for similar matches.
         %code
           %pre
-            my beoootiful~ query # will also find your "beautiful" query
+            my beoootiful~ query # will also find your beautiful query
         %p 4. Qualifiers can be used with a colon (:)
         %code
           %pre

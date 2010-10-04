@@ -29,10 +29,8 @@
           <a href='http://www.twixtel.com/'>complicated example</a>
           with a telephone search.
         </p>
-        <h3>Where it is</h3>
-        <p>
-          <a href='http://github.com/floere/picky'>The Github Repo</a>
-        </p>
+        <h3>What it is</h3>
+        <p>A small-text search engine (web) service.</p>
         <h3>What it is not</h3>
         <p>
           A full-text search engine. If you need that, look at
@@ -41,9 +39,7 @@
           <a href='http://lucene.apache.org/solr/'>Solr (Lucene)</a>
           . They will help.
         </p>
-        <h3>What it is</h3>
-        <p>A small-text search engine (web) service.</p>
-        <h3>Huh?</h3>
+        <h3>Huh? What's a small-text search engine?</h3>
         <p>
           A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
         </p>
@@ -60,6 +56,16 @@
         <p>
           Picky helps him refine his search by way of a comfortable interface to get exactly what he wants.
         </p>
+        <h3>But why not just use a full-text search engine?</h3>
+        <p>
+          Full-Text search engines do one thing especially well: Making full (i.e. uncategorized heaps of) text searchable.
+        </p>
+        <p>
+          For small, highly categorized text, we simply need new ideas. Picky is one of them.
+        </p>
+        <p>
+          Ok, that was my elevator pitch ;)
+        </p>
         <h3>How it works</h3>
         <p>Hoo boy.</p>
         <h3>See me show (it) off</h3>
@@ -68,21 +74,37 @@
           <a href='http://twixtel.ch'>telephone search</a>
           as an example.
         </p>
-        <iframe frameborder='0' height='375' src='http://player.vimeo.com/video/12614970' width='480'></iframe>
+        <iframe frameborder='0' height='365' src='http://player.vimeo.com/video/12614970' width='460'></iframe>
         <p>
           This was at the fantastic
           <a href='http://euruko2010.org/'>EuRuKo 2010</a>
-          Conference.
+          Conference in
+          <a href='http://www.google.ch/images?q=krakow+poland'>beautiful</a>
+          Krakow.
         </p>
-        <h3>How it performs</h3>
+        <h3>Why would one write a search engine in Ruby?</h3>
         <p>
-          This depends on many factors, but generally we recommend using Picky with a maximum of 120 million data points (we used it there). The area under 20 millions is probably best, indexing-performance wise. Your mileage may vary, of course.
+          It's fast enough and the high level really helped understanding it as it evolved. There are some parts that have been written in pedal-to-the-metal C code.
+        </p>
+        <h3>How does it perform?</h3>
+        <p>
+          This depends on many factors, but generally we recommend using Picky with a maximum of 120 million data points (we used it there).
+          The area under 20 millions is probably best. Your mileage may vary, of course, depending on how many partial indexes you use etc.
+        </p>
+        <p>
+          Indexing is not too fast, and I'd be glad if it were faster. However, you get the full power of Ruby and fully customizable indexing.
+        </p>
+        <h3>Where it is</h3>
+        <p>
+          Picky lives in a little cave called
+          <a href='http://github.com/floere/picky'>The Github Repo</a>
+          . He usually pays his rent on time.
         </p>
         <h3>Why the octopus?</h3>
         <p>
           Glad you asked. But first, read this
           <a href='http://en.wikipedia.org/wiki/Octopus'>Wikipedia entry about octopuses</a>
-          . Finished? Well, I think that sums it up pretty well. And it's cuuuute, don't you think? :)
+          . Finished? I think that sums it up pretty well. And it's cuuute, don't you think? :)
         </p>
         <p>
           But don't call him that. He likes to be called "Octor the Destroyer".
@@ -97,7 +119,7 @@
         <code><pre>florian • hanke / gmail • com</pre></code>
       </div>
       <div class='grid_1'>
-        <h2>Try it now!</h2>
+        <h2>Getting started</h2>
         <h3>Installation</h3>
         <code><pre>gem install picky</pre>
         <pre># Generates the search engine in ./app_name with&#x000A;# lots of commented code to help you get going.&#x000A;#&#x000A;picky project app_name</pre>
@@ -132,7 +154,7 @@
         <p>is actually</p>
         <code><pre>my beautiful query*</pre></code>
         <p>3. If you have defined a similarity index, a tilde (~) will look for similar matches.</p>
-        <code><pre>my beoootiful~ query # will also find your "beautiful" query</pre></code>
+        <code><pre>my beoootiful~ query # will also find your beautiful query</pre></code>
         <p>4. Qualifiers can be used with a colon (:)</p>
         <code><pre>title:ulysses author:joyce</pre></code>
         <p>will narrow the search space.</p>
