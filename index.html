@@ -119,7 +119,7 @@
           Telephone Book Search Engine
         </p>
         <h3>Feedback?</h3>
-        <p>Bring it.</p>
+        <p>Glad to hear it!</p>
         <code><pre>florian • hanke / gmail • com</pre></code>
       </div>
       <div class='grid_1'>
@@ -152,18 +152,24 @@
         <p>Define similarity searches, more specific indexes, more searches, etc.</p>
         <h3>Become a Picky master</h3>
         <p>1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)</p>
-        <code><pre>part* # also finds partial, party, partogenesology</pre></code>
+        <code><pre>part*</pre></code>
+        <p>also finds partial, party, partogenesology.</p>
         <p>2. The last word in a query is always partially searched.</p>
         <code><pre>my beautiful query</pre></code>
         <p>is actually</p>
         <code><pre>my beautiful query*</pre></code>
-        <p>3. If you have defined a similarity index, a tilde (~) will look for similar matches.</p>
-        <code><pre>my beoootiful~ query # will also find your beautiful query</pre></code>
-        <p>4. Qualifiers can be used with a colon (:)</p>
+        <p>3. Asterisk searches can be stopped.</p>
+        <code><pre>"part"</pre></code>
+        <p>only finds part, and nothing else.</p>
+        <p>4. If you have defined a similarity index on a field, a tilde (~) will look for similar matches.</p>
+        <code><pre>my beoootiful~ query</pre></code>
+        <p>will also find your beautiful query.</p>
+        <p>5. Qualifiers can be used with a colon (:)</p>
         <code><pre>title:ulysses author:joyce</pre></code>
-        <p>will narrow the search space.</p>
-        <p>5. The above options can be combined.</p>
-        <code><pre>name:flurion~ hank* # will find me.</pre></code>
+        <p>will narrow the search space to complex novels.</p>
+        <p>6. The above options can be combined.</p>
+        <code><pre>name:flurion~ hank*</pre></code>
+        <p>will find me.</p>
         <p>That is all, young grasshopper. Be on your way.</p>
         <h3>Need help?</h3>
         <p>Right here. I'm happy to help!</p>

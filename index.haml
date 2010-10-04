@@ -97,7 +97,7 @@
           %a{ :href => 'http://www.twixtel.ch' } TwixTel
           Telephone Book Search Engine
         %h3 Feedback?
-        %p Bring it.
+        %p Glad to hear it!
         %code
           %pre florian • hanke / gmail • com
       .grid_1
@@ -169,7 +169,8 @@
         %p 1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)
         %code
           %pre
-            part* # also finds partial, party, partogenesology
+            part*
+        %p also finds partial, party, partogenesology.
         %p 2. The last word in a query is always partially searched.
         %code
           %pre
@@ -178,19 +179,26 @@
         %code
           %pre
             my beautiful query*
-        %p 3. If you have defined a similarity index, a tilde (~) will look for similar matches.
+        %p 3. Asterisk searches can be stopped.
         %code
           %pre
-            my beoootiful~ query # will also find your beautiful query
-        %p 4. Qualifiers can be used with a colon (:)
+            "part"
+        %p only finds part, and nothing else.
+        %p 4. If you have defined a similarity index on a field, a tilde (~) will look for similar matches.
+        %code
+          %pre
+            my beoootiful~ query
+        %p will also find your beautiful query.
+        %p 5. Qualifiers can be used with a colon (:)
         %code
           %pre
             title:ulysses author:joyce
-        %p will narrow the search space.
-        %p 5. The above options can be combined.
+        %p will narrow the search space to complex novels.
+        %p 6. The above options can be combined.
         %code
           %pre
-            name:flurion~ hank* # will find me.
+            name:flurion~ hank*
+        %p will find me.
         %p That is all, young grasshopper. Be on your way.
         %h3 Need help?
         %p Right here. I'm happy to help!
