@@ -206,17 +206,53 @@
           %pre florian • hanke / gmail • com
     .container_2#walkthrough
       .grid_2
-        %h2 A walkthrough through a server and client.
+        %h2 Example: A walkthrough through a server and client.
         %code
           %pre Note: Still to be done.
       .grid_1
         %h2 Client
         %p
-          Detailed steps on how to put a client together.
+          This column describes using a few examples how to set up a client and a front end for the picky server, described in the right column.
+        %p
+          The examples assume you're using a rails app. (Sinatra dudes know how to adapt, I'm sure :) )
       .grid_1
         %h2 Server
         %p
-          Detailed steps on how to put a server together.
+          This column describes using a few examples how to set up the picky server.
+        %p
+          It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. 
+        %code
+          %pre
+            :preserve
+              gem install picky
+              
+              picky project library_search
+              
+              cd library_search
+              
+              bundle install
+        %p
+          You now have a nice directory (library_search) set up with all the needed Gems, ready to go!
+      .grid_2
+        %code
+          %pre
+      .grid_1
+      .grid_1
+        %p
+          The most important file in Picky is app/application.rb
+        %code
+          %pre
+            
+      .grid_1
+        %h2 Some insight into the life of Picky
+      .grid_1
+        %h2 Roadmap
+        %p
+          %ol
+            %li Improve the Wiki
+            %li Admin Interface, live settings changes
+            %li Add Solr for enhanced similarity capability
+            %li Implement coffee making capabilities
       .grid_2
         .decoration
     .footer

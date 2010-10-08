@@ -34,3 +34,6 @@ body {
 
 iframe {
   padding: 10px; }
+
+li {
+  list-style: inside hiragana; }
