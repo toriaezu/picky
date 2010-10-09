@@ -186,6 +186,7 @@
         <p>
           This column describes using a few examples how to set up a client and a front end for the picky server, described in the right column.
         </p>
+        <h3>Setup</h3>
         <p>
           The examples assume you're using a rails app. (Sinatra dudes know how to adapt, I'm sure :) )
         </p>
@@ -195,8 +196,13 @@
         <p>
           This column describes using a few examples how to set up the picky server.
         </p>
+        <h3>Setup</h3>
         <p>
-          It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search.
+          It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. For that, we use the
+        </p>
+        <code><pre>picky project &lt;project name&gt;</pre></code>
+        <p>
+          command that has been installed with the picky gem.
         </p>
         <code><pre>gem install picky&#x000A;&#x000A;picky project library_search&#x000A;&#x000A;cd library_search&#x000A;&#x000A;bundle install</pre></code>
         <p>
@@ -206,15 +212,27 @@
       <div class='grid_2'>
         <code><pre></pre></code>
       </div>
-      <div class='grid_1'></div>
       <div class='grid_1'>
+        <h3>Configuration</h3>
+        <p></p>
+      </div>
+      <div class='grid_1'>
+        <h3>Configuration</h3>
         <p>
-          The most important file in Picky is app/application.rb
+          The most important file in your project is
+          <strong>app/application.rb</strong>
         </p>
+        <p>
+          It defines how all the indexing and the searching is handled, and even the routing.
+        </p>
+      </div>
+      <div class='grid_2'>
         <code><pre></pre></code>
       </div>
       <div class='grid_1'>
         <h2>Some insight into the life of Picky</h2>
+        <h3>The user interface</h3>
+        <h3>Guessing the user's intent</h3>
       </div>
       <div class='grid_1'>
         <h2>Roadmap</h2>

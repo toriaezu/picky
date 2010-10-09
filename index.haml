@@ -213,14 +213,21 @@
         %h2 Client
         %p
           This column describes using a few examples how to set up a client and a front end for the picky server, described in the right column.
+        %h3 Setup
         %p
           The examples assume you're using a rails app. (Sinatra dudes know how to adapt, I'm sure :) )
       .grid_1
         %h2 Server
         %p
           This column describes using a few examples how to set up the picky server.
+        %h3 Setup
         %p
-          It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. 
+          It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. For that, we use the
+        %code
+          %pre
+            picky project &lt;project name&gt;
+        %p
+          command that has been installed with the picky gem.
         %code
           %pre
             :preserve
@@ -237,14 +244,23 @@
         %code
           %pre
       .grid_1
-      .grid_1
+        %h3 Configuration
         %p
-          The most important file in Picky is app/application.rb
+          
+      .grid_1
+        %h3 Configuration
+        %p
+          The most important file in your project is
+          %strong app/application.rb
+        %p
+          It defines how all the indexing and the searching is handled, and even the routing.
+      .grid_2
         %code
           %pre
-            
       .grid_1
         %h2 Some insight into the life of Picky
+        %h3 The user interface
+        %h3 Guessing the user's intent
       .grid_1
         %h2 Roadmap
         %p
