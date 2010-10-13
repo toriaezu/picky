@@ -13,8 +13,18 @@
       .grid_2
         %h1 Picky
         %code
-          %pre Note: In the ~> 0.0.0 version range. So have a look, give feedback, and if you use it in production, get a medal for bravery.
-        %h2 The combinatorial small-text search engine in Ruby.
+          %pre Note: In the ~> 0.2 version range. So have a look, give feedback, and if you use it in production, get a medal for bravery.
+        %h4 Downloads
+      .grid_1
+        %code
+          %pre
+            gem install picky picky-client
+      .grid_1
+        %code
+          %pre
+            JS files [picky.min.js (5kB), picky.js(24kB)] [N/A yet]
+    .container_2
+      %h2 The combinatorial small-text search engine in Ruby.
       .grid_1
         %h2 Overview
         %h3 Try…
@@ -283,7 +293,22 @@
           This column describes using a few examples how to set up a client and a front end for the picky server, described in the right column.
         %h3 Setup
         %p
-          The examples assume you're using a rails app. (Sinatra dudes know how to adapt, I'm sure :) )
+          The examples assume you're using a Sinatra/Padrino or Rails app.
+        %p
+          Start out by getting the picky-client gem and adding it to your Gemfile. You could go on without it but it helps a lot.
+        %code
+          %pre
+            :preserve
+              gem install picky-client
+              
+              gem 'picky-client'
+        %p
+          Don't forget to do a
+        %code
+          %pre
+            bundle update
+        %p
+          And that's already it for the client setup! Easy, isn't it? The configuration isn't much harder.
       .grid_1
         %h2 Server
         %p
@@ -312,9 +337,45 @@
         %code
           %pre
       .grid_1
-        %h3 Configuration
+        %h3 Configuration (Controller)
         %p
-          
+          The Picky client provides an API to access the server. It looks like this:
+        %code
+          %pre
+            :preserve
+              # The options define where the Picky server that
+              # you have already set up is found.
+              # (Haven't set it up yet – see the right column on
+              # how to do this, then come back here)
+              #
+              # Options are:
+              #  * host  # e.g. 'localhost'
+              #  * port  # e.g. 8080
+              #  * path  # e.g. '/books/full'
+              #
+              Picky::Client::&lt;Full or Live&gt;.new options
+        %p
+          Usually, what I do is save the Picky client instance in a constant, like FullBooks, or BookSearch.
+          This is so I can reuse that instance.
+        %p
+          Since this configuration is environment specific, it is best – in Rails – to put it into development.rb / production.rb / test.rb.
+        %code
+          %pre
+            :preserve
+              # In development.rb:
+              #
+              FullBooks = Picky::Client::Full.new(
+                :host => 'localhost',
+                :port => 8080,
+                :path => '/books/full'
+              )
+              LiveBooks = Picky::Client::Live.new(
+                :host => 'localhost',
+                :port => 8080,
+                :path => '/books/live'
+              )
+        %p
+          The FullBooks and LiveBooks constants are ready for use in your controller actions!
       .grid_1
         %h3 Configuration
         %p
@@ -322,6 +383,94 @@
           %strong app/application.rb
         %p
           It defines how all the indexing and the searching is handled, and even the routing.
+      .grid_2
+        %code
+          %pre
+      .grid_1
+        %h3 Usage (Controller)
+        %p
+          Now that you have defined the constants, let's use them!
+        %code
+          %pre
+            :preserve
+              # In a controller, e.g. the index action:
+              #
+              def index
+                # A Picky client has a search method with some options:
+                # * query: The query to be sent to Picky.
+                # * offset: An offset on the result ids. # Default is 0.
+                #
+                results = FullBooks.search :query => 'hello picky'
+        %p
+          If the server is running, just try it! The results should be a hash with the result data.
+        %p
+          Now, this is nice, but not very useful, is it? Picky can make that hash a bit more accessible with Picky::Convenience™.
+        %code
+          %pre
+            :preserve
+              # Still in the controller action:
+              #
+              results = FullBooks.search ...
+              
+              # Make the hash a bit more self-aware.
+              #
+              results.extend Picky::Convenience
+              
+              # Now you get:
+              #
+              results.empty?
+              results.ids 10    # First 10 ids. Default is 20.
+              results.clear_ids # Remove all ids.
+              results.allocations
+              results.allocations_size
+              results.total     # The total amount of found ids.
+              
+              # The method I use most often is
+              # populate_with, as this populates the results
+              # with rendered results (using the ids), not
+              # just the ids themselves.
+              #
+              # Note: Also clears the ids with clear_ids.
+              #
+              results.populate_with Book do |book| # The model.
+                book.to_s # How to render the model.
+              end
+              
+              # If you use the provided Picky JavaScript frontend,
+              # then encode it in JSON before sending it off.
+              #
+              ActiveSupport::JSON.encode results
+        %p
+          And that was it for the controller. It looks large, but when reduced to the essential lines, it is just this:
+        %code
+          %pre
+            :preserve
+              # In an initializer or environment.
+              #
+              FullBooks = Picky::Client::Full.new ...
+              LiveBooks = Picky::Client::Full.new ...
+            
+              # In a controller action.
+              #
+              results = FullBooks.search ...
+              results.populate_with Book { |book| book.to_s }
+              ActiveSupport::JSON.encode results
+        %p
+          Unbeatably easy, right?
+      .grid_1
+        %h3 Usage
+      .grid_2
+        %code
+          %pre
+      .grid_1
+        %h3 The provided JS frontend.
+        %p
+          I need to finish writing it first, but see
+          %a{ :href => 'http://github.com/floere/picky/tree/master/examples/simple_example/webapp/' } the simple example
+          for some code on how to do it.
+          (Also get the javascripts from there until I provide them more nicely.)
+      .grid_1
+        %h3 Not much to see here.
       .grid_2
         %code
           %pre

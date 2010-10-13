@@ -13,9 +13,18 @@
     <div class='container_2'>
       <div class='grid_2'>
         <h1>Picky</h1>
-        <code><pre>Note: In the ~> 0.0.0 version range. So have a look, give feedback, and if you use it in production, get a medal for bravery.</pre></code>
-        <h2>The combinatorial small-text search engine in Ruby.</h2>
+        <code><pre>Note: In the ~> 0.2 version range. So have a look, give feedback, and if you use it in production, get a medal for bravery.</pre></code>
+        <h4>Downloads</h4>
       </div>
+      <div class='grid_1'>
+        <code><pre>gem install picky picky-client</pre></code>
+      </div>
+      <div class='grid_1'>
+        <code><pre>JS files [picky.min.js (5kB), picky.js(24kB)] [N/A yet]</pre></code>
+      </div>
+    </div>
+    <div class='container_2'>
+      <h2>The combinatorial small-text search engine in Ruby.</h2>
       <div class='grid_1'>
         <h2>Overview</h2>
         <h3>Try…</h3>
@@ -203,7 +212,18 @@
         </p>
         <h3>Setup</h3>
         <p>
-          The examples assume you're using a rails app. (Sinatra dudes know how to adapt, I'm sure :) )
+          The examples assume you're using a Sinatra/Padrino or Rails app.
+        </p>
+        <p>
+          Start out by getting the picky-client gem and adding it to your Gemfile. You could go on without it but it helps a lot.
+        </p>
+        <code><pre>gem install picky-client&#x000A;&#x000A;gem 'picky-client'</pre></code>
+        <p>
+          Don't forget to do a
+        </p>
+        <code><pre>bundle update</pre></code>
+        <p>
+          And that's already it for the client setup! Easy, isn't it? The configuration isn't much harder.
         </p>
       </div>
       <div class='grid_1'>
@@ -228,8 +248,22 @@
         <code><pre></pre></code>
       </div>
       <div class='grid_1'>
-        <h3>Configuration</h3>
-        <p></p>
+        <h3>Configuration (Controller)</h3>
+        <p>
+          The Picky client provides an API to access the server. It looks like this:
+        </p>
+        <code><pre># The options define where the Picky server that&#x000A;# you have already set up is found.&#x000A;# (Haven't set it up yet – see the right column on&#x000A;# how to do this, then come back here)&#x000A;#&#x000A;# Options are:&#x000A;#  * host  # e.g. 'localhost'&#x000A;#  * port  # e.g. 8080&#x000A;#  * path  # e.g. '/books/full'&#x000A;#&#x000A;Picky::Client::&lt;Full or Live&gt;.new options</pre></code>
+        <p>
+          Usually, what I do is save the Picky client instance in a constant, like FullBooks, or BookSearch.
+          This is so I can reuse that instance.
+        </p>
+        <p>
+          Since this configuration is environment specific, it is best – in Rails – to put it into development.rb / production.rb / test.rb.
+        </p>
+        <code><pre># In development.rb:&#x000A;#&#x000A;FullBooks = Picky::Client::Full.new(&#x000A;  :host => 'localhost',&#x000A;  :port => 8080,&#x000A;  :path => '/books/full'&#x000A;)&#x000A;LiveBooks = Picky::Client::Live.new(&#x000A;  :host => 'localhost',&#x000A;  :port => 8080,&#x000A;  :path => '/books/live'&#x000A;)</pre></code>
+        <p>
+          The FullBooks and LiveBooks constants are ready for use in your controller actions!
+        </p>
       </div>
       <div class='grid_1'>
         <h3>Configuration</h3>
@@ -240,6 +274,48 @@
         <p>
           It defines how all the indexing and the searching is handled, and even the routing.
         </p>
+      </div>
+      <div class='grid_2'>
+        <code><pre></pre></code>
+      </div>
+      <div class='grid_1'>
+        <h3>Usage (Controller)</h3>
+        <p>
+          Now that you have defined the constants, let's use them!
+        </p>
+        <code><pre># In a controller, e.g. the index action:&#x000A;#&#x000A;def index&#x000A;  # A Picky client has a search method with some options:&#x000A;  # * query: The query to be sent to Picky.&#x000A;  # * offset: An offset on the result ids. # Default is 0.&#x000A;  #&#x000A;  results = FullBooks.search :query => 'hello picky'</pre></code>
+        <p>
+          If the server is running, just try it! The results should be a hash with the result data.
+        </p>
+        <p>
+          Now, this is nice, but not very useful, is it? Picky can make that hash a bit more accessible with Picky::Convenience™.
+        </p>
+        <code><pre># Still in the controller action:&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;&#x000A;# Make the hash a bit more self-aware.&#x000A;#&#x000A;results.extend Picky::Convenience&#x000A;&#x000A;# Now you get:&#x000A;#&#x000A;results.empty?&#x000A;results.ids 10    # First 10 ids. Default is 20.&#x000A;results.clear_ids # Remove all ids.&#x000A;results.allocations&#x000A;results.allocations_size&#x000A;results.total     # The total amount of found ids.&#x000A;&#x000A;# The method I use most often is&#x000A;# populate_with, as this populates the results&#x000A;# with rendered results (using the ids), not&#x000A;# just the ids themselves.&#x000A;#&#x000A;# Note: Also clears the ids with clear_ids.&#x000A;#&#x000A;results.populate_with Book do |book| # The model.&#x000A;  book.to_s # How to render the model.&#x000A;end&#x000A;&#x000A;# If you use the provided Picky JavaScript frontend,&#x000A;# then encode it in JSON before sending it off.&#x000A;#&#x000A;ActiveSupport::JSON.encode results</pre></code>
+        <p>
+          And that was it for the controller. It looks large, but when reduced to the essential lines, it is just this:
+        </p>
+        <code><pre># In an initializer or environment.&#x000A;#&#x000A;FullBooks = Picky::Client::Full.new ...&#x000A;LiveBooks = Picky::Client::Full.new ...&#x000A;&#x000A;# In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book { |book| book.to_s }&#x000A;ActiveSupport::JSON.encode results</pre></code>
+        <p>
+          Unbeatably easy, right?
+        </p>
+      </div>
+      <div class='grid_1'>
+        <h3>Usage</h3>
+      </div>
+      <div class='grid_2'>
+        <code><pre></pre></code>
+      </div>
+      <div class='grid_1'>
+        <h3>The provided JS frontend.</h3>
+        <p>
+          I need to finish writing it first, but see
+          <a href='http://github.com/floere/picky/tree/master/examples/simple_example/webapp/'>the simple example</a>
+          for some code on how to do it.
+          (Also get the javascripts from there until I provide them more nicely.)
+        </p>
+      </div>
+      <div class='grid_1'>
+        <h3>Not much to see here.</h3>
       </div>
       <div class='grid_2'>
         <code><pre></pre></code>
