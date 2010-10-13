@@ -129,22 +129,33 @@
         <pre># Generates the search engine in ./app_name with&#x000A;# lots of commented code to help you get going.&#x000A;#&#x000A;picky project app_name</pre>
         <pre>cd app_name&#x000A;bundle install</pre></code>
         <h3>Adapt the generated code!</h3>
-        <h4>Define indexes</h4>
+        <h4>Define how the indexing works</h4>
+        <p>What characters pass through, which words are removed (stopwords), how is the text tokenized, i.e., split?</p>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;indexing.removes_characters(/[^a-zA-Z0-9\s\/\-\"\&\.]/)&#x000A;...</pre></code>
+        <h4>Define a few indexes.</h4>
         <p>It's easy. If you have a filled database table ready, it's even easier.</p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;indexes do&#x000A;  ...&#x000A;end</pre></code>
-        <h4>Define queries.</h4>
-        <p>After having defined indexes, this is a piece of cake.</p>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# Indexes have an identifier, e.g., :books, a source,&#x000A;# which is a database table, and a number of fields.&#x000A;#&#x000A;books_index = index :books,&#x000A;  Sources::DB.new(&#x000A;    'SELECT id, title, author, description FROM books',&#x000A;    :file => 'app/db.yml'&#x000A;  ),&#x000A;  field(&#x000A;    :title, # identifier&#x000A;    :qualifiers => [:t, :title],&#x000A;    :similarity => Similarity::DoubleLevenshtone.new(3)&#x000A;  ),&#x000A;  field(...</pre></code>
+        <h4>Define how querying works, i.e., query text is handled.</h4>
         <p>
-          How is a query split into tokens? To which query is an url routed? What query uses which indexes?
+          After having defined the indexing, this is a piece of cake, since it works the same way.
         </p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;queries do&#x000A;  ...&#x000A;end</pre></code>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;querying.removes_characters(/[^a-zA-Z0-9\s\"\~\*\:]/)&#x000A;...</pre></code>
+        <h4>Queries</h4>
+        <p>Define a few queries.</p>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# A full search returns ids, while a live search doesn't.&#x000A;#&#x000A;# The options define weights which will give bonus points&#x000A;# to certain combinations. If only title words are found,&#x000A;# a hefty bonus of 6 is given, which is very high.&#x000A;#&#x000A;# If a title is found before the author, like&#x000A;# "the hobbit, tolkien", 3 points are awarded.&#x000A;#&#x000A;options = {&#x000A;  :weights => Query::Weights.new([:title] => 6,&#x000A;                                 [:title, :author] => 3)&#x000A;}&#x000A;full_search = Query::Full.new(books_index, options)&#x000A;live_search = Query::Live.new(books_index, options)&#x000A;&#x000A;# It's possible to use multiple indexes in a query.&#x000A;#&#x000A;multi_search = Query::Full.new(&#x000A;                 books_index,&#x000A;                 dvd_index,&#x000A;                 mp3_index&#x000A;               )</pre></code>
+        <h4>Map some URL paths</h4>
+        <p>Phew! Almost done :)</p>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# The method "route" maps URL paths to queries.&#x000A;# Use regexps or strings to define paths.&#x000A;#&#x000A;route %r{^/tracks/full} => full_search&#x000A;route %r{^/tracks/live} => live_search</pre></code>
         <h3>Indexing</h3>
-        <p>Let picky have a look at the data!</p>
+        <p>Finally! Let picky have a look at the data!</p>
         <code><pre>rake index</pre></code>
         <h3>Gentlemen, start your engines</h3>
         <code><pre>rake start</pre></code>
+        <p>
+          will start an Unicorn.
+        </p>
         <h3>Try your first query</h3>
-        <code><pre># Assuming this url is defined in application.rb.&#x000A;#&#x000A;curl localhost:6000/books/live?query=test</pre></code>
+        <code><pre># Assuming this URL path is mapped in app/application.rb.&#x000A;#&#x000A;curl localhost:8080/books/full?query=test</pre></code>
         <h3>Is something not correctly indexed?</h3>
         <code><pre>rake try:both[MyWordThatDoesNotWork]</pre></code>
         <p>Words to find should be indexed in basically the same way as the query processes them.</p>
@@ -160,10 +171,10 @@
         <code><pre>my beautiful query*</pre></code>
         <p>3. Asterisk searches can be stopped.</p>
         <code><pre>"part"</pre></code>
-        <p>only finds part, and nothing else.</p>
+        <p>only finds "part", and nothing else.</p>
         <p>4. If you have defined a similarity index on a field, a tilde (~) will look for similar matches.</p>
         <code><pre>my beoootiful~ query</pre></code>
-        <p>will also find your beautiful query.</p>
+        <p>will also find your "beautiful" query.</p>
         <p>5. Qualifiers can be used with a colon (:)</p>
         <code><pre>title:ulysses author:joyce</pre></code>
         <p>will narrow the search space to complex novels.</p>
@@ -172,7 +183,11 @@
         <p>will find me.</p>
         <p>That is all, young grasshopper. Be on your way.</p>
         <h3>Need help?</h3>
-        <p>Right here. I'm happy to help!</p>
+        <p>
+          Right here. I'm happy to help!
+          If something doesn't work, send/gist me your application.rb
+          and I'll look into it.
+        </p>
         <code><pre>florian • hanke / gmail • com</pre></code>
       </div>
     </div>
