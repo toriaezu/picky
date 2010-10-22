@@ -734,7 +734,7 @@ Picky Server}</string>
 					<key>FillType</key>
 					<integer>2</integer>
 					<key>GradientAngle</key>
-					<real>90</real>
+					<real>270</real>
 					<key>GradientColor</key>
 					<dict>
 						<key>b</key>
@@ -981,7 +981,7 @@ Picky Server}</string>
 				<key>shadow</key>
 				<dict>
 					<key>Fuzziness</key>
-					<real>1.5422108173370361</real>
+					<real>3.3371961116790771</real>
 					<key>ShadowVector</key>
 					<string>{1, 2}</string>
 				</dict>
@@ -1119,7 +1119,7 @@ Picky Server}</string>
 	<key>HPages</key>
 	<integer>1</integer>
 	<key>ImageCounter</key>
-	<integer>7</integer>
+	<integer>13</integer>
 	<key>ImageLinkBack</key>
 	<array>
 		<dict/>
@@ -1171,7 +1171,7 @@ Picky Server}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2010-10-22 17:22:29 +0200</string>
+	<string>2010-10-23 01:10:55 +0200</string>
 	<key>Modifier</key>
 	<string>Florian Hanke</string>
 	<key>NotesVisible</key>

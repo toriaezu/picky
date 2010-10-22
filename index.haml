@@ -11,29 +11,18 @@
       %a{ :href => 'http://github.com/you' }
         %img{ :style => 'position: fixed; top: -10px; right: 0; border: 0;', :src => 'http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png', :alt => 'Fork me on GitHub' }
     .picky{ :title => 'Snapshot of Picky, indexing data.' }
+    / %code
+    /   %pre
+    /     %a{ :href => 'http://github.com/floere/picky/raw/master/examples/simple_example/webapp/javascripts/picky.min.js' } Minimized JS (picky.min.js) (9kB)
+    / %code
+    /   %pre
+    /     %a{ :href => 'http://github.com/floere/picky/raw/master/examples/simple_example/webapp/javascripts/picky.source.js.tar' } Source JS (picky.source.js.tar) (45kB)
     .container_2
       %h1 Picky
-      .grid_2
-        %code
-          %pre Note: In the ~> 0.2 version range. So have a look, give feedback, and if you use it in production, get a medal for bravery.
-      %h3 Downloads
-      .grid_1
-        %p The gems, server and client.
-        %code
-          %pre
-            gem install picky picky-client
-      .grid_1
-        %p The JS browser frontend.
-        %code
-          %pre
-            %a{ :href => 'http://github.com/floere/picky/raw/master/examples/simple_example/webapp/javascripts/picky.min.js' } Minimized JS (picky.min.js) (9kB)
-        %code
-          %pre
-            %a{ :href => 'http://github.com/floere/picky/raw/master/examples/simple_example/webapp/javascripts/picky.source.js.tar' } Source JS (picky.source.js.tar) (45kB)
     .container_2
       %h2 The combinatorial small-text search engine in Ruby.
       .grid_1
-        %h2 Overview
+        %h2 What's that?
         %h3 Try…
         %p
           A very
@@ -50,8 +39,9 @@
           A full-text search engine. If you need that, look at
           %a{ :href => 'http://sphinxsearch.com/' } Sphinx
           or
-          %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
-          \. They will help.
+          = succeed('.') do
+            %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
+          They will help.
         %h3 Huh? What's a small-text search engine?
         %p
           A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
