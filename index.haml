@@ -102,8 +102,12 @@
         %h3 Why the octopus?
         %p
           Glad you asked. But first, read this
-          %a{ :href => 'http://en.wikipedia.org/wiki/Octopus' } Wikipedia entry about octopuses
-          \. Finished? I think that sums it up pretty well. And it's cuuute, don't you think? :)
+          = succeed('.') do
+            %a{ :href => 'http://en.wikipedia.org/wiki/Octopus' } Wikipedia entry about octopuses
+          Also,
+          = succeed('.') do
+            %a{ :href => 'http://www.youtube.com/watch?v=badHUNl2HXU' } a movie
+          Finished? I think that sums it up pretty well. And it's cuuute, don't you think? :)
         %p
           But don't call him that. He likes to be called "Octor the Destroyer".
         %h3 Why the license?
@@ -236,7 +240,7 @@
         %p
           The examples assume you're using a Sinatra/Padrino or Rails app.
         %p
-          Start out by getting the picky-client gem and adding it to your Gemfile. You could go on without it but it helps a lot.
+          Start by getting the picky-client gem and adding it to your Gemfile. You could go on without it but it helps a lot.
         %code
           %pre
             :preserve
