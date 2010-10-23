@@ -165,21 +165,18 @@
           If you're interested anyway:
           %a{ :href => 'http://github.com/floere/picky/wiki/results-format-and-structure' } Results (Format & Structure)
         %h3 The client
-        %p The client generates an example app for the "library" example backend, either using Sinatra or using Rails 3.
-        %p If you like Sinatra better, use
+        %p The client generates an example app for the "library" example backend, using Sinatra.
         %code
-          %pre
+        %pre
+          :preserve
+            # Generates a directory "app_name"
+            # with a new Picky Client Webapp project.
+            
             picky-client sinatra app_name
-        %p and if you like Rails better, use
-        %code
-          %pre
-            picky-client rails app_name
-        %p And then
-        %code
-          %pre
-            :preserve
-              cd app_name
-              bundle install 
+        %pre
+          :preserve
+            cd app_name
+            bundle install
         %h4 Start the app server
         %code
           %pre

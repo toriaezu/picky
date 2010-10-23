@@ -175,13 +175,10 @@
           <a href='http://github.com/floere/picky/wiki/results-format-and-structure'>Results (Format & Structure)</a>
         </p>
         <h3>The client</h3>
-        <p>The client generates an example app for the "library" example backend, either using Sinatra or using Rails 3.</p>
-        <p>If you like Sinatra better, use</p>
-        <code><pre>picky-client sinatra app_name</pre></code>
-        <p>and if you like Rails better, use</p>
-        <code><pre>picky-client rails app_name</pre></code>
-        <p>And then</p>
-        <code><pre>cd app_name&#x000A;bundle install</pre></code>
+        <p>The client generates an example app for the "library" example backend, using Sinatra.</p>
+        <code></code>
+        <pre># Generates a directory "app_name"&#x000A;# with a new Picky Client Webapp project.&#x000A;&#x000A;picky-client sinatra app_name</pre>
+        <pre>cd app_name&#x000A;bundle install</pre>
         <h4>Start the app server</h4>
         <code><pre>unicorn -p 3000</pre></code>
         <h4>Admire your work</h4>
