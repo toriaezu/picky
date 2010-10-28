@@ -270,7 +270,7 @@
       </div>
       <div class='grid_2'></div>
       <div class='grid_1'>
-        <h3>Configuration (Controller)</h3>
+        <h3>Configuration (Sinatra/Rails etc. Controller)</h3>
         <p>
           The Picky client provides an API to access the server. It looks like this:
         </p>
@@ -349,11 +349,6 @@
         <p>
           will start an Unicorn.
         </p>
-        <h3>Try your first query</h3>
-        <code><pre># Assuming this URL path is mapped in app/application.rb.&#x000A;#&#x000A;curl localhost:8080/books/full?query=test</pre></code>
-        <h3>Is something not correctly indexed?</h3>
-        <code><pre>rake 'try[My Words That Do Not Work]'</pre></code>
-        <p>Words to find should be indexed in basically the same way as the query processes them.</p>
         <h3>Refine!</h3>
         <p>Define similarity searches, more specific indexes, more searches, etc.</p>
       </div>
@@ -362,6 +357,15 @@
         <h3>Usage (Controller)</h3>
         <p>
           Now that you have defined the constants, let's use them!
+        </p>
+        <p>
+          The client provides a handy #search method, with the signature
+          <strong>search(options)</strong>
+          where the options are:
+          <ul>
+            <li>query: the query text</li>
+            <li>offset: the result offset (default 0, only used in Full)</li>
+          </ul>
         </p>
         <code><pre># In a controller, e.g. the index action:&#x000A;#&#x000A;def index&#x000A;  # A Picky client has a search method with some options:&#x000A;  # * query: The query to be sent to Picky.&#x000A;  # * offset: An offset on the result ids. # Default is 0.&#x000A;  #&#x000A;  results = FullBooks.search :query => 'hello picky'</pre></code>
         <p>
@@ -384,7 +388,7 @@
         <code><pre># In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book&#x000A;&#x000A;# In your view:&#x000A;#&#x000A;results.entries.collect! do |book|&#x000A;  render book&#x000A;end&#x000A;ActiveSupport::JSON.encode results</pre></code>
       </div>
       <div class='grid_1'>
-        <h3>Usage</h3>
+        <h3>Usage (Of the Server)</h3>
         <p>
           Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
         </p>
@@ -392,6 +396,9 @@
         <p>
           Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
         </p>
+        <h3>Is something not correctly indexed?</h3>
+        <code><pre>rake 'try[My Words That Do Not Work]'</pre></code>
+        <p>Words to find should be indexed in basically the same way as the query processes them.</p>
       </div>
       <div class='grid_2'></div>
       <div class='grid_1'>
@@ -431,7 +438,7 @@
         </p>
       </div>
       <div class='grid_1'>
-        <h3>Become a Picky master</h3>
+        <h3>Usage (Become a Picky master)</h3>
         <p>1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)</p>
         <code><pre>part*</pre></code>
         <p>also finds partial, party, partogenesology.</p>

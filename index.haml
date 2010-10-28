@@ -275,7 +275,7 @@
           You now have a nice directory (library_search) set up with all the needed Gems, ready to go!
       .grid_2
       .grid_1
-        %h3 Configuration (Controller)
+        %h3 Configuration (Sinatra/Rails etc. Controller)
         %p
           The Picky client provides an API to access the server. It looks like this:
         %code
@@ -443,19 +443,6 @@
             rake start
         %p
           will start an Unicorn.
-        %h3 Try your first query
-        %code
-          %pre
-            :preserve
-              # Assuming this URL path is mapped in app/application.rb.
-              #
-              curl localhost:8080/books/full?query=test
-        %h3 Is something not correctly indexed?
-        %code
-          %pre
-            :preserve
-              rake 'try[My Words That Do Not Work]'
-        %p Words to find should be indexed in basically the same way as the query processes them.
         %h3 Refine!
         %p Define similarity searches, more specific indexes, more searches, etc.
       .grid_2
@@ -463,6 +450,13 @@
         %h3 Usage (Controller)
         %p
           Now that you have defined the constants, let's use them!
+        %p
+          The client provides a handy #search method, with the signature
+          %strong search(options)
+          where the options are:
+          %ul
+            %li query: the query text
+            %li offset: the result offset (default 0, only used in Full)
         %code
           %pre
             :preserve
@@ -547,7 +541,7 @@
               end
               ActiveSupport::JSON.encode results
       .grid_1
-        %h3 Usage
+        %h3 Usage (Of the Server)
         %p
           Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
         %code
@@ -555,6 +549,12 @@
             curl 'localhost:8080/books/full?offset=10&query=test'
         %p
           Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
+        %h3 Is something not correctly indexed?
+        %code
+          %pre
+            :preserve
+              rake 'try[My Words That Do Not Work]'
+        %p Words to find should be indexed in basically the same way as the query processes them.
       .grid_2
       .grid_1
         %h3 The provided JS frontend.
@@ -670,7 +670,7 @@
         %p
           And that's basically it. Wish you great success!
       .grid_1
-        %h3 Become a Picky master
+        %h3 Usage (Become a Picky master)
         %p 1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)
         %code
           %pre
