@@ -537,18 +537,147 @@
               ActiveSupport::JSON.encode results
         %p
           Unbeatably easy, right?
+        %p
+          If you don't want to render the results in the controller, use #entries to render them in a view and use #populate_with without the rendering block.
+        %code
+          %pre
+            :preserve
+              # In a controller action.
+              #
+              results = FullBooks.search ...
+              results.populate_with Book
+              
+              # In your view:
+              #
+              results.entries.collect! do |book|
+                render book
+              end
+              ActiveSupport::JSON.encode results
       .grid_1
         %h3 Usage
+        %p
+          Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
+        %code
+          %pre
+            curl 'localhost:8080/books/full?offset=10&query=test'
+        %p
+          Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
       .grid_2
         %code
           %pre
       .grid_1
         %h3 The provided JS frontend.
         %p
-          I need to finish writing it first, but see
-          %a{ :href => 'http://github.com/floere/picky/tree/master/examples/simple_example/webapp/' } the simple example
-          for some code on how to do it.
-          (Also get the javascripts from there until I provide them more nicely.)
+          Picky provides a html structure which is in turn used by the Picky JS frontend.
+        %p
+          Add the following line to your views (here in haml glory):
+        %code
+          %pre
+            :preserve
+              = Picky::Helper.cached_interface options
+        %p or
+        %code
+          %pre
+            :preserve
+              = Picky::Helper.interface options
+        %p
+          The options (defaults after the ||) are
+        %code
+          %pre
+            :preserve
+              options[:button]     || 'search'
+              options[:no_results] || 'Sorry, no results found!'
+              options[:more]       || 'more'
+        %p
+          This enables you to pass in your own translated texts. If you have only one language I suggest you use #cached_interface.
+        %p
+          With the HTML structure in place, let's take a look at the Javascript.
+        %p
+          The simplest example that works is:
+        %code
+          %pre
+            :preserve
+              new PickyClient({
+                full: '/search/full', // Displays the rendered results.
+                live: '/search/live'  // Just updates the count.
+              });
+        %p
+          You'd of course use the urls you want.
+        %p
+          A more complicated example looks like this:
+        %code
+          %pre
+            :preserve
+              pickyClient = new PickyClient({
+                // A full query displays the rendered results.
+                //
+                full: '/search/full',
+                
+                // A live query just updates the count.
+                //
+                live: '/search/live',
+                
+                // Optional. Default is 10.
+                //
+                showResultsLimit: 20,
+                
+                // Optional. Before Picky sends any data.
+                //
+                before: function(params, query, offset) {
+                  console.log('Going to send your query. Oh boy!');
+                },
+                
+                // Optional. Just after Picky receives data.
+                //           (Get a PickyData object)
+                //
+                success: function(data, query) {
+                  console.log('Received the data.');
+                },
+                
+                // Optional. After Picky has handled the
+                //           data and updated the view.
+                //
+                after: function(data, query) {
+                  console.log('Found what you were looking for?');
+                },
+                
+                // This is used to generate the correct query
+                // strings, localized. E.g. "subject:war".
+                //
+                // Optional. If you don't give these, the
+                // field identifier given in the Picky server
+                // is used.
+                //
+                qualifiers: {
+                  en:{
+                    subjects:  'subject'
+                  }
+                },
+                
+                // This is used to explain the preceding word
+                // in the suggestion text, localized.
+                // E.g. "Peter (author)".
+                //
+                // Optional. Default are the field identifiers
+                //           from the Picky server.
+                //
+                explanations: {
+                  en:{
+                    title:     'titled',
+                    author:    'written by',
+                    isbn:      'ISBN-13',
+                    year:      'published in',
+                    publisher: 'published by',
+                    subjects:  'topics'
+                  }
+                }
+              });
+              
+              // An initial search text.
+              //
+              pickyClient.insert('initial search text');
+        %p
+          And that's basically it. Wish you great success!
       .grid_1
         %h3 Become a Picky master
         %p 1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)
