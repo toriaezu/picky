@@ -128,6 +128,8 @@
             %li Your app server renders results for the IDs.
         %p
           Together they are like a small A-Team, something like "Action Search Squad Alpha"! «We've got the results and are heading back to base now, Sir!» Bam!
+        %p
+          Note that you don't need a Picky client. You could just as well use the results in your Python/Java/PHP app server (If you happen to write a client for one of these, please let me know).
         %h3 Installation
         %p
           Note that Picky only runs on Ruby 1.9. I recommend
@@ -253,7 +255,7 @@
       .grid_1
         %h2 Server
         %p
-          This column describes using a few examples how to set up the picky server. You can actually read both columns back and forth if you want. Like ping pong. Played by two chinese master ping-pong pandas. (Not by me, then you'd already stop at gem install)
+          This column describes using a few examples how to set up the picky server. You can actually read both columns back and forth if you want. Like ping pong. Played by two chinese master ping-pong pandas. (Not by me, then you'd already stop at gem install. And the table would be on fire.)
         %h3 Setup
         %p
           It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. For that, we use the
@@ -274,155 +276,6 @@
               bundle install
         %p
           You now have a nice directory (library_search) set up with all the needed Gems, ready to go!
-        %h3 Adapt the generated code!
-        %h4 Define how the indexing works
-        %p What characters pass through, which words are removed (stopwords), how is the text tokenized, i.e., split?
-        %code
-          %pre
-            :preserve
-              # In app/application.rb, find this stub
-              # and adapt the examples.
-              #
-              indexing.removes_characters(/[^a-zA-Z0-9\s\/\-\"\&\.]/)
-              ...
-        %h4 Define a few indexes.
-        %p It's easy. If you have a filled database table ready, it's even easier.
-        %code
-          %pre
-            :preserve
-              # In app/application.rb, find this stub
-              # and adapt the examples.
-              #
-              # Indexes have an identifier, e.g., :books, a source,
-              # which is a database table, and a number of fields.
-              #
-              books_index = index :books,
-                Sources::DB.new(
-                  'SELECT id, title, author, description FROM books',
-                  :file => 'app/db.yml'
-                ),
-                field(
-                  :title, # identifier
-                  :qualifiers => [:t, :title],
-                  :similarity => Similarity::DoubleLevenshtone.new(3)
-                ),
-                field(...
-        %h4 Define how querying works, i.e., query text is handled.
-        %p
-          After having defined the indexing, this is a piece of cake, since it works the same way.
-        %code
-          %pre
-            :preserve
-              # In app/application.rb, find this stub
-              # and adapt the examples.
-              #
-              querying.removes_characters(/[^a-zA-Z0-9\s\"\~\*\:]/)
-              ...
-        %h4 Queries
-        %p Define a few queries.
-        %code
-          %pre
-            :preserve
-              # In app/application.rb, find this stub
-              # and adapt the examples.
-              #
-              # A full search returns ids, while a live search doesn't.
-              #
-              # The options define weights which will give bonus points
-              # to certain combinations. If only title words are found,
-              # a hefty bonus of 6 is given, which is very high.
-              #
-              # If a title is found before the author, like
-              # "the hobbit, tolkien", 3 points are awarded.
-              #
-              options = {
-                :weights => Query::Weights.new([:title] => 6,
-                                               [:title, :author] => 3)
-              }
-              full_search = Query::Full.new(books_index, options)
-              live_search = Query::Live.new(books_index, options)
-
-              # It's possible to use multiple indexes in a query.
-              #
-              multi_search = Query::Full.new(
-                               books_index,
-                               dvd_index,
-                               mp3_index
-                             )
-        %h4 Map some URL paths
-        %p Phew! Almost done :)
-        %code
-          %pre
-            :preserve
-              # In app/application.rb, find this stub
-              # and adapt the examples.
-              #
-              # The method "route" maps URL paths to queries.
-              # Use regexps or strings to define paths.
-              #
-              route %r{^/tracks/full} => full_search
-              route %r{^/tracks/live} => live_search
-        %h3 Indexing
-        %p Finally! Let picky have a look at the data!
-        %code
-          %pre
-            rake index
-        %h3 Gentlemen, start your engines
-        %code
-          %pre
-            rake start
-        %p
-          will start an Unicorn.
-        %h3 Try your first query
-        %code
-          %pre
-            :preserve
-              # Assuming this URL path is mapped in app/application.rb.
-              #
-              curl localhost:8080/books/full?query=test
-        %h3 Is something not correctly indexed?
-        %code
-          %pre
-            :preserve
-              rake try:both[MyWordThatDoesNotWork]
-        %p Words to find should be indexed in basically the same way as the query processes them.
-        %h3 Refine!
-        %p Define similarity searches, more specific indexes, more searches, etc.
-        %h3 Become a Picky master
-        %p 1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)
-        %code
-          %pre
-            part*
-        %p also finds partial, party, partogenesology.
-        %p 2. The last word in a query is always partially searched.
-        %code
-          %pre
-            my beautiful query
-        %p is actually
-        %code
-          %pre
-            my beautiful query*
-        %p 3. Asterisk searches can be stopped.
-        %code
-          %pre
-            "part"
-        %p only finds "part", and nothing else.
-        %p 4. If you have defined a similarity index on a field, a tilde (~) will look for similar matches.
-        %code
-          %pre
-            my beoootiful~ query
-        %p will also find your "beautiful" query.
-        %p 5. Qualifiers can be used with a colon (:)
-        %code
-          %pre
-            title:ulysses author:joyce
-        %p will narrow the search space to complex novels.
-        %p 6. The above options can be combined.
-        %code
-          %pre
-            name:flurion~ hank*
-        %p will find me.
-        %p That is all, young grasshopper. Be on your way.
       .grid_2
         %code
           %pre
@@ -466,6 +319,8 @@
               )
         %p
           The FullBooks and LiveBooks constants are ready for use in your controller actions!
+        %p
+          Please continue below to see how to use the configured searches.
       .grid_1
         %h3 Configuration
         %p
@@ -473,6 +328,141 @@
           %strong app/application.rb
         %p
           It defines how all the indexing and the searching is handled, and even the routing.
+        %h4 Define how the indexing works
+        %p What characters pass through, which words are removed (stopwords), how is the text tokenized, i.e., split?
+        %code
+          %pre
+            :preserve
+              # In app/application.rb, find this stub
+              # and adapt the examples.
+              #
+              indexing.removes_characters(/[^a-zA-Z0-9\s\/\-\"\&\.]/)
+              ...
+        %h4 Define a few indexes.
+        %p It's easy. If you have a filled database table ready, it's even easier.
+        %code
+          %pre
+            :preserve
+              # In app/application.rb, find this stub
+              # and adapt the examples.
+              #
+              # Indexes have an identifier, e.g., :books, a source,
+              # which is a database table, and a number of fields.
+              #
+              books_index = index :books,
+                Sources::DB.new(
+                  'SELECT id, title, author, description FROM books',
+                  :file => 'app/db.yml'
+                ),
+                field(
+                  :title, # identifier
+                  :qualifiers => [:t, :title],
+                  :similarity => Similarity::DoubleLevenshtone.new(3)
+                ),
+                field(...
+        %p
+          An index has
+          %ol
+            %li an identifier (for index directory naming/referencing by Indexes[:identifier]),
+            
+            %li
+              a data source (find out more on
+              %a{ :href => 'http://github.com/floere/picky/wiki/Sources-Configuration' } Sources in the Wiki
+              ), and
+            
+            %li
+              a number of fields (find out more
+              %a{ :href => 'http://github.com/floere/picky/wiki/Fields-Configuration' } Fields in the Wiki
+              in the Wiki), and finally,
+            
+            %li a number of options.
+        %h4 Define how querying works, i.e., query text is handled.
+        %p
+          After having defined the indexing, this is a piece of cake, since it works the same way.
+        %code
+          %pre
+            :preserve
+              # In app/application.rb, find this stub
+              # and adapt the examples.
+              #
+              querying.removes_characters(/[^a-zA-Z0-9\s\"\~\*\:]/)
+              ...
+        %h4 Queries
+        %p Define a few queries.
+        %code
+          %pre
+            :preserve
+              # In app/application.rb, find this stub
+              # and adapt the examples.
+              #
+              # A full search returns ids, while a live search doesn't.
+              #
+              # The options define weights which will give bonus points
+              # to certain combinations. If only title words are found,
+              # a hefty bonus of 6 is given, which is very high.
+              #
+              # If a title is found before the author, like
+              # "the hobbit, tolkien", 3 points are awarded.
+              #
+              options = {
+                :weights => Query::Weights.new([:title] => 6,
+                                               [:title, :author] => 3)
+              }
+              full_search = Query::Full.new(books_index, options)
+              live_search = Query::Live.new(books_index, options)
+
+              # It's possible to use multiple indexes in a query.
+              #
+              multi_search = Query::Full.new(
+                               books_index,
+                               dvd_index,
+                               mp3_index
+                             )
+        %p
+          Find out more in the
+          %a{ :href => 'http://github.com/floere/picky/wiki/Queries-Configuration' } Wiki on Query Configuration
+        %h4 Map some URL paths
+        %p Phew! Almost done :)
+        %code
+          %pre
+            :preserve
+              # In app/application.rb, find this stub
+              # and adapt the examples.
+              #
+              # The method "route" maps URL paths to queries.
+              # Use regexps or strings to define paths.
+              #
+              route %r{^/tracks/full} => full_search
+              route %r{^/tracks/live} => live_search
+        %p
+          Find out more in the
+          %a{ :href => 'http://github.com/floere/picky/wiki/Routing-configuration' } Wiki on Routing Queries
+        %h3 Indexing
+        %p Finally! Let picky have a look at the data!
+        %code
+          %pre
+            rake index
+        %h3 Gentlemen, start your engines
+        %code
+          %pre
+            rake start
+        %p
+          will start an Unicorn.
+        %h3 Try your first query
+        %code
+          %pre
+            :preserve
+              # Assuming this URL path is mapped in app/application.rb.
+              #
+              curl localhost:8080/books/full?query=test
+        %h3 Is something not correctly indexed?
+        %code
+          %pre
+            :preserve
+              rake 'try[My Words That Do Not Work]'
+        %p Words to find should be indexed in basically the same way as the query processes them.
+        %h3 Refine!
+        %p Define similarity searches, more specific indexes, more searches, etc.
       .grid_2
         %code
           %pre
@@ -560,7 +550,41 @@
           for some code on how to do it.
           (Also get the javascripts from there until I provide them more nicely.)
       .grid_1
-        %h3 Not much to see here.
+        %h3 Become a Picky master
+        %p 1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)
+        %code
+          %pre
+            part*
+        %p also finds partial, party, partogenesology.
+        %p 2. The last word in a query is always partially searched.
+        %code
+          %pre
+            my beautiful query
+        %p is actually
+        %code
+          %pre
+            my beautiful query*
+        %p 3. Asterisk searches can be stopped.
+        %code
+          %pre
+            "part"
+        %p only finds "part", and nothing else.
+        %p 4. If you have defined a similarity index on a field, a tilde (~) will look for similar matches.
+        %code
+          %pre
+            my beoootiful~ query
+        %p will also find your "beautiful" query.
+        %p 5. Qualifiers can be used with a colon (:)
+        %code
+          %pre
+            title:ulysses author:joyce
+        %p will narrow the search space to complex novels.
+        %p 6. The above options can be combined.
+        %code
+          %pre
+            name:flurion~ hank*
+        %p will find me.
+        %p That is all, young grasshopper. Be on your way.
       .grid_2
         %code
           %pre
@@ -571,11 +595,7 @@
       .grid_1
         %h2 Roadmap
         %p
-          %ol
-            %li Improve the Wiki
-            %li Admin Interface, live settings changes
-            %li Add Solr for enhanced similarity capability
-            %li Implement coffee making capabilities
+          %a{ :href => 'http://github.com/floere/picky/wiki/Roadmap' } Wiki Roadmap
       .grid_2
         .decoration
     .footer
