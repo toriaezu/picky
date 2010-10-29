@@ -374,7 +374,7 @@
         <p>
           Now, this is nice, but not very useful, is it? Picky can make that hash a bit more accessible with Picky::Convenience™.
         </p>
-        <code><pre># Still in the controller action:&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;&#x000A;# Make the hash a bit more self-aware.&#x000A;#&#x000A;results.extend Picky::Convenience&#x000A;&#x000A;# Now you get:&#x000A;#&#x000A;results.empty?&#x000A;results.ids 10    # First 10 ids. Default is 20.&#x000A;results.clear_ids # Remove all ids.&#x000A;results.allocations&#x000A;results.allocations_size&#x000A;results.total     # The total amount of found ids.&#x000A;&#x000A;# The method I use most often is&#x000A;# populate_with, as this populates the results&#x000A;# with rendered results (using the ids), not&#x000A;# just the ids themselves.&#x000A;#&#x000A;# Note: Also clears the ids with clear_ids.&#x000A;#&#x000A;results.populate_with Book do |book|&#x000A;  # book is a model.&#x000A;  book.to_s # Or render(book), depending which framework you use&#x000A;end&#x000A;&#x000A;# If you use the provided Picky JavaScript frontend,&#x000A;# then encode it in JSON before sending it off.&#x000A;#&#x000A;ActiveSupport::JSON.encode results</pre></code>
+        <code><pre># Still in the controller action:&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;&#x000A;# Make the hash a bit more self-aware.&#x000A;#&#x000A;results.extend Picky::Convenience&#x000A;&#x000A;# Now you get:&#x000A;#&#x000A;results.empty?&#x000A;results.ids 10    # First 10 ids. Default is 20.&#x000A;results.clear_ids # Remove all ids.&#x000A;results.allocations&#x000A;results.allocations_size&#x000A;results.total     # The total amount of found ids.&#x000A;&#x000A;# The method I use most often is&#x000A;# populate_with, as this populates the results&#x000A;# with rendered results (using the ids), not&#x000A;# just the ids themselves.&#x000A;#&#x000A;# Note: Also clears the ids with clear_ids.&#x000A;#&#x000A;results.populate_with Book do |book|&#x000A;  # book is a model. Render it however you want.&#x000A;  book.to_s&#x000A;end&#x000A;&#x000A;# If you use the provided Picky JavaScript frontend,&#x000A;# then encode it in JSON before sending it off.&#x000A;#&#x000A;ActiveSupport::JSON.encode results</pre></code>
         <p>
           And that was it for the controller. It looks large, but when reduced to the essential lines, it is just this:
         </p>
@@ -385,7 +385,7 @@
         <p>
           If you don't want to render the results in the controller, use #entries to render them in a view and use #populate_with without the rendering block.
         </p>
-        <code><pre># In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book&#x000A;&#x000A;# In your view:&#x000A;#&#x000A;results.entries.collect! do |book|&#x000A;  render book&#x000A;end&#x000A;ActiveSupport::JSON.encode results</pre></code>
+        <code><pre># In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book&#x000A;&#x000A;# In your view:&#x000A;#&#x000A;results.entries do |book|&#x000A;  render book&#x000A;end&#x000A;ActiveSupport::JSON.encode results</pre></code>
       </div>
       <div class='grid_1'>
         <h3>Usage (Of the Server)</h3>

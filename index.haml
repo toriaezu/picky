@@ -537,7 +537,7 @@
               
               # In your view:
               #
-              results.entries.collect! do |book|
+              results.entries do |book|
                 render book
               end
               ActiveSupport::JSON.encode results
