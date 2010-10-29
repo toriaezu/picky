@@ -499,8 +499,9 @@
               #
               # Note: Also clears the ids with clear_ids.
               #
-              results.populate_with Book do |book| # The model.
-                book.to_s # How to render the model.
+              results.populate_with Book do |book|
+                # book is a model.
+                book.to_s # Or render(book), depending which framework you use
               end
               
               # If you use the provided Picky JavaScript frontend,
@@ -515,8 +516,8 @@
               # In an initializer or environment.
               #
               FullBooks = Picky::Client::Full.new ...
-              LiveBooks = Picky::Client::Full.new ...
-            
+              LiveBooks = Picky::Client::Live.new ...
+              
               # In a controller action.
               #
               results = FullBooks.search ...
