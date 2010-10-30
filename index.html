@@ -301,10 +301,10 @@
         </p>
         <h4>Define how the indexing works</h4>
         <p>What characters pass through, which words are removed (stopwords), how is the text tokenized, i.e., split?</p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;indexing.removes_characters(/[^a-zA-Z0-9\s\/\-\"\&\.]/)&#x000A;...</pre></code>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;default_indexing removes_characters:&#x000A;                   /[^a-zA-Z0-9\s\/\-\"\&\.]/&#x000A;                 ...</pre></code>
         <h4>Define a few indexes.</h4>
         <p>It's easy. If you have a filled database table ready, it's even easier.</p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# Indexes have an identifier, e.g., :books, a source,&#x000A;# which is a database table, and a number of fields.&#x000A;#&#x000A;books_index = index :books,&#x000A;  Sources::DB.new(&#x000A;    'SELECT id, title, author, description FROM books',&#x000A;    :file => 'app/db.yml'&#x000A;  ),&#x000A;  field(&#x000A;    :title, # identifier&#x000A;    :qualifiers => [:t, :title],&#x000A;    :similarity => Similarity::DoubleLevenshtone.new(3)&#x000A;  ),&#x000A;  field(...</pre></code>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# Indexes have an identifier, e.g., :books, a source,&#x000A;# which here is a database table, and a number of categories.&#x000A;# (With a database source, the categories are equivalent&#x000A;# to the fields)&#x000A;#&#x000A;books_index = index :books,&#x000A;  Sources::DB.new(&#x000A;    'SELECT id, title, author, description FROM books',&#x000A;    :file => 'app/db.yml'&#x000A;  ),&#x000A;  category(&#x000A;    :title, # identifier&#x000A;    :qualifiers => [:t, :title],&#x000A;    :similarity => Similarity::DoubleLevenshtone.new(3)&#x000A;  ),&#x000A;  category(...</pre></code>
         <p>
           An index has
           <ol>
@@ -315,8 +315,8 @@
               ), and
             </li>
             <li>
-              a number of fields (find out more
-              <a href='http://github.com/floere/picky/wiki/Fields-Configuration'>Fields in the Wiki</a>
+              a number of categories (find out more
+              <a href='http://github.com/floere/picky/wiki/Categories-Configuration'>Categories in the Wiki</a>
               in the Wiki), and finally,
             </li>
             <li>a number of options.</li>
@@ -326,7 +326,7 @@
         <p>
           After having defined the indexing, this is a piece of cake, since it works the same way.
         </p>
-        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;querying.removes_characters(/[^a-zA-Z0-9\s\"\~\*\:]/)&#x000A;...</pre></code>
+        <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;default_querying removes_characters:&#x000A;                   /[^a-zA-Z0-9\s\"\~\*\:]/&#x000A;...</pre></code>
         <h4>Queries</h4>
         <p>Define a few queries.</p>
         <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# A full search returns ids, while a live search doesn't.&#x000A;#&#x000A;# The options define weights which will give bonus points&#x000A;# to certain combinations. If only title words are found,&#x000A;# a hefty bonus of 6 is given, which is very high.&#x000A;#&#x000A;# If a title is found before the author, like&#x000A;# "the hobbit, tolkien", 3 points are awarded.&#x000A;#&#x000A;options = {&#x000A;  :weights => Query::Weights.new([:title] => 6,&#x000A;                                 [:title, :author] => 3)&#x000A;}&#x000A;full_search = Query::Full.new(books_index, options)&#x000A;live_search = Query::Live.new(books_index, options)&#x000A;&#x000A;# It's possible to use multiple indexes in a query.&#x000A;#&#x000A;multi_search = Query::Full.new(&#x000A;                 books_index,&#x000A;                 dvd_index,&#x000A;                 mp3_index&#x000A;               )</pre></code>
@@ -432,7 +432,7 @@
         <p>
           A more complicated example looks like this:
         </p>
-        <code><pre>pickyClient = new PickyClient({&#x000A;  // A full query displays the rendered results.&#x000A;  //&#x000A;  full: '/search/full',&#x000A;  &#x000A;  // A live query just updates the count.&#x000A;  //&#x000A;  live: '/search/live',&#x000A;  &#x000A;  // Optional. Default is 10.&#x000A;  //&#x000A;  showResultsLimit: 20,&#x000A;  &#x000A;  // Optional. Before Picky sends any data.&#x000A;  //&#x000A;  before: function(params, query, offset) {&#x000A;    console.log('Going to send your query. Oh boy!');&#x000A;  },&#x000A;  &#x000A;  // Optional. Just after Picky receives data.&#x000A;  //           (Get a PickyData object)&#x000A;  //&#x000A;  success: function(data, query) {&#x000A;    console.log('Received the data.');&#x000A;  },&#x000A;  &#x000A;  // Optional. After Picky has handled the&#x000A;  //           data and updated the view.&#x000A;  //&#x000A;  after: function(data, query) {&#x000A;    console.log('Found what you were looking for?');&#x000A;  },&#x000A;  &#x000A;  // This is used to generate the correct query&#x000A;  // strings, localized. E.g. "subject:war".&#x000A;  //&#x000A;  // Optional. If you don't give these, the&#x000A;  // field identifier given in the Picky server&#x000A;  // is used.&#x000A;  //&#x000A;  qualifiers: {&#x000A;    en:{&#x000A;      subjects:  'subject'&#x000A;    }&#x000A;  },&#x000A;  &#x000A;  // This is used to explain the preceding word&#x000A;  // in the suggestion text, localized.&#x000A;  // E.g. "Peter (author)".&#x000A;  //&#x000A;  // Optional. Default are the field identifiers&#x000A;  //           from the Picky server.&#x000A;  //&#x000A;  explanations: {&#x000A;    en:{&#x000A;      title:     'titled',&#x000A;      author:    'written by',&#x000A;      isbn:      'ISBN-13',&#x000A;      year:      'published in',&#x000A;      publisher: 'published by',&#x000A;      subjects:  'topics'&#x000A;    }&#x000A;  }&#x000A;});&#x000A;&#x000A;// An initial search text.&#x000A;//&#x000A;pickyClient.insert('initial search text');</pre></code>
+        <code><pre>pickyClient = new PickyClient({&#x000A;  // A full query displays the rendered results.&#x000A;  //&#x000A;  full: '/search/full',&#x000A;  &#x000A;  // A live query just updates the count.&#x000A;  //&#x000A;  live: '/search/live',&#x000A;  &#x000A;  // Optional. Default is 10.&#x000A;  //&#x000A;  showResultsLimit: 20,&#x000A;  &#x000A;  // Optional. Before Picky sends any data.&#x000A;  //&#x000A;  before: function(params, query, offset) {&#x000A;    console.log('Going to send your query. Oh boy!');&#x000A;  },&#x000A;  &#x000A;  // Optional. Just after Picky receives data.&#x000A;  //           (Get a PickyData object)&#x000A;  //&#x000A;  success: function(data, query) {&#x000A;    console.log('Received the data.');&#x000A;  },&#x000A;  &#x000A;  // Optional. After Picky has handled the&#x000A;  //           data and updated the view.&#x000A;  //&#x000A;  after: function(data, query) {&#x000A;    console.log('Found what you were looking for?');&#x000A;  },&#x000A;  &#x000A;  // This is used to generate the correct query&#x000A;  // strings, localized. E.g. "subject:war".&#x000A;  //&#x000A;  // Optional. If you don't give these, the&#x000A;  // category identifier given in the Picky server&#x000A;  // is used.&#x000A;  //&#x000A;  qualifiers: {&#x000A;    en:{&#x000A;      subjects:  'subject'&#x000A;    }&#x000A;  },&#x000A;  &#x000A;  // This is used to explain the preceding word&#x000A;  // in the suggestion text, localized.&#x000A;  // E.g. "Peter (author)".&#x000A;  //&#x000A;  // Optional. Default are the category identifiers&#x000A;  //           from the Picky server.&#x000A;  //&#x000A;  explanations: {&#x000A;    en:{&#x000A;      title:     'titled',&#x000A;      author:    'written by',&#x000A;      isbn:      'ISBN-13',&#x000A;      year:      'published in',&#x000A;      publisher: 'published by',&#x000A;      subjects:  'topics'&#x000A;    }&#x000A;  }&#x000A;});&#x000A;&#x000A;// An initial search text.&#x000A;//&#x000A;pickyClient.insert('initial search text');</pre></code>
         <p>
           And that's basically it. Wish you great success!
         </p>
@@ -449,7 +449,7 @@
         <p>3. Asterisk searches can be stopped.</p>
         <code><pre>"part"</pre></code>
         <p>only finds "part", and nothing else.</p>
-        <p>4. If you have defined a similarity index on a field, a tilde (~) will look for similar matches.</p>
+        <p>4. If you have defined a similarity index on a category, a tilde (~) will look for similar matches.</p>
         <code><pre>my beoootiful~ query</pre></code>
         <p>will also find your "beautiful" query.</p>
         <p>5. Qualifiers can be used with a colon (:)</p>

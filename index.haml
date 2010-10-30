@@ -331,8 +331,9 @@
               # In app/application.rb, find this stub
               # and adapt the examples.
               #
-              indexing.removes_characters(/[^a-zA-Z0-9\s\/\-\"\&\.]/)
-              ...
+              default_indexing removes_characters:
+                                 /[^a-zA-Z0-9\s\/\-\"\&\.]/
+                               ...
         %h4 Define a few indexes.
         %p It's easy. If you have a filled database table ready, it's even easier.
         %code
@@ -342,19 +343,21 @@
               # and adapt the examples.
               #
               # Indexes have an identifier, e.g., :books, a source,
-              # which is a database table, and a number of fields.
+              # which here is a database table, and a number of categories.
+              # (With a database source, the categories are equivalent
+              # to the fields)
               #
               books_index = index :books,
                 Sources::DB.new(
                   'SELECT id, title, author, description FROM books',
                   :file => 'app/db.yml'
                 ),
-                field(
+                category(
                   :title, # identifier
                   :qualifiers => [:t, :title],
                   :similarity => Similarity::DoubleLevenshtone.new(3)
                 ),
-                field(...
+                category(...
         %p
           An index has
           %ol
@@ -366,8 +369,8 @@
               ), and
             
             %li
-              a number of fields (find out more
-              %a{ :href => 'http://github.com/floere/picky/wiki/Fields-Configuration' } Fields in the Wiki
+              a number of categories (find out more
+              %a{ :href => 'http://github.com/floere/picky/wiki/Categories-Configuration' } Categories in the Wiki
               in the Wiki), and finally,
             
             %li a number of options.
@@ -380,7 +383,8 @@
               # In app/application.rb, find this stub
               # and adapt the examples.
               #
-              querying.removes_characters(/[^a-zA-Z0-9\s\"\~\*\:]/)
+              default_querying removes_characters:
+                                 /[^a-zA-Z0-9\s\"\~\*\:]/
               ...
         %h4 Queries
         %p Define a few queries.
@@ -637,7 +641,7 @@
                 // strings, localized. E.g. "subject:war".
                 //
                 // Optional. If you don't give these, the
-                // field identifier given in the Picky server
+                // category identifier given in the Picky server
                 // is used.
                 //
                 qualifiers: {
@@ -650,7 +654,7 @@
                 // in the suggestion text, localized.
                 // E.g. "Peter (author)".
                 //
-                // Optional. Default are the field identifiers
+                // Optional. Default are the category identifiers
                 //           from the Picky server.
                 //
                 explanations: {
@@ -690,7 +694,7 @@
           %pre
             "part"
         %p only finds "part", and nothing else.
-        %p 4. If you have defined a similarity index on a field, a tilde (~) will look for similar matches.
+        %p 4. If you have defined a similarity index on a category, a tilde (~) will look for similar matches.
         %code
           %pre
             my beoootiful~ query
