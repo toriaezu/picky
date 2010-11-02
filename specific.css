@@ -40,3 +40,7 @@ li {
 
 pre {
   margin: 10px 0 0 0; }
+
+div.navigation a {
+  font-family: Futura, "Century Gothic", "URW Gothic L", Helvetica, sans-serif;
+  padding: 0px 10px; }
