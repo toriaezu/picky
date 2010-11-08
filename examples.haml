@@ -139,17 +139,16 @@
               # (With a database source, the categories are equivalent
               # to the fields)
               #
-              books_index = index :books,
-                Sources::DB.new(
+              books_index = index :books, Sources::DB.new(
                   'SELECT id, title, author, description FROM books',
                   :file => 'app/db.yml'
-                ),
-                category(
+                )
+              books_index.category(
                   :title, # identifier
                   :qualifiers => [:t, :title],
                   :similarity => Similarity::DoubleLevenshtone.new(3)
-                ),
-                category(...
+                )
+              books_index.category(...
         %p
           An index has
           %ol
