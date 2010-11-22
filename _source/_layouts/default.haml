@@ -1,0 +1,27 @@
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", :'xml:lang' => "en", :lang => "en" }
+  %head
+    %meta{ :'http-equiv' => "Content-type", :content => "text/html; charset=utf-8" }
+    %link{ :rel => 'stylesheet', :href => 'basic.css', :type => 'text/css' }
+    %link{ :rel => 'stylesheet', :href => 'specific.css', :type => 'text/css' }
+    %link{ :rel => 'stylesheet', :href => 'grid.css', :type => 'text/css' }
+    %title
+      Picky:
+      = h page.title
+  %body
+    .header
+      %a{ :href => 'http://github.com/floere/picky' }
+        %img{ :style => 'position: fixed; top: -10px; right: 0; border: 0;', :src => 'images/forkme.png', :alt => 'Fork me on GitHub' }
+    .picky{ :title => 'Snapshot of Picky, indexing data.' }
+    .container_2
+      %h1 Picky
+      .navigation
+        %a{ :href => 'index.html' } home
+        %a{ :href => 'examples.html' } examples
+        %a{ :href => 'videos.html' } videos
+        %a{ :href => 'status.html' } status and contributions
+    = content
+    .container_2
+      .grid_2
+        .decoration
+    .footer

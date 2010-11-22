@@ -1,0 +1,2 @@
+sass --no-cache basic.sass basic.css
+sass --no-cache specific.sass specific.css

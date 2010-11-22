@@ -1,43 +1,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta content='text/html; charset=utf-8' http-equiv='Content-type' />
-    <link href='basic.css' rel='stylesheet' type='text/css' />
-    <link href='specific.css' rel='stylesheet' type='text/css' />
-    <link href='grid.css' rel='stylesheet' type='text/css' />
-    <title>Picky, the small text search engine in Ruby.</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-type" />
+    <link href="basic.css" rel="stylesheet" type="text/css" />
+    <link href="specific.css" rel="stylesheet" type="text/css" />
+    <link href="grid.css" rel="stylesheet" type="text/css" />
+    <title>
+      Picky:
+      Real-World Examples
+    </title>
   </head>
   <body>
-    <div class='header'>
-      <a href='http://github.com/floere/picky'>
-        <img alt='Fork me on GitHub' src='images/forkme.png' style='position: fixed; top: -10px; right: 0; border: 0;' />
+    <div class="header">
+      <a href="http://github.com/floere/picky">
+        <img alt="Fork me on GitHub" src="images/forkme.png" style="position: fixed; top: -10px; right: 0; border: 0;" />
       </a>
     </div>
-    <div class='picky' title='Snapshot of Picky, indexing data.'></div>
-    <div class='container_2'>
+    <div class="picky" title="Snapshot of Picky, indexing data."></div>
+    <div class="container_2">
       <h1>Picky</h1>
-      <div class='navigation'>
-        <a href='index.html'>home</a>
-        <a href='examples.html'>examples</a>
-        <a href='videos.html'>videos</a>
-        <a href='status.html'>status and contributions</a>
+      <div class="navigation">
+        <a href="index.html">home</a>
+        <a href="examples.html">examples</a>
+        <a href="videos.html">videos</a>
+        <a href="status.html">status and contributions</a>
       </div>
     </div>
-    <div class='container_2'>
+    <div class="container_2">
       <h2>Real-World Examples</h2>
-      <div class='grid_1'>
+      <div class="grid_1">
         <p>
           Shoot me a message if you'd like to feature your project here. I'm happy to list it.
         </p>
         <p>
           Telephone book search for Switzerland:
-          <a href='http://twixtel.com'>TwixTel online</a>
+          <a href="http://twixtel.com">TwixTel online</a>
         </p>
       </div>
     </div>
-    <div class='container_2'>
-      <h2 id='walkthrough'>Walkthrough Example: Server and client.</h2>
-      <div class='grid_1'>
+    <div class="container_2">
+      <h2 id="walkthrough">Walkthrough Example: Server and client.</h2>
+      <div class="grid_1">
         <h2>Client</h2>
         <p>
           This column describes using a few examples how to set up a client and a front end for the picky server, described in the right column.
@@ -58,7 +61,7 @@
           And that's already it for the client setup! Easy, isn't it? The configuration isn't much harder.
         </p>
       </div>
-      <div class='grid_1'>
+      <div class="grid_1">
         <h2>Server</h2>
         <p>
           This column describes using a few examples how to set up the picky server. You can actually read both columns back and forth if you want. Like ping pong. Played by two chinese master ping-pong pandas. (Not by me, then you'd already stop at gem install. And the table would be on fire.)
@@ -76,8 +79,8 @@
           You now have a nice directory (library_search) set up with all the needed Gems, ready to go!
         </p>
       </div>
-      <div class='grid_2'></div>
-      <div class='grid_1'>
+      <div class="grid_2"></div>
+      <div class="grid_1">
         <h3>Configuration (Sinatra/Rails etc. Controller)</h3>
         <p>
           The Picky client provides an API to access the server. It looks like this:
@@ -98,7 +101,7 @@
           Please continue below to see how to use the configured searches.
         </p>
       </div>
-      <div class='grid_1'>
+      <div class="grid_1">
         <h3>Configuration</h3>
         <p>
           The most important file in your project is
@@ -119,12 +122,12 @@
             <li>an identifier (for index directory naming/referencing by Indexes[:identifier]),</li>
             <li>
               a data source (find out more on
-              <a href='http://github.com/floere/picky/wiki/Sources-Configuration'>Sources in the Wiki</a>
+              <a href="http://github.com/floere/picky/wiki/Sources-Configuration">Sources in the Wiki</a>
               ), and
             </li>
             <li>
               a number of categories (find out more
-              <a href='http://github.com/floere/picky/wiki/Categories-Configuration'>Categories in the Wiki</a>
+              <a href="http://github.com/floere/picky/wiki/Categories-Configuration">Categories in the Wiki</a>
               in the Wiki), and finally,
             </li>
             <li>a number of options.</li>
@@ -140,14 +143,14 @@
         <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# A full search returns ids, while a live search doesn't.&#x000A;#&#x000A;# The options define weights which will give bonus points&#x000A;# to certain combinations. If only title words are found,&#x000A;# a hefty bonus of 6 is given, which is very high.&#x000A;#&#x000A;# If a title is found before the author, like&#x000A;# "the hobbit, tolkien", 3 points are awarded.&#x000A;#&#x000A;options = {&#x000A;  :weights => Query::Weights.new([:title] => 6,&#x000A;                                 [:title, :author] => 3)&#x000A;}&#x000A;full_search = Query::Full.new(books_index, options)&#x000A;live_search = Query::Live.new(books_index, options)&#x000A;&#x000A;# It's possible to use multiple indexes in a query.&#x000A;#&#x000A;multi_search = Query::Full.new(&#x000A;                 books_index,&#x000A;                 dvd_index,&#x000A;                 mp3_index&#x000A;               )</pre></code>
         <p>
           Find out more in the
-          <a href='http://github.com/floere/picky/wiki/Queries-Configuration'>Wiki on Query Configuration</a>
+          <a href="http://github.com/floere/picky/wiki/Queries-Configuration">Wiki on Query Configuration</a>
         </p>
         <h4>Map some URL paths</h4>
         <p>Phew! Almost done :)</p>
         <code><pre># In app/application.rb, find this stub&#x000A;# and adapt the examples.&#x000A;#&#x000A;# The method "route" maps URL paths to queries.&#x000A;# Use regexps or strings to define paths.&#x000A;#&#x000A;route %r{^/tracks/full} => full_search&#x000A;route %r{^/tracks/live} => live_search</pre></code>
         <p>
           Find out more in the
-          <a href='http://github.com/floere/picky/wiki/Routing-configuration'>Wiki on Routing Queries</a>
+          <a href="http://github.com/floere/picky/wiki/Routing-configuration">Wiki on Routing Queries</a>
         </p>
         <h3>Indexing</h3>
         <p>Finally! Let picky have a look at the data!</p>
@@ -160,8 +163,8 @@
         <h3>Refine!</h3>
         <p>Define similarity searches, more specific indexes, more searches, etc.</p>
       </div>
-      <div class='grid_2'></div>
-      <div class='grid_1'>
+      <div class="grid_2"></div>
+      <div class="grid_1">
         <h3>Usage (Controller)</h3>
         <p>
           Now that you have defined the constants, let's use them!
@@ -195,7 +198,7 @@
         </p>
         <code><pre># In a controller action.&#x000A;#&#x000A;results = FullBooks.search ...&#x000A;results.populate_with Book&#x000A;&#x000A;# In your view:&#x000A;#&#x000A;results.entries do |book|&#x000A;  render book&#x000A;end&#x000A;ActiveSupport::JSON.encode results</pre></code>
       </div>
-      <div class='grid_1'>
+      <div class="grid_1">
         <h3>Usage (Of the Server)</h3>
         <p>
           Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
@@ -208,8 +211,8 @@
         <code><pre>rake 'try[My Words That Do Not Work]'</pre></code>
         <p>Words to find should be indexed in basically the same way as the query processes them.</p>
       </div>
-      <div class='grid_2'></div>
-      <div class='grid_1'>
+      <div class="grid_2"></div>
+      <div class="grid_1">
         <h3>The provided JS frontend.</h3>
         <p>
           Picky provides a html structure which is in turn used by the Picky JS frontend.
@@ -245,7 +248,7 @@
           And that's basically it. Wish you great success!
         </p>
       </div>
-      <div class='grid_1'>
+      <div class="grid_1">
         <h3>Usage (Become a Picky master)</h3>
         <p>1. An asterisk (*) makes picky search for a partial hit. (If the index supports that)</p>
         <code><pre>part*</pre></code>
@@ -268,10 +271,12 @@
         <p>will find me.</p>
         <p>That is all, young grasshopper. Be on your way.</p>
       </div>
-      <div class='grid_2'>
-        <div class='decoration'></div>
+    </div>
+    <div class="container_2">
+      <div class="grid_2">
+        <div class="decoration"></div>
       </div>
     </div>
-    <div class='footer'></div>
+    <div class="footer"></div>
   </body>
 </html>
