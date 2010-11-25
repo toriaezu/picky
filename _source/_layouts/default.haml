@@ -16,10 +16,13 @@
     .container_2
       %h1 Picky
       .navigation
-        %a{ :href => 'index.html' } home
-        %a{ :href => 'examples.html' } examples
-        %a{ :href => 'videos.html' } videos
-        %a{ :href => 'status.html' } status and contributions
+        - def class_for(url, klass = ''); if page.url == url then "current #{klass}" else klass end end
+        %a{ :href => 'index.html', :class => class_for('/index.html') } about
+        %a{ :href => 'details.html', :class => class_for('/details.html') } in detail
+        %a{ :href => 'getting_started.html', :class => class_for('/getting_started.html') } getting started
+        %a{ :href => 'status.html', :class => class_for('/status.html', 'right') } status and contributions
+        %a{ :href => 'videos.html', :class => class_for('/videos.html', 'right') } videos
+        %a{ :href => 'examples.html', :class => class_for('/examples.html', 'right') } examples
     = content
     .container_2
       .grid_2
