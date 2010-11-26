@@ -34,212 +34,44 @@
         <h2>What's that?</h2>
         <p>
           Picky is a really
-          <i>easy to use</i>
+          <strong>easy to use</strong>
           and
-          <i>fast</i>
+          <strong>fast</strong>
           Ruby search engine that helps your users
-          <i>find what they are looking for.</i>
+          <strong>find what they are looking for.</strong>
         </p>
         <h3>Try…</h3>
         <p>
-          A very
-          <a href="http://picky-simple-example.heroku.com/">simple example</a>
-          with books (using 2 heroku servers).
+          A simple
+          <a href="http://picky-simple-example.heroku.com/">library example</a>
+          (wait 3 seconds for it to boot up).
         </p>
         <p>
-          A more
-          <a href="http://www.twixtel.com/">complicated example</a>
-          with a telephone search.
+          The
+          <a href="examples.html">examples section</a>
+          offers more.
         </p>
         <h3>What it is</h3>
-        <p>A small-text search engine (web) service.</p>
+        <p>A small-text search engine (web) service for categorized data, such as varchar fields from a database.</p>
+        <p>
+          Continue reading in the
+          <a href="details.html">In Detail section</a>.
+        </p>
         <h3>What it is not</h3>
         <p>
-          A full-text search engine. If you need that, look at
+          A full-text search engine for uncategorized data (like in a book). If you need that, look at
           <a href="http://sphinxsearch.com/">Sphinx</a>
           or
           <a href="http://lucene.apache.org/solr/">Solr (Lucene)</a>.
           They will help.
         </p>
-        <h3>Huh? What's a small-text search engine?</h3>
-        <p>
-          A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
-        </p>
-        <p>
-          If your data isn't categorized well (like text from a book), then you should instead choose one of the above full-text search engines.
-        </p>
-        <h3>Then why use it?</h3>
-        <p>
-          Picky helps your user find data which in a full-text search engine would be buried in a heap of results. Also, it lets him do so with a Google-y single search field.
-        </p>
-        <p>
-          Sure the word "peter" is found most often in document #7, but he actually just wants documents by someone with surname "Peter", and not everything related to peters.
-        </p>
-        <p>
-          Picky helps him refine his search by way of a comfortable interface to get exactly what he wants.
-        </p>
-        <h3>But why not just use a full-text search engine?</h3>
-        <p>
-          Full-Text search engines do one thing especially well: Making full (i.e. uncategorized heaps of) text searchable.
-        </p>
-        <p>
-          For small, highly categorized text, we simply need new ideas. Picky is one of them.
-        </p>
-        <p>
-          Ok, that was my elevator pitch ;)
-        </p>
-        <h3>How it works</h3>
-        <p>Hoo boy.</p>
-        <h3>See me show (it) off</h3>
-        <p>
-          Using a real
-          <a href="http://twixtel.ch">telephone search</a>
-          as an example.
-        </p>
-        <iframe frameborder="0" height="365" src="http://player.vimeo.com/video/12614970" width="460"></iframe>
-        <p>
-          This was at the fantastic
-          <a href="http://euruko2010.org/">EuRuKo 2010</a>
-          Conference in
-          <a href="http://www.google.ch/images?q=krakow+poland">beautiful</a>
-          Krakow.
-        </p>
-        <h3>Why would one write a search engine in Ruby?</h3>
-        <p>
-          It's fast enough and the high level really helped understanding it as it evolved. There are some parts that have been written in pedal-to-the-metal C code.
-        </p>
-        <h3>How does it perform?</h3>
-        <p>
-          This depends on many factors, but generally we recommend using Picky with a maximum of 120 million data points (we used it there).
-          The area under 20 millions is probably best. Your mileage may vary, of course, depending on how many partial indexes you use etc.
-        </p>
-        <p>
-          Indexing is not too fast, and I'd be glad if it were faster. However, you get the full power of Ruby and fully customizable indexing.
-        </p>
-        <h3>Where it is</h3>
-        <p>
-          Picky lives in a little cave called
-          <a href="http://github.com/floere/picky">The Github Repo</a>
-          . He usually pays his rent on time.
-        </p>
-        <h3>Why the octopus?</h3>
-        <p>
-          Glad you asked. But first, read this
-          <a href="http://en.wikipedia.org/wiki/Octopus">Wikipedia entry about octopuses</a>.
-          Also,
-          <a href="http://www.youtube.com/watch?v=badHUNl2HXU">a movie</a>.
-          Finished? I think that sums it up pretty well. And it's cuuute, don't you think? :)
-        </p>
-        <p>
-          But don't call him that. He likes to be called "Octor the Destroyer".
-        </p>
-        <h3>Why the LGPL license?</h3>
-        <p>
-          My former employer and I met halfway, so to speak. I'd have preferred a MIT license.
-        </p>
-        <h3>Examples in the wild</h3>
-        <p>
-          <a href="http://www.twixtel.ch">TwixTel</a>
-          Telephone Book Search Engine
-        </p>
-        <h3>Feedback?</h3>
-        <p>Glad to hear it!</p>
-        <p>
-          <a href="http://github.com/inbox/new/floere">github (floere)</a>,
-          <a href="http://twitter.com/hanke">twitter (hanke)</a>,
-          <a href="mailto:florian.hanke@gmail.com">mail (gmail)</a>
-        </p>
-        <h2>Roadmap</h2>
-        <p>
-          <a href="http://github.com/floere/picky/wiki/Roadmap">Wiki Roadmap</a>
-        </p>
       </div>
       <div class="grid_1">
-        <h2>Getting started</h2>
-        <p>This takes about 5 minutes. After that, you'll have a running Picky server and a web frontend to play with.</p>
-        <h3>Overview</h3>
-        <p>Before we start, the big picture:</p>
-        <img src="diagrams/basic-overview.png" width="480px" />
+        <h2>Getting Started</h2>
         <p>
-          That's the basic setup. The things to remember are:
-          <ul>
-            <li>The Picky server calculates IDs for a query.</li>
-            <li>Your app server renders results for the IDs.</li>
-          </ul>
-        </p>
-        <p>
-          Together they are like a small A-Team, something like "Action Search Squad Alpha"! «We've got the results and are heading back to base now, Sir!» Bam!
-        </p>
-        <p>
-          Note that you don't need a Picky client. You could just as well use the results in your Python/Java/PHP app server (If you happen to write a client for one of these, please let me know).
-        </p>
-        <h3>Installation</h3>
-        <p>
-          Note that Picky only runs on Ruby 1.9. I recommend
-          <a href="http://rvm.beginrescueend.com/">RVM</a>
-          for installing and managing Ruby versions.
-        </p>
-        <code><pre>gem install picky picky-client</pre></code>
-        <h3>The server</h3>
-        <p>The server generates a library example, which you can run right away.</p>
-        <code><pre># Generates a directory "app_name"&#x000A;# with a new Picky project.&#x000A;&#x000A;picky project app_name</pre>
-        <pre>cd app_name&#x000A;bundle install</pre></code>
-        <h4>Index the data</h4>
-        <code><pre>rake index</pre></code>
-        <h4>Start the Picky server</h4>
-        <code><pre>rake start</pre></code>
-        <h4>Try a query!</h4>
-        <code><pre>curl localhost:8080/books/full?query=test</pre></code>
-        <p>
-          Don't worry about the strange looking results!
-          The next part (client) will take care of them.
-        </p>
-        <p>
-          If you're interested anyway:
-          <a href="http://github.com/floere/picky/wiki/results-format-and-structure">Results (Format & Structure)</a>
-        </p>
-        <h3>The client</h3>
-        <p>The client generates an example app for the "library" example backend, using Sinatra.</p>
-        <code></code>
-        <pre># Generates a directory "app_name"&#x000A;# with a new Picky Client Webapp project.&#x000A;&#x000A;picky-client sinatra app_name</pre>
-        <pre>cd app_name&#x000A;bundle install</pre>
-        <h4>Start the app server</h4>
-        <code><pre>unicorn -p 3000</pre></code>
-        <h4>Admire your work</h4>
-        <p>
-          Go to
-          <a href="http://localhost:3000/">http://localhost:3000/</a>
-          and try the examples.
-        </p>
-        <h3>Your own search</h3>
-        <p>
-          You're probably itching to change the example for
-          your own data. How do you do this?
-        </p>
-        <h4>The server</h4>
-        <p>In the server directory, just type</p>
-        <code><pre>rake</pre></code>
-        <p>and it will tell you where to change the server configuration.</p>
-        <h4>The client</h4>
-        <p>
-          Go to
-          <a href="http://localhost:3000/configure">http://localhost:3000/configure</a>
-          and the page will show you how to configure your app server.
-        </p>
-        <h3>Need help?</h3>
-        <p>
-          Right here. I'm happy to help!
-          If something doesn't work, send/gist me your application.rb
-          and I'll look into it.
-        </p>
-        <p>
-          <a href="http://github.com/inbox/new/floere">github (floere)</a>,
-          <a href="http://twitter.com/hanke">twitter (hanke)</a>,
-          <a href="mailto:florian.hanke@gmail.com">mail (gmail)</a>
-        </p>
-        <p>
-          There's a Wiki as well:
-          <a href="http://github.com/floere/picky/wiki">Picky Wiki</a>
+          Got 5 minutes?
+          <a href="getting_started.html">Install and run Picky</a>
+          on your computer and adapt the examples.
         </p>
       </div>
     </div>
