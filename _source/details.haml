@@ -10,7 +10,11 @@ layout: default
     %p
       A small-text search engine does not operate on huge blobs of text, but instead on smaller, highly categorized text amounts. For example, on varchar database fields.
     %p
-      If your data isn't categorized well (like text from a book), then you should instead choose one of the above full-text search engines.
+      If your data isn't categorized well (like text from a book), then you should instead choose a full-text search engine, like
+      %a{ :href => 'http://sphinxsearch.com/' } Sphinx
+      or
+      = succeed('.') do
+        %a{ :href => 'http://lucene.apache.org/solr/' } Solr (Lucene)
     %h3 Then why use it?
     %p
       Picky helps your user find data which in a full-text search engine would be buried in a heap of results. Also, it lets him do so with a Google-y single search field.
@@ -52,8 +56,9 @@ layout: default
     %h3 Where it is
     %p
       Picky lives in a little cave called
-      %a{ :href => 'http://github.com/floere/picky' } The Github Repo
-      \. He usually pays his rent on time.
+      = succeed('.') do
+        %a{ :href => 'http://github.com/floere/picky' } The Github Repo
+      He usually pays his rent on time.
     %h3 Why the octopus?
     %p
       Glad you asked. But first, read this
