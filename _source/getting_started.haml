@@ -20,11 +20,17 @@ layout: default
       Together they are like a small A-Team, something like "Action Search Squad Alpha"! «We've got the results and are heading back to base now, Sir!» Bam!
     %p
       Note that you don't need a Picky client. You could just as well use the results in your Python/Java/PHP app server (If you happen to write a client for one of these, please let me know).
-    %h3 Installation
+    %h3 System Requirements
+    %pre
+      :preserve
+        * OSX / Linux
+        * <a href="http://www.ruby-lang.org/en/downloads/">Ruby 1.9</a>
+        * <a href="http://gembundler.com/">Bundler Gem</a>
     %p
-      Note that Picky only runs on Ruby 1.9. I recommend
+      I recommend
       %a{ :href => 'http://rvm.beginrescueend.com/' } RVM
       for installing and managing Ruby versions.
+    %h3 Installation
     %code
       %pre
         gem install picky picky-client
