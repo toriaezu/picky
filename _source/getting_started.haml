@@ -13,7 +13,7 @@ layout: default
     %img{ :src => 'diagrams/basic-overview.png', :width => '480px' }
     %p
       That's the basic setup. The things to remember are:
-      %ul
+      %ol
         %li The Picky server calculates IDs for a query.
         %li Your app server renders results for the IDs.
     %p
@@ -21,11 +21,13 @@ layout: default
     %p
       Note that you don't need a Picky client. You could just as well use the results in your Python/Java/PHP app server (If you happen to write a client for one of these, please let me know).
     %h3 System Requirements
-    %pre
-      :preserve
-        * OSX / Linux
-        * <a href="http://www.ruby-lang.org/en/downloads/">Ruby 1.9</a>
-        * <a href="http://gembundler.com/">Bundler Gem</a>
+    %p
+      %ul
+        %li OSX / Linux
+        %li
+          %a{ :href => 'http://www.ruby-lang.org/en/downloads/' } Ruby 1.9
+        %li
+          %a{ :href => 'http://gembundler.com/' } Bundler Gem
     %p
       I recommend
       %a{ :href => 'http://rvm.beginrescueend.com/' } RVM
