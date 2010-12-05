@@ -1,9 +1,9 @@
-Sun, 05 Dec 2010 21:41:49 +0100
+Sun, 05 Dec 2010 22:17:58 +0100
 lib/bundling.rb	Sun, 24 Oct 2010 13:00:11 +0200
 lib/constants.rb	Sun, 24 Oct 2010 13:00:11 +0200
 lib/deployment.rb	Sun, 05 Dec 2010 15:59:23 +0100
 lib/picky/alias_instances.rb	Thu, 11 Nov 2010 18:48:16 +0100
-lib/picky/application.rb	Sun, 05 Dec 2010 15:59:38 +0100
+lib/picky/application.rb	Sun, 05 Dec 2010 22:16:58 +0100
 lib/picky/cacher/convenience.rb	Sun, 24 Oct 2010 13:00:11 +0200
 lib/picky/cacher/generator.rb	Sun, 05 Dec 2010 17:40:32 +0100
 lib/picky/cacher/partial/default.rb	Thu, 28 Oct 2010 19:12:46 +0200
@@ -85,7 +85,7 @@ lib/picky/results/live.rb	Mon, 25 Oct 2010 01:20:25 +0200
 lib/picky/routing.rb	Sun, 05 Dec 2010 16:16:09 +0100
 lib/picky/signals.rb	Thu, 11 Nov 2010 18:33:45 +0100
 lib/picky/solr/schema_generator.rb	Sun, 05 Dec 2010 17:39:27 +0100
-lib/picky/sources/base.rb	Sun, 05 Dec 2010 20:34:21 +0100
+lib/picky/sources/base.rb	Sun, 05 Dec 2010 22:17:52 +0100
 lib/picky/sources/couch.rb	Sun, 05 Dec 2010 19:29:54 +0100
 lib/picky/sources/csv.rb	Sun, 05 Dec 2010 19:09:16 +0100
 lib/picky/sources/db.rb	Sun, 05 Dec 2010 19:50:23 +0100

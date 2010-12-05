@@ -253,7 +253,7 @@ We open an file with data.
 				<div class="method-heading">
 				
 					<span class="method-name">harvest</span><span
-						class="method-args">(type, category)</span>
+						class="method-args">(index, category)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -278,7 +278,7 @@ type symbol and category symbol.
 						id="harvest-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 36</span>
-36:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">category</span> <span class="ruby-comment cmt"># :yields: id, text_for_id</span>
+36:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">index</span>, <span class="ruby-identifier">category</span> <span class="ruby-comment cmt"># :yields: id, text_for_id</span>
 37:       <span class="ruby-comment cmt"># This concrete implementation yields &quot;nothing&quot;, override in subclasses.</span>
 38:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
@@ -297,7 +297,7 @@ type symbol and category symbol.
 				<div class="method-heading">
 				
 					<span class="method-name">take_snapshot</span><span
-						class="method-args">(type)</span>
+						class="method-args">(index)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -327,7 +327,7 @@ select statement is created.
 						id="take-snapshot-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 47</span>
-47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span> <span class="ruby-identifier">type</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span> <span class="ruby-identifier">index</span>
 48:       
 49:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
