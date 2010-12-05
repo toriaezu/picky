@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Sources::DB</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/picky/sources/db_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/picky/sources/db.rb">lib/picky/sources/db.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="Base.html">Sources::Base</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-connect_backend">#connect_backend</a></li>
+					
+					<li><a href="#method-i-harvest">#harvest</a></li>
+					
+					<li><a href="#method-i-take_snapshot">#take_snapshot</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../lib/picky/ext/ruby19/Makefile.html">Makefile</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Sources/Base.html">Sources::Base</a></li>
+				
+					<li><a href="../Sources/CSV.html">Sources::CSV</a></li>
+				
+					<li><a href="../Sources/Couch.html">Sources::Couch</a></li>
+				
+					<li><a href="../Sources/DB.html">Sources::DB</a></li>
+				
+					<li><a href="../Sources/Delicious.html">Sources::Delicious</a></li>
+				
+					<li><a href="../Sources/NoCSVFileGiven.html">Sources::NoCSVFileGiven</a></li>
+				
+					<li><a href="../Sources/NoCouchDBGiven.html">Sources::NoCouchDBGiven</a></li>
+				
+					<li><a href="../Picky.html">Picky</a></li>
+				
+					<li><a href="../Performant.html">Performant</a></li>
+				
+					<li><a href="../Performant/Array.html">Performant::Array</a></li>
+				
+					<li><a href="../Rack/Harakiri.html">Rack::Harakiri</a></li>
+				
+					<li><a href="../Application.html">Application</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Sources::DB</h1>
+
+		<div id="description">
+			<p>
+Describes a database source. Needs a SELECT statement (with id in it), and
+a file option or the options from an AR config file.
+</p>
+<p>
+The select statement can be as complicated as you want, as long as it has
+an id in it and as long as it can be used in a CREATE TABLE AS statement.
+(working on that last one)
+</p>
+<p>
+Examples:
+</p>
+<pre>
+ Sources::DB.new('SELECT id, title, author, year FROM books') # Uses the config from app/db.yml by default.
+ Sources::DB.new('SELECT id, title, author, year FROM books', file: 'app/some_db.yml')
+ Sources::DB.new('SELECT b.id, b.title, b.author, b.publishing_year as year FROM books b INNER JOIN ON ...', file: 'app/some_db.yml')
+ Sources::DB.new('SELECT id, title, author, year FROM books', adapter: 'mysql', host:'localhost', ...)</pre>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="select-statement-attribute-method" class="method-detail">
+				<a name="select_statement"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">select_statement</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The select statement that was passed in.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="database-attribute-method" class="method-detail">
+				<a name="database"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">database</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The database adapter.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="connection-options-attribute-method" class="method-detail">
+				<a name="connection_options"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">connection_options</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The database connection options that were either passed in or loaded from
+the given file.
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(select_statement, options = { file: 'app/db.yml' })</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">select_statement</span>, <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">file</span><span class="ruby-operator">:</span> <span class="ruby-value str">'app/db.yml'</span> }
+32:       <span class="ruby-ivar">@select_statement</span> = <span class="ruby-identifier">select_statement</span>
+33:       <span class="ruby-ivar">@database</span>         = <span class="ruby-identifier">create_database_adapter</span>
+34:       <span class="ruby-ivar">@options</span>          = <span class="ruby-identifier">options</span>
+35:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="connect-backend-method" class="method-detail ">
+				<a name="method-i-connect_backend"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">connect_backend</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Connect the backend.
+</p>
+<p>
+Will raise unless connection options have been given.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="connect-backend-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 67</span>
+67:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect_backend</span>
+68:       <span class="ruby-identifier">configure</span> <span class="ruby-ivar">@options</span>
+69:       <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Database backend not configured&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">connection_options</span>
+70:       <span class="ruby-identifier">database</span>.<span class="ruby-identifier">establish_connection</span> <span class="ruby-identifier">connection_options</span>
+71:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="harvest-method" class="method-detail ">
+				<a name="method-i-harvest"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">harvest</span><span
+						class="method-args">(type, category)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Harvests the data to index in chunks.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="harvest-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 110</span>
+110:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">category</span>
+111:       <span class="ruby-identifier">connect_backend</span>
+112:       
+113:       (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">count</span>(<span class="ruby-identifier">type</span>)).<span class="ruby-identifier">step</span>(<span class="ruby-identifier">chunksize</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">offset</span><span class="ruby-operator">|</span>
+114:         <span class="ruby-identifier">get_data</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">category</span>, <span class="ruby-identifier">offset</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">text</span><span class="ruby-operator">|</span>
+115:           <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">text</span>
+116:           <span class="ruby-identifier">text</span>.<span class="ruby-identifier">force_encoding</span> <span class="ruby-value str">'utf-8'</span> <span class="ruby-comment cmt"># TODO Still needed?</span>
+117:           <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">text</span>
+118:         <span class="ruby-keyword kw">end</span>
+119:       <span class="ruby-keyword kw">end</span>
+120:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="take-snapshot-method" class="method-detail ">
+				<a name="method-i-take_snapshot"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">take_snapshot</span><span
+						class="method-args">(type)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Take a snapshot of the data.
+</p>
+<p>
+Uses CREATE TABLE AS with the given SELECT statement to create a snapshot
+of the data.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="take-snapshot-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 77</span>
+77:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span> <span class="ruby-identifier">type</span>
+78:       <span class="ruby-identifier">connect_backend</span>
+79:       
+80:       <span class="ruby-identifier">origin</span> = <span class="ruby-identifier">snapshot_table_name</span> <span class="ruby-identifier">type</span>
+81:       
+82:       <span class="ruby-identifier">on_database</span> = <span class="ruby-identifier">database</span>.<span class="ruby-identifier">connection</span>
+83:       
+84:       <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;DROP TABLE IF EXISTS #{origin}&quot;</span>
+85:       <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;CREATE TABLE #{origin} AS #{select_statement}&quot;</span>
+86:       <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;ALTER TABLE #{origin} CHANGE COLUMN id indexed_id INTEGER&quot;</span>
+87:       <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">execute</span> <span class="ruby-node">&quot;ALTER TABLE #{origin} ADD COLUMN id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT&quot;</span>
+88:       
+89:       <span class="ruby-comment cmt"># Execute any special queries this type needs executed.</span>
+90:       <span class="ruby-comment cmt">#</span>
+91:       <span class="ruby-identifier">on_database</span>.<span class="ruby-identifier">execute</span> <span class="ruby-identifier">type</span>.<span class="ruby-identifier">after_indexing</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span>.<span class="ruby-identifier">after_indexing</span>
+92:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
