@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>server.rake</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            server.rake
+        </h1>
+        <ul class="files">
+            <li>lib/tasks/server.rake</li>
+            <li>Last modified: 2010-10-31 01:10:49 +0200</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+# TODO This file needs some love. # namespace :server do
+</p>
+<pre>
+  def chdir_to_root
+    Dir.chdir PICKY_ROOT
+  end
+
+  def current_pid
+    pid = `cat #{File.join(PICKY_ROOT, 'tmp/pids/unicorn.pid')}`
+    pid.blank? ? nil : pid.chomp
+  end
+
+  # desc &quot;Start the unicorns. (Wehee!)&quot;
+  task :start =&gt; :framework do
+    chdir_to_root
+    # Rake::Task[:&quot;solr:start&quot;].invoke # TODO Move to better place.
+    daemonize = PICKY_ENVIRONMENT == 'production' ? '-D' : ''
+    command = &quot;export PICKY_ENV=#{PICKY_ENVIRONMENT}; unicorn -c unicorn.ru #{daemonize}&quot;.strip
+    puts &quot;Running \`#{command}\`.&quot;
+    exec command
+  end
+
+  # desc &quot;Stop the unicorns. (Blam!)&quot;
+  task :stop =&gt; :framework do
+    `kill -QUIT #{current_pid}` if current_pid
+    # Rake::Task[:&quot;solr:stop&quot;].invoke # TODO Move to better place.
+  end
+
+  # desc &quot;Restart the unicorns.&quot;
+  task :restart do
+    Rake::Task[:&quot;server:stop&quot;].invoke
+    sleep 5
+    Rake::Task[:&quot;server:start&quot;].invoke
+  end
+</pre>
+<p>
+end
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+    </div>
+  </body>
+</html>
