@@ -19,12 +19,141 @@
         </h1>
         <ul class="files">
             <li>lib/picky/application.rb</li>
-            <li>Last modified: 2010-12-07 15:34:24 +0100</li>
+            <li>Last modified: 2010-12-07 18:22:18 +0100</li>
         </ul>
     </div>
 
     <div id="bodyContent">
         <div id="content">
+    
+    <div class="description">
+        <p>
+A Picky <a href="../../../classes/Application.html">Application</a> is
+where you configure the whole search engine.
+</p>
+<p>
+Start by subclassing Application:
+</p>
+<pre>
+  class MyGreatSearch &lt; Application
+    # Your configuration goes here.
+  end
+</pre>
+<p>
+The generator
+</p>
+<pre>
+  $ picky project project_name
+</pre>
+<p>
+will generate an example <tt>project_name/app/application.rb</tt> file for
+you with some example code inside.
+</p>
+<p>
+Next, define where your data comes from. You use the <tt>index</tt> method
+for that:
+</p>
+<pre>
+  my_index = index :some_index_name, some_source
+</pre>
+<p>
+You give the index a name (or identifier), and a source (see <a
+href="../../../classes/Sources.html">Sources</a>), where its data comes
+from. Let&#8217;s do that:
+</p>
+<pre>
+  class MyGreatSearch &lt; Application
+
+    books = index :books, Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
+
+  end
+</pre>
+<p>
+Now we have an index <tt>books</tt>.
+</p>
+<p>
+That on itself won&#8217;t do much good. Picky needs us to define
+categories on the data.
+</p>
+<p>
+Categories help your user find data. It&#8217;s best if you look at an
+example yourself: <a
+href="http://floere.github.com/picky/examples.html">floere.github.com/picky/examples.html</a>
+</p>
+<p>
+Let&#8217;s go ahead and define a category:
+</p>
+<pre>
+  class MyGreatSearch &lt; Application
+
+    books = index :books, Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
+    books.define_category :title
+
+  end
+</pre>
+<p>
+Now we could already run the indexer:
+</p>
+<pre>
+  $ rake index
+</pre>
+<p>
+Now we have indexed data, but nobody to ask the index anything.
+</p>
+<p>
+We need somebody who asks the index (a Query object). That works like this:
+</p>
+<pre>
+   full_books_query = Query::Full.new books
+</pre>
+<p>
+Full just means that the ids are returned with the results. Picky also
+offers a Query that returns live results, Query::Live. But that&#8217;s not
+important right now.
+</p>
+<p>
+Now we have somebody we can ask about the index. But no external interface.
+</p>
+<p>
+Let&#8217;s add a URL path to which we can send our queries. We do that
+with the route method:
+</p>
+<pre>
+  route %r{\A/books/full\Z} =&gt; full_books_query
+</pre>
+<p>
+In full glory:
+</p>
+<pre>
+  class MyGreatSearch &lt; Application
+
+    books = index :books, Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
+    books.define_category :title
+
+    full_books_query = Query::Full.new books
+
+    route %r{\Abooks/full\Z} =&gt; full_books_query
+
+  end
+</pre>
+<p>
+That&#8217;s it!
+</p>
+<p>
+Now run the indexer and server:
+</p>
+<pre>
+  $ rake index
+  $ rake start
+</pre>
+<p>
+Run your first query:
+</p>
+<pre>
+  $ curl 'localhost:8080/books/full?query=hello server'
+</pre>
+
+    </div>
     
 
     
