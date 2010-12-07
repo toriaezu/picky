@@ -109,7 +109,9 @@ Now we could already run the indexer:
 Now we have indexed data, but nobody to ask the index anything.
 </p>
 <p>
-We need somebody who asks the index (a Query object). That works like this:
+We need somebody who asks the index (a Query object, also see <a
+href="http://github.com/floere/picky/wiki/Queries-Configuration">github.com/floere/picky/wiki/Queries-Configuration</a>).
+That works like this:
 </p>
 <pre>
    full_books_query = Query::Full.new books
@@ -123,11 +125,12 @@ important right now.
 Now we have somebody we can ask about the index. But no external interface.
 </p>
 <p>
-Let&#8217;s add a URL path to which we can send our queries. We do that
-with the route method:
+Let&#8217;s add a URL path (a Route, see <a
+href="http://github.com/floere/picky/wiki/Routing-configuration">github.com/floere/picky/wiki/Routing-configuration</a>)
+to which we can send our queries. We do that with the route method:
 </p>
 <pre>
-  route %r{\A/books/full\Z} =&gt; full_books_query
+  route %r{^/books/full$} =&gt; full_books_query
 </pre>
 <p>
 In full glory:
@@ -140,7 +143,7 @@ In full glory:
 
     full_books_query = Query::Full.new books
 
-    route %r{\Abooks/full\Z} =&gt; full_books_query
+    route %r{^/books/full$} =&gt; full_books_query
 
   end
 </pre>
@@ -160,6 +163,86 @@ Run your first query:
 <pre>
   $ curl 'localhost:8080/books/full?query=hello server'
 </pre>
+<p>
+Nice, right? Your first query!
+</p>
+<p>
+Maybe you don&#8217;t find everything. We need to process the data before
+it goes into the index.
+</p>
+<p>
+That&#8217;s what the <tt><a
+href="Application.html#M000000">default_indexing</a></tt> method is for:
+</p>
+<pre>
+  default_indexing options
+</pre>
+<p>
+Read more about the options here: <a
+href="http://github.com/floere/picky/wiki/Indexing-configuration">github.com/floere/picky/wiki/Indexing-configuration</a>
+</p>
+<p>
+Same thing with the search text – we need to process that as well.
+</p>
+<p>
+Analog to the <a href="Application.html#M000000">default_indexing</a>
+method, we use the <tt><a
+href="Application.html#M000001">default_querying</a></tt> method.
+</p>
+<pre>
+  default_querying options
+</pre>
+<p>
+Read more about the options here: <a
+href="http://github.com/floere/picky/wiki/Querying-Configuration">github.com/floere/picky/wiki/Querying-Configuration</a>
+</p>
+<p>
+And that&#8217;s all there is. It&#8217;s incredibly powerful though, as
+you can combine, weigh, refine to the max. Read more in the Wiki: <a
+href="http://github.com/floere/picky/wiki">github.com/floere/picky/wiki</a>
+</p>
+<p>
+Have fun!
+</p>
+<p>
+Our example, fully fleshed out with indexing, querying, and weights:
+</p>
+<pre>
+  class MyGreatSearch &lt; Application
+
+    default_indexing removes_characters: /[^a-zA-Z0-9\.]/,
+                     stopwords: /\b(and|or|in|on|is|has)\b/,
+                     splits_text_on: /\s/,
+                     removes_characters_after_splitting: /\./,
+                     substitutes_characters_with: CharacterSubstituters::WestEuropean.new,
+                     normalizes_words: [
+                       [/(.*)hausen/, 'hn'],
+                       [/\b(\w*)str(eet)?/, 'st']
+                     ]
+
+    default_querying removes_characters: /[^a-zA-Z0-9\s\/\-\,\&amp;\&quot;\~\*\:]/,
+                     stopwords: /\b(and|the|of|it|in|for)\b/,
+                     splits_text_on: /[\s\/\-\,\&amp;]+/,
+                     removes_characters_after_splitting: /\./,
+                     substitutes_characters_with: CharacterSubstituters::WestEuropean.new,
+                     maximum_tokens: 4
+
+    books = index :books, Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
+    books.define_category :title
+
+    query_options = { :weights =&gt; { [:title, :author] =&gt; +3, [:author, :title] =&gt; -1 } }
+
+    full_books_query = Query::Full.new books, query_options
+    live_books_query = Query::Full.new books, query_options
+
+    route %r{^/books/full$} =&gt; full_books_query
+    route %r{^/books/live$} =&gt; live_books_query
+
+  end
+</pre>
+<p>
+That&#8217;s actually already a full-blown Picky App!
+</p>
 
     </div>
     
@@ -243,11 +326,11 @@ Delegates to its routing to handle a request.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L115" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L168" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000003_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 115</span>
+                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 168</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
       <span class="ruby-identifier">routing</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -277,11 +360,11 @@ Returns a configured tokenizer that is used for indexing by default.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L76" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L129" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000000_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 76</span>
+                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 129</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_indexing</span> <span class="ruby-identifier">options</span> = {}
       <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">default</span> = <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
     <span class="ruby-keyword kw">end</span></pre>
@@ -311,11 +394,11 @@ Returns a configured tokenizer that is used for querying by default.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L83" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L136" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000001_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 83</span>
+                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 136</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_querying</span> <span class="ruby-identifier">options</span> = {}
       <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Query</span>.<span class="ruby-identifier">default</span> = <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Query</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
     <span class="ruby-keyword kw">end</span></pre>
@@ -377,11 +460,11 @@ Options:
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L99" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/3457e19b7e2507829270e5a2ca77c98878273310/server/lib/picky/application.rb#L152" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000002_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 99</span>
+                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 152</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span> = {}
       <span class="ruby-constant">IndexAPI</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span>
     <span class="ruby-keyword kw">end</span></pre>
