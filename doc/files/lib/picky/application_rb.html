@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/picky/application.rb</li>
-            <li>Last modified: 2010-12-07 23:57:56 +0100</li>
+            <li>Last modified: 2010-12-08 00:12:57 +0100</li>
         </ul>
     </div>
 
@@ -27,9 +27,13 @@
         <div id="content">
     
     <div class="description">
-        <p>
+        <h1>Picky Applications</h1>
+<p>
 A Picky <a href="../../../classes/Application.html">Application</a> is
 where you configure the whole search engine.
+</p>
+<p>
+This is a step-by-step description on how to configure your Picky app.
 </p>
 <p>
 Start by subclassing Application:
@@ -49,6 +53,7 @@ The generator
 will generate an example <tt>project_name/app/application.rb</tt> file for
 you with some example code inside.
 </p>
+<h2>index(name, source)</h2>
 <p>
 Next, define where your data comes from. You use the <tt>index</tt> method
 for that:
@@ -72,8 +77,11 @@ from. Let&#8217;s do that:
 Now we have an index <tt>books</tt>.
 </p>
 <p>
-That on itself won&#8217;t do much good. Picky needs us to define
-categories on the data.
+That on itself won&#8217;t do much good.
+</p>
+<h2>index.define_category(identifier, options = {})</h2>
+<p>
+Picky needs us to define categories on the data.
 </p>
 <p>
 Categories help your user find data. It&#8217;s best if you look at an
@@ -98,8 +106,16 @@ Now we could already run the indexer:
   $ rake index
 </pre>
 <p>
-Now we have indexed data, but nobody to ask the index anything.
+(You can define similarity or partial search capabilities on a category,
+see <a
+href="http://github.com/floere/picky/wiki/Categories-configuration">github.com/floere/picky/wiki/Categories-configuration</a>
+for info)
 </p>
+<p>
+So now we have indexed data (the title), but nobody to ask the index
+anything.
+</p>
+<h2>Query::Full.new(*indexes, options = {})</h2>
 <p>
 We need somebody who asks the index (a Query object, also see <a
 href="http://github.com/floere/picky/wiki/Queries-Configuration">github.com/floere/picky/wiki/Queries-Configuration</a>).
@@ -116,6 +132,7 @@ important right now.
 <p>
 Now we have somebody we can ask about the index. But no external interface.
 </p>
+<h2>route(/regexp1/ => query1, /regexp2/ => query2, &#8230;)</h2>
 <p>
 Let&#8217;s add a URL path (a Route, see <a
 href="http://github.com/floere/picky/wiki/Routing-configuration">github.com/floere/picky/wiki/Routing-configuration</a>)
@@ -162,6 +179,7 @@ Nice, right? Your first query!
 Maybe you don&#8217;t find everything. We need to process the data before
 it goes into the index.
 </p>
+<h2>default_indexing(options = {})</h2>
 <p>
 That&#8217;s what the <tt>default_indexing</tt> method is for:
 </p>
@@ -175,6 +193,7 @@ href="http://github.com/floere/picky/wiki/Indexing-configuration">github.com/flo
 <p>
 Same thing with the search text – we need to process that as well.
 </p>
+<h2>default_querying(options = {})</h2>
 <p>
 Analog to the default_indexing method, we use the <tt>default_querying</tt>
 method.
@@ -188,12 +207,17 @@ href="http://github.com/floere/picky/wiki/Querying-Configuration">github.com/flo
 </p>
 <p>
 And that&#8217;s all there is. It&#8217;s incredibly powerful though, as
-you can combine, weigh, refine to the max. Read more in the Wiki: <a
+you can combine, weigh, refine to the max.
+</p>
+<h2>Wiki</h2>
+<p>
+Read more in the Wiki: <a
 href="http://github.com/floere/picky/wiki">github.com/floere/picky/wiki</a>
 </p>
 <p>
 Have fun!
 </p>
+<h2>Full example</h2>
 <p>
 Our example, fully fleshed out with indexing, querying, and weights:
 </p>
@@ -218,7 +242,13 @@ Our example, fully fleshed out with indexing, querying, and weights:
                      maximum_tokens: 4
 
     books = index :books, Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
-    books.define_category :title
+    books.define_category :title,
+                          qualifiers: [:t, :title, :titre],
+                          partial:    Partial::Substring.new(:from =&gt; 1),
+                          similarity: Similarity::Phonetic.new(2)
+    books.define_category :author,
+                          partial: Partial::Substring.new(:from =&gt; -2)
+    books.define_category :isbn
 
     query_options = { :weights =&gt; { [:title, :author] =&gt; +3, [:author, :title] =&gt; -1 } }
 

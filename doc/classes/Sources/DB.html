@@ -71,7 +71,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000030">connect_backend</a></li>
+                <li><a href="#M000041">connect_backend</a></li>
                 
             </ul>
         </dd>
@@ -80,7 +80,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000034">harvest</a></li>
+                <li><a href="#M000045">harvest</a></li>
                 
             </ul>
         </dd>
@@ -89,7 +89,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000027">new</a></li>
+                <li><a href="#M000038">new</a></li>
                 
             </ul>
         </dd>
@@ -98,7 +98,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000031">take_snapshot</a></li>
+                <li><a href="#M000042">take_snapshot</a></li>
                 
             </ul>
         </dd>
@@ -156,9 +156,9 @@ the given file.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000027">
+                <div class="title" id="M000038">
                     
-                    <a name="M000027"></a><b>new</b>(select_statement, options = { file: 'app/db.yml' })
+                    <a name="M000038"></a><b>new</b>(select_statement, options = { file: 'app/db.yml' })
                     
                 </div>
                 
@@ -167,12 +167,12 @@ the given file.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000027_source')" id="l_M000027_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000038_source')" id="l_M000038_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/db.rb#L31" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000027_source" class="dyn-source">
+                    <div id="M000038_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 31</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">select_statement</span>, <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">file</span><span class="ruby-operator">:</span> <span class="ruby-value str">'app/db.yml'</span> }
       <span class="ruby-ivar">@select_statement</span> = <span class="ruby-identifier">select_statement</span>
@@ -187,9 +187,9 @@ the given file.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000030">
+                <div class="title" id="M000041">
                     
-                    <a name="M000030"></a><b>connect_backend</b>()
+                    <a name="M000041"></a><b>connect_backend</b>()
                     
                 </div>
                 
@@ -208,12 +208,12 @@ Will raise unless connection options have been given.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000041_source')" id="l_M000041_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/db.rb#L67" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000030_source" class="dyn-source">
+                    <div id="M000041_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 67</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect_backend</span>
       <span class="ruby-identifier">configure</span> <span class="ruby-ivar">@options</span>
@@ -226,9 +226,9 @@ Will raise unless connection options have been given.
             </div>
             
             <div class="method">
-                <div class="title" id="M000034">
+                <div class="title" id="M000045">
                     
-                    <a name="M000034"></a><b>harvest</b>(type, category)
+                    <a name="M000045"></a><b>harvest</b>(type, category)
                     
                 </div>
                 
@@ -244,12 +244,12 @@ Harvests the data to index in chunks.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000034_source')" id="l_M000034_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000045_source')" id="l_M000045_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/db.rb#L110" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000034_source" class="dyn-source">
+                    <div id="M000045_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 110</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">category</span>
       <span class="ruby-identifier">connect_backend</span>
@@ -268,9 +268,9 @@ Harvests the data to index in chunks.
             </div>
             
             <div class="method">
-                <div class="title" id="M000031">
+                <div class="title" id="M000042">
                     
-                    <a name="M000031"></a><b>take_snapshot</b>(type)
+                    <a name="M000042"></a><b>take_snapshot</b>(type)
                     
                 </div>
                 
@@ -290,12 +290,12 @@ of the data.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000031_source')" id="l_M000031_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000042_source')" id="l_M000042_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/db.rb#L77" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000031_source" class="dyn-source">
+                    <div id="M000042_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/db.rb, line 77</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span> <span class="ruby-identifier">type</span>
       <span class="ruby-identifier">connect_backend</span>
