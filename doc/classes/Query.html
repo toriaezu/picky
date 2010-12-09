@@ -53,13 +53,42 @@
         <div id="content">
     
     <div class="description">
-        <p>
-coding: utf-8
+        <h1>Picky Queries</h1>
+<p>
+A Picky <a href="Query.html">Query</a> is an object which:
 </p>
-<hr size="1"></hr><p>
-encoding: utf-8
-</p>
+<ul>
+<li>holds one or more indexes
 
+</li>
+<li>offers an interface to query these indexes.
+
+</li>
+</ul>
+<p>
+You connect URL paths to indexes via a <a href="Query.html">Query</a>.
+</p>
+<p>
+We recommend not to use this directly, but connect it to an URL and query
+through one of these (Protip: Use &#8220;curl
+&#8216;localhost:8080/query/path?query=exampletext&#8217;)&#8221; in a
+Terminal.
+</p>
+<p>
+There are two flavors of queries:
+</p>
+<ul>
+<li><a href="Query/Full.html">Query::Full</a> (<a
+href="Query/Full.html">Full</a> results with all infos)
+
+</li>
+<li><a href="Query/Live.html">Query::Live</a> (Same as the <a
+href="Query/Full.html">Full</a> results without result ids. Useful for
+query result counters.)
+
+</li>
+</ul>
+<hr size="1"></hr><hr size="1"></hr>
     </div>
     
 
@@ -75,6 +104,39 @@ encoding: utf-8
 
     
 
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Allocation.html">Query::Allocation</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Allocations.html">Query::Allocations</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Base.html">Query::Base</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Combination.html">Query::Combination</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Combinations.html">Query::Combinations</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Full.html">Query::Full</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Live.html">Query::Live</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Qualifier.html">Query::Qualifier</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Qualifiers.html">Query::Qualifiers</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Solr.html">Query::Solr</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Token.html">Query::Token</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Tokens.html">Query::Tokens</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Weigher.html">Query::Weigher</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Query/Weights.html">Query::Weights</a></li>
+        
+    </ul>
     
 
     

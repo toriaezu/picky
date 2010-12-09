@@ -19,12 +19,52 @@
         </h1>
         <ul class="files">
             <li>lib/picky/query/base.rb</li>
-            <li>Last modified: 2010-11-15 01:23:18 +0100</li>
+            <li>Last modified: 2010-12-09 15:46:05 +0100</li>
         </ul>
     </div>
 
     <div id="bodyContent">
         <div id="content">
+    
+    <div class="description">
+        <h1>Picky Queries</h1>
+<p>
+A Picky <a href="../../../../classes/Query.html">Query</a> is an object
+which:
+</p>
+<ul>
+<li>holds one or more indexes
+
+</li>
+<li>offers an interface to query these indexes.
+
+</li>
+</ul>
+<p>
+You connect URL paths to indexes via a <a
+href="../../../../classes/Query.html">Query</a>.
+</p>
+<p>
+We recommend not to use this directly, but connect it to an URL and query
+through one of these (Protip: Use &#8220;curl
+&#8216;localhost:8080/query/path?query=exampletext&#8217;)&#8221; in a
+Terminal.
+</p>
+<p>
+There are two flavors of queries:
+</p>
+<ul>
+<li><a href="../../../../classes/Query/Full.html">Query::Full</a> (Full results
+with all infos)
+
+</li>
+<li><a href="../../../../classes/Query/Live.html">Query::Live</a> (Same as the
+Full results without result ids. Useful for query result counters.)
+
+</li>
+</ul>
+<hr size="1"></hr><hr size="1"></hr>
+    </div>
     
 
     
