@@ -23,7 +23,10 @@ layout: enterprise
     %p
       Codewise, Picky is tested by around 900 unit and integration specs. Code size is extremely small (~4000 loc), making it easy to maintain.
     %p
-      Picky uses Ruby and (currently) Unicorn. We bombarded three servers, running a Unicorn with 8 children each, using ab.
+      Picky uses Ruby and in the case described used
+      = succeed('.') do
+        %a{ :href => 'http://unicorn.bogomips.org/' }Unicorn
+      We bombarded three servers, running a Unicorn with 8 children each, using ab.
     %p
       After filling the Unicorn request buffers, Picky predictably went down, but recuperating like fresh spring dew after the torrent was over.
     %p
@@ -34,7 +37,11 @@ layout: enterprise
     %p
       We recommend setting up a shared /index directory where one Picky indexes, and the others reload the indexes after restarting.
     %p
-      Then, add the server to your proxy of choice (nginx, varnish etc).
+      Then, add the server to your proxy of choice,
+      = succeed(',') do
+        %a{ :href => 'http://nginx.org/en/' } nginx
+      %a{ :href => 'http://www.varnish-cache.org/' } varnish
+      etc.
     %p
       We've added two servers to the first one like this, without problems. We just needed to add the new server to the varnish front end round robin list.
     %h2 Scalability (data)
@@ -52,7 +59,9 @@ layout: enterprise
     %p
       Most people think – since it is written in Ruby – it must be slow.
     %p
-      That attitude usually stops after seeing it in production or trying the example (in getting started).
+      That attitude usually stops after seeing it in production or trying the example (in
+      = succeed(').') do
+        %a{ :href => 'getting_started.html' } getting started
     %p
       Lots of consideration went into writing performant Ruby code. For example, each request has a very small memory footprint.
     %p
