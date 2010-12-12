@@ -48,7 +48,7 @@ layout: default
       It's fast enough and the high level really helped understanding it as it evolved. There are some parts that have been written in pedal-to-the-metal C code.
     %h3 How does it perform?
     %p
-      This depends on many factors, but generally we recommend using Picky with a maximum of 120 million data points (we used it there).
+      This depends on many factors, but generally we recommend using Picky with a maximum of 150 million data points (we used it there).
       The area under 20 millions is probably best. Your mileage may vary, of course, depending on how many partial indexes you use etc.
     %p
       Indexing is not too fast, and I'd be glad if it were faster. However, you get the full power of Ruby and fully customizable indexing.
@@ -73,6 +73,11 @@ layout: default
     %h3 Why the LGPL license?
     %p
       I'd have preferred a MIT license. In the end it was a compromise between my former employer and me.
+    %h3 Who wrote it?
+    %p
+      Mainly me, Florian Hanke, but I also had
+      %a{ :href => 'status.html' } excellent help
+      by friends and coworkers.
     %h3 Examples in the wild
     %p
       See
