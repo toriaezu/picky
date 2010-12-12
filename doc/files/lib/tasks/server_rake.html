@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/server.rake</li>
-            <li>Last modified: 2010-10-31 01:10:49 +0200</li>
+            <li>Last modified: 2010-12-10 19:17:50 +0100</li>
         </ul>
     </div>
 
@@ -43,7 +43,6 @@
   # desc &quot;Start the unicorns. (Wehee!)&quot;
   task :start =&gt; :framework do
     chdir_to_root
-    # Rake::Task[:&quot;solr:start&quot;].invoke # TODO Move to better place.
     daemonize = PICKY_ENVIRONMENT == 'production' ? '-D' : ''
     command = &quot;export PICKY_ENV=#{PICKY_ENVIRONMENT}; unicorn -c unicorn.ru #{daemonize}&quot;.strip
     puts &quot;Running \`#{command}\`.&quot;
@@ -53,7 +52,6 @@
   # desc &quot;Stop the unicorns. (Blam!)&quot;
   task :stop =&gt; :framework do
     `kill -QUIT #{current_pid}` if current_pid
-    # Rake::Task[:&quot;solr:stop&quot;].invoke # TODO Move to better place.
   end
 
   # desc &quot;Restart the unicorns.&quot;

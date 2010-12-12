@@ -49,15 +49,15 @@ layout: default
       It starts out the same as in the Getting Started section. But this time, we do an actual example picky project called library_search. For that, we use the
     %code
       %pre
-        picky project &lt;project name&gt;
+        picky generate unicorn_server &lt;project name&gt;
     %p
       command that has been installed with the picky gem.
     %code
       %pre
         :preserve
-          gem install picky
+          gem install picky-generators
     
-          picky project library_search
+          picky generate unicorn_server library_search
     
           cd library_search
     

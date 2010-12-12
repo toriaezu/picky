@@ -71,7 +71,7 @@ one.
         <dd>
             <ul>
                 
-                <li><a href="#M000026">call</a></li>
+                <li><a href="#M000029">call</a></li>
                 
             </ul>
         </dd>
@@ -80,9 +80,9 @@ one.
         <dd>
             <ul>
                 
-                <li><a href="#M000027">harakiri</a>,</li>
+                <li><a href="#M000030">harakiri</a>,</li>
                 
-                <li><a href="#M000028">harakiri?</a></li>
+                <li><a href="#M000031">harakiri?</a></li>
                 
             </ul>
         </dd>
@@ -91,7 +91,7 @@ one.
         <dd>
             <ul>
                 
-                <li><a href="#M000025">new</a></li>
+                <li><a href="#M000028">new</a></li>
                 
             </ul>
         </dd>
@@ -113,9 +113,9 @@ one.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000025">
+                <div class="title" id="M000028">
                     
-                    <a name="M000025"></a><b>new</b>(app)
+                    <a name="M000028"></a><b>new</b>(app)
                     
                 </div>
                 
@@ -124,12 +124,12 @@ one.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000025_source')" id="l_M000025_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000028_source')" id="l_M000028_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/cf38f7b14b41b1e47bfe5428218508854248580a/server/lib/picky/rack/harakiri.rb#L20" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000025_source" class="dyn-source">
+                    <div id="M000028_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 20</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">app</span>
       <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
@@ -145,15 +145,15 @@ one.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000026">
+                <div class="title" id="M000029">
                     
-                    <a name="M000026"></a><b>call</b>(env)
+                    <a name="M000029"></a><b>call</b>(env)
                     
                 </div>
                 
                 <div class="description">
                   <p>
-<a href="Harakiri.html#M000026">call</a> interface method.
+<a href="Harakiri.html#M000029">call</a> interface method.
 </p>
 <p>
 <a href="Harakiri.html">Harakiri</a> is a middleware, so it delegates the
@@ -168,12 +168,12 @@ retire.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000026_source')" id="l_M000026_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000029_source')" id="l_M000029_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/cf38f7b14b41b1e47bfe5428218508854248580a/server/lib/picky/rack/harakiri.rb#L32" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000026_source" class="dyn-source">
+                    <div id="M000029_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 32</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
       <span class="ruby-identifier">harakiri</span>
@@ -185,9 +185,9 @@ retire.
             </div>
             
             <div class="method">
-                <div class="title" id="M000027">
+                <div class="title" id="M000030">
                     
-                    <a name="M000027"></a><b>harakiri</b>()
+                    <a name="M000030"></a><b>harakiri</b>()
                     
                 </div>
                 
@@ -209,12 +209,12 @@ Note: Sends its process a QUIT signal if it is time.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000027_source')" id="l_M000027_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000030_source')" id="l_M000030_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/cf38f7b14b41b1e47bfe5428218508854248580a/server/lib/picky/rack/harakiri.rb#L43" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000027_source" class="dyn-source">
+                    <div id="M000030_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 43</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harakiri</span>
       <span class="ruby-ivar">@requests</span> = <span class="ruby-ivar">@requests</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
@@ -226,9 +226,9 @@ Note: Sends its process a QUIT signal if it is time.
             </div>
             
             <div class="method">
-                <div class="title" id="M000028">
+                <div class="title" id="M000031">
                     
-                    <a name="M000028"></a><b>harakiri?</b>()
+                    <a name="M000031"></a><b>harakiri?</b>()
                     
                 </div>
                 
@@ -244,12 +244,12 @@ Is it time to honorably retire?
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000028_source')" id="l_M000028_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000031_source')" id="l_M000031_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/cf38f7b14b41b1e47bfe5428218508854248580a/server/lib/picky/rack/harakiri.rb#L50" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000028_source" class="dyn-source">
+                    <div id="M000031_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/rack/harakiri.rb, line 50</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harakiri?</span>
       <span class="ruby-ivar">@requests</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@quit_after_requests</span>

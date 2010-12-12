@@ -35,16 +35,18 @@ layout: default
     %h3 Installation
     %code
       %pre
-        gem install picky picky-client
+        gem install picky-generators
+    %p
+      This will also install the needed gems "picky" and "picky-client".
     %h3 The server
     %p The server generates a library example, which you can run right away.
     %code
       %pre
         :preserve
           # Generates a directory "app_name"
-          # with a new Picky project.
+          # with a new Picky server project based on Unicorn.
           
-          picky project app_name
+          picky generate unicorn_server app_name
       %pre
         :preserve
           cd app_name
@@ -73,9 +75,9 @@ layout: default
     %pre
       :preserve
         # Generates a directory "app_name"
-        # with a new Picky Client Webapp project.
+        # with a new Picky client Sinatra project.
         
-        picky-client sinatra app_name
+        picky generate sinatra_client app_name
     %pre
       :preserve
         cd app_name
