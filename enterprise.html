@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-type" />
+    <link href="stylesheets/basic.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/specific.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/grid.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/enterprise.css" rel="stylesheet" type="text/css" />
+    <title>
+      Picky:
+      Enterprise Ready
+    </title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="http://github.com/floere/picky">
+        <img alt="Fork me on GitHub" src="images/forkme.png" style="position: fixed; top: -10px; right: 0; border: 0;" />
+      </a>
+    </div>
+    <div class="picky" title="Happy Picky (drawn on iPhone)"></div>
+    <div class="container_2">
+      <h1>Picky</h1>
+      <div class="navigation">
+        <a class="" href="index.html">about</a>
+        <a class="" href="details.html">detail</a>
+        <a class="" href="getting_started.html">getting started</a>
+        <a class="" href="documentation.html">documentation</a>
+        <a class="current right" href="enterprise.html">biz?</a>
+        <a class="right" href="status.html">status &amp; contributions</a>
+        <a class="right" href="videos.html">videos</a>
+        <a class="right" href="examples.html">examples</a>
+      </div>
+    </div>
+    <div class="container_2">
+      <h2>Enterprise Ready</h2>
+      <div class="grid_1">
+        <h2>Surely you're kidding!</h2>
+        <p>
+          Don't be deceived by the cute appearance! Picky is a tough little bastard.
+        </p>
+        <p>
+          Picky is in use in a telephone search web application, where it handled more than 10 million moderately complex search requests per day.
+        </p>
+        <h2>Stability</h2>
+        <p>
+          Codewise, Picky is tested by around 900 unit and integration specs. Code size is extremely small (~4000 loc), making it easy to maintain.
+        </p>
+        <p>
+          Picky uses Ruby and (currently) Unicorn. We bombarded three servers, running a Unicorn with 8 children each, using ab.
+        </p>
+        <p>
+          After filling the Unicorn request buffers, Picky predictably went down, but recuperating like fresh spring dew after the torrent was over.
+        </p>
+        <p>
+          In the mentioned project, Picky has been running without fail now for more than a year. It has been shown to be totally maintenance free.
+        </p>
+        <h2>Scalability (requests)</h2>
+        <p>
+          Picky scales very well with your data.
+        </p>
+        <p>
+          We recommend setting up a shared /index directory where one Picky indexes, and the others reload the indexes after restarting.
+        </p>
+        <p>
+          Then, add the server to your proxy of choice (nginx, varnish etc).
+        </p>
+        <p>
+          We've added two servers to the first one like this, without problems. We just needed to add the new server to the varnish front end round robin list.
+        </p>
+        <h2>Scalability (data)</h2>
+        <p>
+          Picky is a combinatorial search engine. Meaning: All the data needs to be available for combining.
+        </p>
+        <p>
+          Admittedly, regarding data,
+          <strong>if</strong>
+          you have exponential data growth, we do not recommend to use Picky.
+        </p>
+        <p>
+          If your data is slowly growing (linearly), we recommend to use Picky.
+        </p>
+      </div>
+      <div class="grid_1">
+        <h2>Speed</h2>
+        <p>
+          Most people think – since it is written in Ruby – it must be slow.
+        </p>
+        <p>
+          That attitude usually stops after seeing it in production or trying the example (in getting started).
+        </p>
+        <p>
+          Lots of consideration went into writing performant Ruby code. For example, each request has a very small memory footprint.
+        </p>
+        <p>
+          Around 100 specs test for possible performance reductions. Critical parts have been rewritten in C, giving it the edge it needs.
+        </p>
+        <h2>Modularity</h2>
+        <p>
+          From the ground up, Picky is designed to be very flexible.
+        </p>
+        <p>
+          Search requests can be routed to any combination of indexes. If you need customized tokenizers etc. you can easily implement them.
+        </p>
+        <p>
+          Also, it supports quite a few data sources, and new data sources can be easily added.
+        </p>
+      </div>
+    </div>
+    <div class="container_2">
+      <div class="grid_2">
+        <div class="decoration"></div>
+      </div>
+    </div>
+    <div class="footer"></div>
+  </body>
+</html>

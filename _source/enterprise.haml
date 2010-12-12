@@ -1,0 +1,58 @@
+---
+title: Enterprise Ready
+layout: enterprise
+---
+
+.container_2
+  %h2= h page.title
+  .grid_1
+    %h2 Surely you're kidding!
+    %p
+      Don't be deceived by the cute appearance! Picky is a tough little bastard.
+    %p
+      Picky is in use in a telephone search web application, where it handled more than 10 million moderately complex search requests per day. 
+    %h2 Stability
+    %p
+      Codewise, Picky is tested by around 900 unit and integration specs. Code size is extremely small (~4000 loc), making it easy to maintain.
+    %p
+      Picky uses Ruby and (currently) Unicorn. We bombarded three servers, running a Unicorn with 8 children each, using ab.
+    %p
+      After filling the Unicorn request buffers, Picky predictably went down, but recuperating like fresh spring dew after the torrent was over.
+    %p
+      In the mentioned project, Picky has been running without fail now for more than a year. It has been shown to be totally maintenance free.
+    %h2 Scalability (requests)
+    %p
+      Picky scales very well with your data.
+    %p
+      We recommend setting up a shared /index directory where one Picky indexes, and the others reload the indexes after restarting.
+    %p
+      Then, add the server to your proxy of choice (nginx, varnish etc).
+    %p
+      We've added two servers to the first one like this, without problems. We just needed to add the new server to the varnish front end round robin list.
+    %h2 Scalability (data)
+    %p
+      Picky is a combinatorial search engine. Meaning: All the data needs to be available for combining.
+    %p
+      Admittedly, regarding data,
+      %strong if
+      you have exponential data growth, we do not recommend to use Picky.
+    %p
+      If your data is slowly growing (linearly), we recommend to use Picky.
+      
+  .grid_1
+    %h2 Speed
+    %p
+      Most people think – since it is written in Ruby – it must be slow.
+    %p
+      That attitude usually stops after seeing it in production or trying the example (in getting started).
+    %p
+      Lots of consideration went into writing performant Ruby code. For example, each request has a very small memory footprint.
+    %p
+      Around 100 specs test for possible performance reductions. Critical parts have been rewritten in C, giving it the edge it needs.
+    %h2 Modularity
+    %p
+      From the ground up, Picky is designed to be very flexible.
+    %p
+      Search requests can be routed to any combination of indexes. If you need customized tokenizers etc. you can easily implement them.
+    %p
+      Also, it supports quite a few data sources, and new data sources can be easily added.
