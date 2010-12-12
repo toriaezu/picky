@@ -127,3 +127,21 @@ layout: default
     %p
       If you don't have the time or leisure to do it yourself, watch this:
     %iframe{ :src => "http://player.vimeo.com/video/17161012", :width => "460", :height => "365", :frameborder => "0" }
+    %p
+      Note that the video was made with version 1.0.0.
+    %p
+      In the latest version, instead of
+    %code
+      %pre
+        :preserve
+          picky project &lt;server dir&gt;
+          picky-client sinatra &lt;client dir&gt;
+    %p
+      the following commands are now used:
+    %code
+      %pre
+        :preserve
+          picky generate unicorn_server &lt;server dir&gt;
+          picky generate sinatra_client &lt;client dir&gt;
+    %p
+      A bit more wordy, but hopefully clearer what it does.
