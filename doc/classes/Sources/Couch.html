@@ -39,6 +39,20 @@
 A <a href="Couch.html">Couch</a> database source.
 </p>
 <p>
+<b>IMPORTANT NOTE:
+</p>
+<p>
+Since Picky currently only handles integer ids (we&#8217;re working on
+this), and CouchDB uses hexadecimal ids, this source automatically
+recalculates a couch id such as fa3f2577a8dbc6a91d7f9989cdffd38e into
+332634873577882511228481564366832915342 using String#hex.
+</p>
+<p>
+When using the integer ids in a webapp to get your objects from CouchDB,
+please do a Integer#to_s(16) on the ids you get from Picky before you use
+them to get your object from CouchDB.</b>
+</p>
+<p>
 Options:
 </p>
 <ul>
@@ -75,7 +89,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000037">harvest</a></li>
+                <li><a href="#M000034">harvest</a></li>
                 
             </ul>
         </dd>
@@ -84,7 +98,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000035">new</a></li>
+                <li><a href="#M000032">new</a></li>
                 
             </ul>
         </dd>
@@ -106,9 +120,9 @@ Examples:
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000035">
+                <div class="title" id="M000032">
                     
-                    <a name="M000035"></a><b>new</b>(*category_names, options)
+                    <a name="M000032"></a><b>new</b>(*category_names, options)
                     
                 </div>
                 
@@ -117,13 +131,13 @@ Examples:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000035_source')" id="l_M000035_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000032_source')" id="l_M000032_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/couch.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/couch.rb#L38" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000035_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 23</span>
+                    <div id="M000032_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 38</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">category_names</span>, <span class="ruby-identifier">options</span>
       <span class="ruby-identifier">check_gem</span>
       <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:url</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">raise_no_db_given</span>(<span class="ruby-identifier">category_names</span>)
@@ -137,9 +151,9 @@ Examples:
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000037">
+                <div class="title" id="M000034">
                     
-                    <a name="M000037"></a><b>harvest</b>(type, category)
+                    <a name="M000034"></a><b>harvest</b>(type, category)
                     
                 </div>
                 
@@ -155,13 +169,13 @@ Harvests the data to index.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000037_source')" id="l_M000037_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000034_source')" id="l_M000034_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/couch.rb#L40" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/79024481674096c521d7077e39fb1c5987170b75/server/lib/picky/sources/couch.rb#L55" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000037_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 40</span>
+                    <div id="M000034_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 55</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">category</span>
       <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>.<span class="ruby-identifier">to_s</span>
       <span class="ruby-identifier">get_data</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">doc</span><span class="ruby-operator">|</span>
