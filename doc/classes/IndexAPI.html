@@ -41,7 +41,8 @@ as the index method inside the <a href="Application.html">Application</a>
 class.
 </p>
 <p>
-It provides a single front for both indexing and index options.
+It provides a single front for both indexing and index options. We suggest
+to always use the index API.
 </p>
 <p>
 Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
@@ -76,16 +77,7 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
                 
                 <li><a href="#M000012">define_category</a>,</li>
                 
-                <li><a href="#M000014">define_location</a></li>
-                
-            </ul>
-        </dd>
-    
-        <dt>L</dt>
-        <dd>
-            <ul>
-                
-                <li><a href="#M000015">location</a></li>
+                <li><a href="#M000014">define_ranged_category</a></li>
                 
             </ul>
         </dd>
@@ -95,6 +87,15 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
             <ul>
                 
                 <li><a href="#M000011">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000015">ranged_category</a></li>
                 
             </ul>
         </dd>
@@ -155,9 +156,7 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
                   <p>
 Create a new index with a given source.
 </p>
-<p>
-Parameters:
-</p>
+<h3>Parameters</h3>
 <ul>
 <li>name: A name that will be used for the index directory and in the Picky
 front end.
@@ -168,12 +167,14 @@ href="Sources/CSV.html#M000043">Sources::CSV.new(...)</a>
 
 </li>
 </ul>
-<p>
-Options:
-</p>
+<h3>Options</h3>
 <ul>
-<li>after_indexing: Currently only used in the db source. Executes the given
-after_indexing as SQL after the indexing process.
+<li>result_identifier: Use if you&#8217;d like a different identifier/name in
+the results than the name of the index.
+
+</li>
+<li>after_indexing: As of this writing only used in the db source. Executes the
+given after_indexing as SQL after the indexing process.
 
 </li>
 </ul>
@@ -187,11 +188,11 @@ after_indexing as SQL after the indexing process.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/b488f4c45cdfa831a85fa2213d27f0b82aa0b515/server/lib/picky/index_api.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6341fb251a8239b4492eb25d39366767ce3eb2d/server/lib/picky/index_api.rb#L22" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000011_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 21</span>
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 22</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span> = {}
     <span class="ruby-ivar">@name</span>     = <span class="ruby-identifier">name</span>
     <span class="ruby-ivar">@indexing</span> = <span class="ruby-constant">Indexing</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span>
@@ -237,14 +238,15 @@ Alias for <a href="IndexAPI.html#M000012">define_category</a>
                   <p>
 Defines a searchable category on the index.
 </p>
-<p>
-Parameters: category_name: This identifier is used in the front end, but
-also to categorize query text. For example, “title:hobbit” will narrow
-the hobbit query on categories with the identifier :title.
-</p>
-<p>
-Options:
-</p>
+<h3>Parameters</h3>
+<ul>
+<li>category_name: This identifier is used in the front end, but also to
+categorize query text. For example, “title:hobbit” will narrow the
+hobbit query on categories with the identifier :title.
+
+</li>
+</ul>
+<h3>Options</h3>
 <ul>
 <li>partial: Partial::None.new or Partial::Substring.new(from: starting_char,
 to: ending_char). Default is Partial::Substring.new(from: -3, to: -1).
@@ -298,11 +300,11 @@ href="IndexAPI.html#M000012">define_category</a>(:similar_title, :from =>
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/b488f4c45cdfa831a85fa2213d27f0b82aa0b515/server/lib/picky/index_api.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6341fb251a8239b4492eb25d39366767ce3eb2d/server/lib/picky/index_api.rb#L45" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000012_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 44</span>
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 45</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span> = {}
     <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category_name</span>.<span class="ruby-identifier">to_sym</span>
     
@@ -321,16 +323,17 @@ href="IndexAPI.html#M000012">define_category</a>(:similar_title, :from =>
             <div class="method">
                 <div class="title" id="M000014">
                     
-                    <a name="M000014"></a><b>define_location</b>(name, range, options = {})
+                    <a name="M000014"></a><b>define_ranged_category</b>(category_name, range, options = {})
                     
                 </div>
                 
                 <div class="description">
                   <pre>
- HIGHLY EXPERIMENTAL
+ HIGHLY EXPERIMENTAL Try if you feel &quot;beta&quot; ;)
 </pre>
 <p>
-Make this category range searchable.
+Make this category range searchable with a fixed range. If you need other
+ranges, define another category with a different range value.
 </p>
 <p>
 Example: You have data values inside 1..100, and you want to have Picky
@@ -341,48 +344,82 @@ for 45, 46, or 47.2, 48.9, in a range of 2 around 47, so (45..49).
 Then you use:
 </p>
 <pre>
- my_index.define_location :values_inside_1_100, 2
+ my_index.define_ranged_category :values_inside_1_100, 2
 </pre>
 <p>
 Optionally, you give it a precision value to reduce the error margin around
 47 (Picky is a bit liberal).
 </p>
 <pre>
- my_index.define_location :values_inside_1_100, 2, precision: 5
+ my_index.define_ranged_category :values_inside_1_100, 2, precision: 5
 </pre>
 <p>
 This will force Picky to maximally be wrong 5% of the given range value (5%
-of 2 = 0.1).
+of 2 = 0.1) instead of the default 20% (20% of 2 = 0.4).
 </p>
 <p>
-We suggest not to use more than 5 as a higher precision is more performance
-intensive.
+We suggest not to use much more than 5 as a higher precision is more
+performance intensive for less and less precision gain.
+</p>
+<h2>Protip 1</h2>
+<p>
+Create two ranged categories to make an area search:
+</p>
+<pre>
+  index.define_ranged_category :x, 1
+  index.define_ranged_category :y, 1
+</pre>
+<p>
+Search for it using for example:
+</p>
+<pre>
+  x:133, y:120
+</pre>
+<p>
+This will search this square area (* = 133, 120: The &#8220;search&#8221;
+point entered):
+</p>
+<pre>
+   132       134
+    |         |
+  --|---------|-- 121
+    |         |
+    |    *    |
+    |         |
+  --|---------|-- 119
+    |         |
+</pre>
+<p>
+Note: The area does not need to be square, but can be rectangular.
+</p>
+<h2>Protip 2</h2>
+<p>
+Create three ranged categories to make a volume search.
 </p>
 <p>
-Parameters:
+Or go crazy and use 4 ranged categories for a space/time search! ;)
 </p>
+<h3>Parameters</h3>
 <ul>
-<li>name: The name as used in <a
+<li>category_name: The category_name as used in <a
 href="IndexAPI.html#M000012">define_category</a>.
 
 </li>
-<li>radius: The range (in km) around the query point which we search for
-results.
+<li>range: The range (in the units of your data values) around the query point
+where we search for results.
 
 </li>
 </ul>
 <pre>
  -----|&lt;- range  -&gt;*------------|-----
 </pre>
-<p>
-Options
-</p>
+<h3>Options</h3>
 <ul>
-<li>precision # Default 1 (20% error margin, very fast), up to 5 (5% error
+<li>precision: Default is 1 (20% error margin, very fast), up to 5 (5% error
 margin, slower) makes sense.
 
 </li>
-<li>from: # The data category to take the data for this category from.
+<li>&#8230; all options of <a href="IndexAPI.html#M000012">define_category</a>.
 
 </li>
 </ul>
@@ -393,7 +430,7 @@ margin, slower) makes sense.
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="IndexAPI.html#M000015">location</a>
+                    <a href="IndexAPI.html#M000015">ranged_category</a>
                     
                 </div>
                 
@@ -403,17 +440,17 @@ margin, slower) makes sense.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/b488f4c45cdfa831a85fa2213d27f0b82aa0b515/server/lib/picky/index_api.rb#L87" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6341fb251a8239b4492eb25d39366767ce3eb2d/server/lib/picky/index_api.rb#L116" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000014_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 87</span>
-  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_location</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">options</span> = {}
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 116</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_ranged_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">options</span> = {}
     <span class="ruby-identifier">precision</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:precision</span>]
     
     <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">partial</span><span class="ruby-operator">:</span> <span class="ruby-constant">Partial</span><span class="ruby-operator">::</span><span class="ruby-constant">None</span>.<span class="ruby-identifier">new</span> }.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">options</span>
     
-    <span class="ruby-identifier">define_category</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexing</span>, <span class="ruby-identifier">indexed</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">define_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexing</span>, <span class="ruby-identifier">indexed</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">indexing</span>.<span class="ruby-identifier">source</span>    = <span class="ruby-constant">Sources</span><span class="ruby-operator">::</span><span class="ruby-constant">Wrappers</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">indexing</span>, <span class="ruby-identifier">grid</span><span class="ruby-operator">:</span> <span class="ruby-identifier">range</span>, <span class="ruby-identifier">precision</span><span class="ruby-operator">:</span> <span class="ruby-identifier">precision</span>
       <span class="ruby-identifier">indexing</span>.<span class="ruby-identifier">tokenizer</span> = <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">new</span>
       
@@ -430,13 +467,13 @@ margin, slower) makes sense.
             <div class="method">
                 <div class="title" id="M000015">
                     
-                    <a name="M000015"></a><b>location</b>(name, range, options = {})
+                    <a name="M000015"></a><b>ranged_category</b>(category_name, range, options = {})
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Alias for <a href="IndexAPI.html#M000014">define_location</a>
+Alias for <a href="IndexAPI.html#M000014">define_ranged_category</a>
 </p>
 
                 </div>
