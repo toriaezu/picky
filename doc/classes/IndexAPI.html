@@ -36,7 +36,11 @@
     
     <div class="description">
         <p>
-This class defines the indexing and index API that is exposed to the user.
+This class defines the indexing and index API that is exposed to the user
+as the index method inside the <a href="Application.html">Application</a>
+class.
+</p>
+<p>
 It provides a single front for both indexing and index options.
 </p>
 <p>
@@ -54,7 +58,59 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
 
     
     
-
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000013">category</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000012">define_category</a>,</li>
+                
+                <li><a href="#M000014">define_location</a>,</li>
+                
+                <li><a href="#M000016">define_map_location</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000015">location</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000017">map_location</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000011">new</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
     
 
     
@@ -66,6 +122,457 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
     
 
     
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>name</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>indexing</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>indexed</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000011">
+                    
+                    <a name="M000011"></a><b>new</b>(name, source, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Create a new index with a given source.
+</p>
+<p>
+Parameters:
+</p>
+<ul>
+<li>name: A name that will be used for the index directory and in the Picky
+front end.
+
+</li>
+<li>source: Where the data comes from, e.g. <a
+href="Sources/CSV.html#M000044">Sources::CSV.new(...)</a>
+
+</li>
+</ul>
+<p>
+Options:
+</p>
+<ul>
+<li>after_indexing: Currently only used in the db source. Executes the given
+after_indexing as SQL after the indexing process.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/304ab91a61b268b2025a4226639af16020b10989/server/lib/picky/index_api.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000011_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 21</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span> = {}
+    <span class="ruby-ivar">@name</span>     = <span class="ruby-identifier">name</span>
+    <span class="ruby-ivar">@indexing</span> = <span class="ruby-constant">Indexing</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span>
+    <span class="ruby-ivar">@indexed</span>  = <span class="ruby-constant">Indexed</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">new</span>  <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>
+    
+    <span class="ruby-comment cmt"># Centralized registry.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-constant">Indexes</span>.<span class="ruby-identifier">register</span> <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000013">
+                    
+                    <a name="M000013"></a><b>category</b>(category_name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="IndexAPI.html#M000012">define_category</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000012">
+                    
+                    <a name="M000012"></a><b>define_category</b>(category_name, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Defines a searchable category on the index.
+</p>
+<p>
+Parameters: category_name: This identifier is used in the front end, but
+also to categorize query text. For example, “title:hobbit” will narrow
+the hobbit query on categories with the identifier :title.
+</p>
+<p>
+Options:
+</p>
+<ul>
+<li>partial: Partial::None.new or Partial::Substring.new(from: starting_char,
+to: ending_char). Default is Partial::Substring.new(from: -3, to: -1).
+
+</li>
+<li>similarity: Similarity::None.new or
+Similarity::Phonetic.new(similar_words_searched). Default is
+Similarity::None.new.
+
+</li>
+<li>qualifiers: An array of qualifiers with which you can define which category
+you’d like to search, for example “title:hobbit” will search for
+hobbit in just title categories. Example: qualifiers: [:t, :titre, :title]
+(use it for example with multiple languages). Default is the name of the
+category.
+
+</li>
+<li>qualifier: Convenience options if you just need a single qualifier, see
+above. Example: qualifiers => :title. Default is the name of the category.
+
+</li>
+<li>source: Use a different source than the index uses. If you think you need
+that, there might be a better solution to your problem. Please post to the
+mailing list first with your application.rb :)
+
+</li>
+<li>from: Take the data from the data category with this name. Example: You
+have a source <a
+href="Sources/CSV.html#M000044">Sources::CSV.new</a>(:title,
+file:&#8217;some_file.csv&#8217;) but you want the category to be called
+differently. The you use from: <a
+href="IndexAPI.html#M000012">define_category</a>(:similar_title, :from =>
+:title).
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="IndexAPI.html#M000013">category</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/304ab91a61b268b2025a4226639af16020b10989/server/lib/picky/index_api.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000012_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 44</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span> = {}
+    <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category_name</span>.<span class="ruby-identifier">to_sym</span>
+    
+    <span class="ruby-identifier">indexing_category</span> = <span class="ruby-identifier">indexing</span>.<span class="ruby-identifier">define_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span>
+    <span class="ruby-identifier">indexed_category</span>  = <span class="ruby-identifier">indexed</span>.<span class="ruby-identifier">define_category</span>  <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span>
+    
+    <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">indexing_category</span>, <span class="ruby-identifier">indexed_category</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000014">
+                    
+                    <a name="M000014"></a><b>define_location</b>(name, range, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <pre>
+ HIGHLY EXPERIMENTAL
+</pre>
+<p>
+Make this category range searchable.
+</p>
+<p>
+Example: You have data values inside 1..100, and you want to have Picky
+return not only the results for 47 if you search for 47, but also results
+for 45, 46, or 47.2, 48.9, in a range of 2 around 47, so (45..49).
+</p>
+<p>
+Then you use:
+</p>
+<pre>
+ my_index.define_location :values_inside_1_100, 2
+</pre>
+<p>
+Optionally, you give it a precision value to reduce the error margin around
+47 (Picky is a bit liberal).
+</p>
+<pre>
+ my_index.define_location :values_inside_1_100, 2, precision: 5
+</pre>
+<p>
+This will force Picky to maximally be wrong 5% of the given range value (5%
+of 2 = 0.1).
+</p>
+<p>
+We suggest not to use more than 5 as a higher precision is more performance
+intensive.
+</p>
+<p>
+Parameters:
+</p>
+<ul>
+<li>name: The name as used in <a
+href="IndexAPI.html#M000012">define_category</a>.
+
+</li>
+<li>radius: The range (in km) around the query point which we search for
+results.
+
+</li>
+</ul>
+<pre>
+ -----|&lt;- range  -&gt;*------------|-----
+</pre>
+<p>
+Options
+</p>
+<ul>
+<li>precision # Default 1 (20% error margin, very fast), up to 5 (5% error
+margin, slower) makes sense.
+
+</li>
+<li>from: # The data category to take the data for this category from.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="IndexAPI.html#M000015">location</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/304ab91a61b268b2025a4226639af16020b10989/server/lib/picky/index_api.rb#L87" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000014_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 87</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_location</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">options</span> = {}
+    <span class="ruby-identifier">precision</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:precision</span>]
+    
+    <span class="ruby-identifier">options</span> = { <span class="ruby-identifier">partial</span><span class="ruby-operator">:</span> <span class="ruby-constant">Partial</span><span class="ruby-operator">::</span><span class="ruby-constant">None</span>.<span class="ruby-identifier">new</span> }.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">options</span>
+    
+    <span class="ruby-identifier">define_category</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexing</span>, <span class="ruby-identifier">indexed</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">indexing</span>.<span class="ruby-identifier">source</span>    = <span class="ruby-constant">Sources</span><span class="ruby-operator">::</span><span class="ruby-constant">Wrappers</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">indexing</span>, <span class="ruby-identifier">grid</span><span class="ruby-operator">:</span> <span class="ruby-identifier">range</span>, <span class="ruby-identifier">precision</span><span class="ruby-operator">:</span> <span class="ruby-identifier">precision</span>
+      <span class="ruby-identifier">indexing</span>.<span class="ruby-identifier">tokenizer</span> = <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">new</span>
+      
+      <span class="ruby-identifier">exact_bundle</span>    = <span class="ruby-constant">Indexed</span><span class="ruby-operator">::</span><span class="ruby-constant">Wrappers</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">Location</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">indexed</span>.<span class="ruby-identifier">exact</span>, <span class="ruby-identifier">grid</span><span class="ruby-operator">:</span> <span class="ruby-identifier">range</span>, <span class="ruby-identifier">precision</span><span class="ruby-operator">:</span> <span class="ruby-identifier">precision</span>
+      <span class="ruby-identifier">indexed</span>.<span class="ruby-identifier">exact</span>   = <span class="ruby-identifier">exact_bundle</span>
+      <span class="ruby-identifier">indexed</span>.<span class="ruby-identifier">partial</span> = <span class="ruby-identifier">exact_bundle</span> <span class="ruby-comment cmt"># A partial token also uses the exact index.</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000016">
+                    
+                    <a name="M000016"></a><b>define_map_location</b>(name, radius, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <pre>
+ HIGHLY EXPERIMENTAL Not correctly working yet. Try it if you feel &quot;beta&quot;.
+</pre>
+<p>
+Also a range search see <a
+href="IndexAPI.html#M000014">define_location</a>, but on the earth&#8217;s
+surface.
+</p>
+<p>
+Parameters:
+</p>
+<ul>
+<li>name: The name as used in <a
+href="IndexAPI.html#M000012">define_category</a>.
+
+</li>
+<li>radius: The distance (in km) around the query point which we search for
+results.
+
+</li>
+</ul>
+<p>
+Note: Picky uses a square, not a circle. We hope that&#8217;s ok for most
+usages.
+</p>
+<pre>
+ -----------------------------
+ |                           |
+ |                           |
+ |                           |
+ |                           |
+ |                           |
+ |             *&lt;-  radius -&gt;|
+ |                           |
+ |                           |
+ |                           |
+ |                           |
+ |                           |
+ -----------------------------
+</pre>
+<p>
+Options
+</p>
+<ul>
+<li>precision: Default 1 (20% error margin, very fast), up to 5 (5% error
+margin, slower) makes sense.
+
+</li>
+<li>from: The data category to take the data for this category from.
+
+</li>
+</ul>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="IndexAPI.html#M000017">map_location</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000016_source')" id="l_M000016_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/304ab91a61b268b2025a4226639af16020b10989/server/lib/picky/index_api.rb#L131" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000016_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 131</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_map_location</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">radius</span>, <span class="ruby-identifier">options</span> = {}
+    <span class="ruby-comment cmt"># The radius is given as if all the locations were on the equator.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># TODO Need to recalculate since not many locations are on the equator ;) This is just a prototype.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># This calculates km -&gt; longitude (degrees).</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-comment cmt"># A degree on the equator is equal to ~111,319.9 meters.</span>
+    <span class="ruby-comment cmt"># So a km on the equator is equal to 0.00898312 degrees.</span>
+    <span class="ruby-comment cmt">#</span>
+    <span class="ruby-identifier">define_location</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">radius</span> <span class="ruby-operator">*</span> <span class="ruby-value">0</span><span class="ruby-value">.00898312</span>, <span class="ruby-identifier">options</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000015">
+                    
+                    <a name="M000015"></a><b>location</b>(name, range, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="IndexAPI.html#M000014">define_location</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000017">
+                    
+                    <a name="M000017"></a><b>map_location</b>(name, radius, options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="IndexAPI.html#M000016">define_map_location</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
 </div>
     </div>
   </body>
