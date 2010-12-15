@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Picky::Helper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Picky::Helper 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/picky-client/helper_rb.html">lib/picky-client/helper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+This class provides a few view helpers.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000018">cached_interface</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000017">interface</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000018">
+                    
+                    <a name="M000018"></a><b>cached_interface</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a cached version if you always use a single language.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000018_source')" id="l_M000018_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/71f58d17ddb477fde19cccae8d90103f74b6be1c/client/lib/picky-client/helper.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000018_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/helper.rb, line 53</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cached_interface</span> <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-ivar">@interface</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">interface</span>(<span class="ruby-identifier">options</span>).<span class="ruby-identifier">freeze</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000017">
+                    
+                    <a name="M000017"></a><b>interface</b>(options = {})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a standard search interface for easy starting.
+</p>
+<p>
+&#8230; aka scaffolding ;)
+</p>
+<p>
+Options:
+</p>
+<pre>
+ * button: The search button text.
+ * no_results: The text shown when there are no results.
+ * more: The text shown when there are more than X results.
+</pre>
+<p>
+Usage, in Views:
+</p>
+<pre>
+  = Picky::Helper.interface :button =&gt; 'Go go go!'
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000017_source')" id="l_M000017_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/71f58d17ddb477fde19cccae8d90103f74b6be1c/client/lib/picky-client/helper.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000017_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/helper.rb, line 47</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">interface</span> <span class="ruby-identifier">options</span> = {}
+      <span class="ruby-ivar">@@localized_interface</span>[<span class="ruby-identifier">options</span>].<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/[\n]/</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">squeeze!</span> <span class="ruby-value str">' '</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    
