@@ -27,7 +27,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../files/lib/picky-client/engine_rb.html">lib/picky-client/engine.rb</a></li>
+            <li><a href="../files/lib/picky-client/client_rb.html">lib/picky-client/client.rb</a></li>
             
         </ul>
     </div>
@@ -49,7 +49,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000020">to_query</a></li>
+                <li><a href="#M000009">to_query</a></li>
                 
             </ul>
         </dd>
@@ -71,9 +71,9 @@
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000020">
+                <div class="title" id="M000009">
                     
-                    <a name="M000020"></a><b>to_query</b>(namespace = nil)
+                    <a name="M000009"></a><b>to_query</b>(namespace = nil)
                     
                 </div>
                 
@@ -82,13 +82,13 @@
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000020_source')" id="l_M000020_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000009_source')" id="l_M000009_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L94" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L130" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000020_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 94</span>
+                    <div id="M000009_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 130</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_query</span> <span class="ruby-identifier">namespace</span> = <span class="ruby-keyword kw">nil</span>
     <span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_query</span>(<span class="ruby-identifier">namespace</span> <span class="ruby-value">? </span><span class="ruby-node">&quot;#{namespace}[#{key}]&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">key</span>)

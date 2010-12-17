@@ -27,7 +27,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../../../files/lib/picky-client/engine_rb.html">lib/picky-client/engine.rb</a></li>
+            <li><a href="../../../files/lib/picky-client/client_rb.html">lib/picky-client/client.rb</a></li>
             
         </ul>
     </div>
@@ -49,15 +49,15 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000011">default_configuration</a>,</li>
+                <li><a href="#M000002">default_configuration</a>,</li>
                 
-                <li><a href="#M000010">default_configuration</a>,</li>
+                <li><a href="#M000001">default_configuration</a>,</li>
                 
-                <li><a href="#M000013">default_params</a>,</li>
+                <li><a href="#M000004">default_params</a>,</li>
                 
-                <li><a href="#M000012">default_params</a>,</li>
+                <li><a href="#M000003">default_params</a>,</li>
                 
-                <li><a href="#M000014">defaultize</a></li>
+                <li><a href="#M000005">defaultize</a></li>
                 
             </ul>
         </dd>
@@ -66,7 +66,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000009">new</a></li>
+                <li><a href="#M000000">new</a></li>
                 
             </ul>
         </dd>
@@ -75,9 +75,9 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000015">search</a>,</li>
+                <li><a href="#M000006">search</a>,</li>
                 
-                <li><a href="#M000016">send_search</a></li>
+                <li><a href="#M000007">send_search</a></li>
                 
             </ul>
         </dd>
@@ -128,9 +128,9 @@
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000011">
+                <div class="title" id="M000002">
                     
-                    <a name="M000011"></a><b>default_configuration</b>(options = {})
+                    <a name="M000002"></a><b>default_configuration</b>(options = {})
                     
                 </div>
                 
@@ -139,13 +139,13 @@
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L66" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000011_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 30</span>
+                    <div id="M000002_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 66</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">default_configuration</span> <span class="ruby-identifier">options</span> = {}
         <span class="ruby-identifier">define_method</span> <span class="ruby-identifier">:default_configuration</span> <span class="ruby-keyword kw">do</span>
           <span class="ruby-identifier">options</span>
@@ -157,9 +157,9 @@
             </div>
             
             <div class="method">
-                <div class="title" id="M000013">
+                <div class="title" id="M000004">
                     
-                    <a name="M000013"></a><b>default_params</b>(options = {})
+                    <a name="M000004"></a><b>default_params</b>(options = {})
                     
                 </div>
                 
@@ -168,13 +168,13 @@
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000013_source')" id="l_M000013_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000004_source')" id="l_M000004_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L74" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000013_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 38</span>
+                    <div id="M000004_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 74</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">default_params</span> <span class="ruby-identifier">options</span> = {}
         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">stringify_keys!</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:stringify_keys!</span>)
         <span class="ruby-identifier">define_method</span> <span class="ruby-identifier">:default_params</span> <span class="ruby-keyword kw">do</span>
@@ -187,9 +187,9 @@
             </div>
             
             <div class="method">
-                <div class="title" id="M000009">
+                <div class="title" id="M000000">
                     
-                    <a name="M000009"></a><b>new</b>(options = {})
+                    <a name="M000000"></a><b>new</b>(options = {})
                     
                 </div>
                 
@@ -198,13 +198,13 @@
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000009_source')" id="l_M000009_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L20" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L56" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000009_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 20</span>
+                    <div id="M000000_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 56</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">options</span> = {}
         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">default_configuration</span>.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">options</span>
 
@@ -220,9 +220,9 @@
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000010">
+                <div class="title" id="M000001">
                     
-                    <a name="M000010"></a><b>default_configuration</b>()
+                    <a name="M000001"></a><b>default_configuration</b>()
                     
                 </div>
                 
@@ -231,13 +231,13 @@
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000010_source')" id="l_M000010_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L63" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000010_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 27</span>
+                    <div id="M000001_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 63</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_configuration</span>
         {}
       <span class="ruby-keyword kw">end</span></pre>
@@ -247,9 +247,9 @@
             </div>
             
             <div class="method">
-                <div class="title" id="M000012">
+                <div class="title" id="M000003">
                     
-                    <a name="M000012"></a><b>default_params</b>()
+                    <a name="M000003"></a><b>default_params</b>()
                     
                 </div>
                 
@@ -258,13 +258,13 @@
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L71" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000012_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 35</span>
+                    <div id="M000003_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 71</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_params</span>
         {}
       <span class="ruby-keyword kw">end</span></pre>
@@ -274,9 +274,9 @@
             </div>
             
             <div class="method">
-                <div class="title" id="M000014">
+                <div class="title" id="M000005">
                     
-                    <a name="M000014"></a><b>defaultize</b>(params = {})
+                    <a name="M000005"></a><b>defaultize</b>(params = {})
                     
                 </div>
                 
@@ -292,13 +292,13 @@ Merges the given params, overriding the defaults.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000005_source')" id="l_M000005_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L83" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000014_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 47</span>
+                    <div id="M000005_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 83</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">defaultize</span> <span class="ruby-identifier">params</span> = {}
         <span class="ruby-identifier">default_params</span>.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">params</span>
       <span class="ruby-keyword kw">end</span></pre>
@@ -308,9 +308,9 @@ Merges the given params, overriding the defaults.
             </div>
             
             <div class="method">
-                <div class="title" id="M000015">
+                <div class="title" id="M000006">
                     
-                    <a name="M000015"></a><b>search</b>(params = {})
+                    <a name="M000006"></a><b>search</b>(query, params = {})
                     
                 </div>
                 
@@ -329,17 +329,17 @@ Returns a hash. Extend with <a href="../Convenience.html">Convenience</a>.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000015_source')" id="l_M000015_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000006_source')" id="l_M000006_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L55" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L91" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000015_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 55</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span> <span class="ruby-identifier">params</span> = {}
-        <span class="ruby-keyword kw">return</span> {} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:query</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-identifier">:query</span>].<span class="ruby-identifier">empty?</span>
+                    <div id="M000006_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 91</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">params</span> = {}
+        <span class="ruby-keyword kw">return</span> {} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">query</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">query</span>.<span class="ruby-identifier">empty?</span>
         
-        <span class="ruby-identifier">send_search</span> <span class="ruby-identifier">params</span>
+        <span class="ruby-identifier">send_search</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span> <span class="ruby-identifier">:query</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">query</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -347,9 +347,9 @@ Returns a hash. Extend with <a href="../Convenience.html">Convenience</a>.
             </div>
             
             <div class="method">
-                <div class="title" id="M000016">
+                <div class="title" id="M000007">
                     
-                    <a name="M000016"></a><b>send_search</b>(params = {})
+                    <a name="M000007"></a><b>send_search</b>(params = {})
                     
                 </div>
                 
@@ -365,13 +365,13 @@ Sends a search to the configured address.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000016_source')" id="l_M000016_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000007_source')" id="l_M000007_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/78a29328fdb619b62b11f800498388ddb3811812/client/lib/picky-client/engine.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/client.rb#L99" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000016_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/engine.rb, line 63</span>
+                    <div id="M000007_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/client.rb, line 99</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_search</span> <span class="ruby-identifier">params</span> = {}
         <span class="ruby-identifier">params</span> = <span class="ruby-identifier">defaultize</span> <span class="ruby-identifier">params</span>
         <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">host</span>, <span class="ruby-node">&quot;#{self.path}?#{params.to_query}&quot;</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">port</span>

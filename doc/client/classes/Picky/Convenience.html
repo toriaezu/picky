@@ -30,7 +30,7 @@
     
     <div class="description">
         <p>
-Use this class to extend the hash the serializer returns.
+Use this class to extend the hash that the client returns.
 </p>
 
     </div>
@@ -50,9 +50,9 @@ Use this class to extend the hash the serializer returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000003">allocations</a>,</li>
+                <li><a href="#M000013">allocations</a>,</li>
                 
-                <li><a href="#M000004">allocations_size</a></li>
+                <li><a href="#M000014">allocations_size</a></li>
                 
             </ul>
         </dd>
@@ -61,7 +61,7 @@ Use this class to extend the hash the serializer returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000002">clear_ids</a></li>
+                <li><a href="#M000012">clear_ids</a></li>
                 
             </ul>
         </dd>
@@ -70,9 +70,9 @@ Use this class to extend the hash the serializer returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000000">empty?</a>,</li>
+                <li><a href="#M000010">empty?</a>,</li>
                 
-                <li><a href="#M000007">entries</a></li>
+                <li><a href="#M000017">entries</a></li>
                 
             </ul>
         </dd>
@@ -81,7 +81,7 @@ Use this class to extend the hash the serializer returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000001">ids</a></li>
+                <li><a href="#M000011">ids</a></li>
                 
             </ul>
         </dd>
@@ -90,16 +90,7 @@ Use this class to extend the hash the serializer returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000006">populate_with</a></li>
-                
-            </ul>
-        </dd>
-    
-        <dt>R</dt>
-        <dd>
-            <ul>
-                
-                <li><a href="#M000008">replace_ids_with</a></li>
+                <li><a href="#M000016">populate_with</a></li>
                 
             </ul>
         </dd>
@@ -108,7 +99,7 @@ Use this class to extend the hash the serializer returns.
         <dd>
             <ul>
                 
-                <li><a href="#M000005">total</a></li>
+                <li><a href="#M000015">total</a></li>
                 
             </ul>
         </dd>
@@ -130,15 +121,15 @@ Use this class to extend the hash the serializer returns.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000003">
+                <div class="title" id="M000013">
                     
-                    <a name="M000003"></a><b>allocations</b>()
+                    <a name="M000013"></a><b>allocations</b>()
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Caching readers.
+Returns the allocations.
 </p>
 
                 </div>
@@ -148,13 +139,13 @@ Caching readers.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000013_source')" id="l_M000013_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L33" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000003_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 26</span>
+                    <div id="M000013_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 33</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocations</span>
       <span class="ruby-ivar">@allocations</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@allocations</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:allocations</span>]
     <span class="ruby-keyword kw">end</span></pre>
@@ -164,42 +155,15 @@ Caching readers.
             </div>
             
             <div class="method">
-                <div class="title" id="M000004">
+                <div class="title" id="M000014">
                     
-                    <a name="M000004"></a><b>allocations_size</b>()
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000004_source')" id="l_M000004_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L29" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000004_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 29</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocations_size</span>
-      <span class="ruby-ivar">@allocations_size</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@allocations_size</span> = <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">size</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000002">
-                    
-                    <a name="M000002"></a><b>clear_ids</b>()
+                    <a name="M000014"></a><b>allocations_size</b>()
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Removes the ids from each allocation.
+Returns the number of allocations.
 </p>
 
                 </div>
@@ -209,13 +173,47 @@ Removes the ids from each allocation.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L20" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L38" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000002_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 20</span>
+                    <div id="M000014_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 38</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allocations_size</span>
+      <span class="ruby-ivar">@allocations_size</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@allocations_size</span> = <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000012">
+                    
+                    <a name="M000012"></a><b>clear_ids</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Removes all ids of each allocation.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000012_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 27</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_ids</span>
       <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allocation</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">clear</span> }
     <span class="ruby-keyword kw">end</span></pre>
@@ -225,9 +223,9 @@ Removes the ids from each allocation.
             </div>
             
             <div class="method">
-                <div class="title" id="M000000">
+                <div class="title" id="M000010">
                     
-                    <a name="M000000"></a><b>empty?</b>()
+                    <a name="M000010"></a><b>empty?</b>()
                     
                 </div>
                 
@@ -243,13 +241,13 @@ Are there any allocations?
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000010_source')" id="l_M000010_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L8" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L9" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000000_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 8</span>
+                    <div id="M000010_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 9</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
       <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-keyword kw">end</span></pre>
@@ -259,15 +257,35 @@ Are there any allocations?
             </div>
             
             <div class="method">
-                <div class="title" id="M000007">
+                <div class="title" id="M000017">
                     
-                    <a name="M000007"></a><b>entries</b>(limit = 20)
+                    <a name="M000017"></a><b>entries</b>(limit = 20)
                     
                 </div>
                 
                 <div class="description">
                   <p>
-The rendered results or AR instances if you have populated the results.
+Returns either
+</p>
+<ul>
+<li>the rendered entries, if you have used <a
+href="Convenience.html#M000016">populate_with</a> <em>with</em> a block
+
+</li>
+</ul>
+<p>
+OR
+</p>
+<ul>
+<li>the model instances, if you have used <a
+href="Convenience.html#M000016">populate_with</a> <em>without</em> a block
+
+</li>
+</ul>
+<p>
+Or, if you haven&#8217;t called <a
+href="Convenience.html#M000016">populate_with</a> yet, you will get an
+empty array.
 </p>
 
                 </div>
@@ -277,13 +295,13 @@ The rendered results or AR instances if you have populated the results.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000007_source')" id="l_M000007_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000017_source')" id="l_M000017_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L69" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L92" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000007_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 69</span>
+                    <div id="M000017_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 92</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">entries</span> <span class="ruby-identifier">limit</span> = <span class="ruby-value">20</span>
       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
         <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
@@ -300,16 +318,23 @@ The rendered results or AR instances if you have populated the results.
             </div>
             
             <div class="method">
-                <div class="title" id="M000001">
+                <div class="title" id="M000011">
                     
-                    <a name="M000001"></a><b>ids</b>(limit = 20)
+                    <a name="M000011"></a><b>ids</b>(limit = 20)
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Returns the topmost limit results.
+Returns the topmost n results. (Note that not all ids are returned with the
+results. By default only maximally 20.)
 </p>
+<h3>Parameters</h3>
+<ul>
+<li>limit: The amount of ids to return. Default is 20.
+
+</li>
+</ul>
 
                 </div>
                 
@@ -318,13 +343,13 @@ Returns the topmost limit results.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L13" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L19" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000001_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 13</span>
+                    <div id="M000011_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 19</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">limit</span> = <span class="ruby-value">20</span>
       <span class="ruby-identifier">ids</span> = []
       <span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span> <span class="ruby-identifier">allocation</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ids</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">limit</span>; <span class="ruby-identifier">ids</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">id</span> } }
@@ -336,15 +361,15 @@ Returns the topmost limit results.
             </div>
             
             <div class="method">
-                <div class="title" id="M000006">
+                <div class="title" id="M000016">
                     
-                    <a name="M000006"></a><b>populate_with</b>(klass, amount = 20, options = {})
+                    <a name="M000016"></a><b>populate_with</b>(model_class, amount = 20, options = {})
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Populating the results.
+Populates the ids with (rendered) model instances.
 </p>
 <p>
 Give it an AR class and options for the find and it will yield each found
@@ -353,6 +378,23 @@ result for you to render.
 <p>
 If you don&#8217;t pass it a block, it will just use the AR results.
 </p>
+<h3>Parameters</h3>
+<ul>
+<li>model_class: The model to use for the results. Will call find on the given
+class.
+
+</li>
+<li>amount: Amount of results to populate. Default 20.
+
+</li>
+</ul>
+<h3>Options</h3>
+<ul>
+<li>options are directly passed through to the ModelClass.find(ids, options)
+method. Default is {}.
+
+</li>
+</ul>
 
                 </div>
                 
@@ -361,17 +403,17 @@ If you don&#8217;t pass it a block, it will just use the AR results.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000006_source')" id="l_M000006_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000016_source')" id="l_M000016_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L43" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L61" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000006_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 43</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">populate_with</span> <span class="ruby-identifier">klass</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-value">20</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+                    <div id="M000016_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 61</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">populate_with</span> <span class="ruby-identifier">model_class</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-value">20</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
       <span class="ruby-identifier">the_ids</span> = <span class="ruby-identifier">ids</span> <span class="ruby-identifier">amount</span>
       
-      <span class="ruby-identifier">objects</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">find</span> <span class="ruby-identifier">the_ids</span>, <span class="ruby-identifier">options</span>
+      <span class="ruby-identifier">objects</span> = <span class="ruby-identifier">model_class</span>.<span class="ruby-identifier">find</span> <span class="ruby-identifier">the_ids</span>, <span class="ruby-identifier">options</span>
       
       <span class="ruby-comment cmt"># Put together a mapping.</span>
       <span class="ruby-comment cmt">#</span>
@@ -386,7 +428,7 @@ If you don&#8217;t pass it a block, it will just use the AR results.
       
       <span class="ruby-identifier">objects</span>.<span class="ruby-identifier">collect!</span> <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
       
-      <span class="ruby-identifier">replace_ids_with</span> <span class="ruby-identifier">objects</span>
+      <span class="ruby-identifier">amend_ids_with</span> <span class="ruby-identifier">objects</span>
       <span class="ruby-identifier">clear_ids</span>
       
       <span class="ruby-identifier">objects</span>
@@ -397,16 +439,15 @@ If you don&#8217;t pass it a block, it will just use the AR results.
             </div>
             
             <div class="method">
-                <div class="title" id="M000008">
+                <div class="title" id="M000015">
                     
-                    <a name="M000008"></a><b>replace_ids_with</b>(entries)
+                    <a name="M000015"></a><b>total</b>()
                     
                 </div>
                 
                 <div class="description">
                   <p>
-The ids need to come in the order which the ids were returned by the ids
-method.
+Returns the total of results.
 </p>
 
                 </div>
@@ -416,47 +457,13 @@ method.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000008_source')" id="l_M000008_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000015_source')" id="l_M000015_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L82" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000008_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 82</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace_ids_with</span> <span class="ruby-identifier">entries</span>
-      <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
-      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allocations</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">allocation</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">allocation</span>[<span class="ruby-value">5</span>] = <span class="ruby-identifier">allocation</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_</span><span class="ruby-operator">|</span>
-          <span class="ruby-identifier">e</span> = <span class="ruby-identifier">entries</span>[<span class="ruby-identifier">i</span>]
-          <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-          <span class="ruby-identifier">e</span>
-        <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">end</span>
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000005">
-                    
-                    <a name="M000005"></a><b>total</b>()
-                    
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000005_source')" id="l_M000005_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/c207a59f298ec32b3918788e7814c58e8e8801b4/client/lib/picky-client/convenience.rb#L32" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/b6cc15801dba943d1581e4df583bc2def8f4069c/client/lib/picky-client/convenience.rb#L43" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000005_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 32</span>
+                    <div id="M000015_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky-client/convenience.rb, line 43</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">total</span>
       <span class="ruby-ivar">@total</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@total</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:total</span>]
     <span class="ruby-keyword kw">end</span></pre>
