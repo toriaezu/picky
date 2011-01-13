@@ -19,7 +19,7 @@
       .navigation
         - def class_for(url, klass = ''); if page.url == url then "current #{klass}" else klass end end
         %a{ :href => 'index.html', :class => class_for('/index.html') } about
-        %a{ :href => 'details.html', :class => class_for('/details.html') } detail
+        %a{ :href => 'details.html', :class => class_for('/details.html') } details
         %a{ :href => 'getting_started.html', :class => class_for('/getting_started.html') } getting started
         %a{ :href => 'documentation.html', :class => class_for('/documentation.html') } documentation
         
