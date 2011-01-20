@@ -89,7 +89,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000040">harvest</a></li>
+                <li><a href="#M000045">harvest</a></li>
                 
             </ul>
         </dd>
@@ -98,7 +98,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000038">new</a></li>
+                <li><a href="#M000043">new</a></li>
                 
             </ul>
         </dd>
@@ -111,6 +111,17 @@ Examples:
     
 
     
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Couch/HexKeys.html">Sources::Couch::HexKeys</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Couch/IntegerKeys.html">Sources::Couch::IntegerKeys</a></li>
+        
+        <li><span class="type">CLASS</span> <a href="Couch/UUIDKeys.html">Sources::Couch::UUIDKeys</a></li>
+        
+    </ul>
+    
 
     
 
@@ -120,9 +131,9 @@ Examples:
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000038">
+                <div class="title" id="M000043">
                     
-                    <a name="M000038"></a><b>new</b>(*category_names, options)
+                    <a name="M000043"></a><b>new</b>(*category_names, options)
                     
                 </div>
                 
@@ -131,17 +142,20 @@ Examples:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000038_source')" id="l_M000038_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000043_source')" id="l_M000043_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/286dc0161fb1966f93b38659137c0191de3ebdf8/server/lib/picky/sources/couch.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/dd023f07a86409ab318e8e88f0562eebdc535b6e/server/lib/picky/sources/couch.rb#L83" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000038_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 38</span>
+                    <div id="M000043_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 83</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">category_names</span>, <span class="ruby-identifier">options</span>
       <span class="ruby-identifier">check_gem</span>
+      
       <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:url</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">raise_no_db_given</span>(<span class="ruby-identifier">category_names</span>)
       <span class="ruby-ivar">@db</span> = <span class="ruby-constant">RestClient</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:url</span>), <span class="ruby-identifier">options</span>
+      
+      <span class="ruby-ivar">@to_i_strategy</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:keys</span>) <span class="ruby-operator">||</span> <span class="ruby-constant">HexKeys</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -151,20 +165,10 @@ Examples:
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000040">
+                <div class="title" id="M000045">
                     
-                    <a name="M000040"></a><b>harvest</b>(type, category)
+                    <a name="M000045"></a><b>harvest</b>(type, category)
                     
-                </div>
-                
-                <div class="description">
-                  <p>
-Harvests the data to index.
-</p>
-<p>
-See important note, above.
-</p>
-
                 </div>
                 
                 
@@ -172,17 +176,17 @@ See important note, above.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000040_source')" id="l_M000040_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000045_source')" id="l_M000045_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/286dc0161fb1966f93b38659137c0191de3ebdf8/server/lib/picky/sources/couch.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/dd023f07a86409ab318e8e88f0562eebdc535b6e/server/lib/picky/sources/couch.rb#L106" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000040_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 57</span>
+                    <div id="M000045_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 106</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">category</span>
       <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>.<span class="ruby-identifier">to_s</span>
       <span class="ruby-identifier">get_data</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">doc</span><span class="ruby-operator">|</span>
-        <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">doc</span>[<span class="ruby-value str">'_id'</span>].<span class="ruby-identifier">hex</span>, <span class="ruby-identifier">doc</span>[<span class="ruby-identifier">category_name</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">next</span>
+        <span class="ruby-keyword kw">yield</span> <span class="ruby-ivar">@to_i_strategy</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-identifier">doc</span>[<span class="ruby-ivar">@@id_key</span>]), <span class="ruby-identifier">doc</span>[<span class="ruby-identifier">category_name</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">next</span>
       <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>

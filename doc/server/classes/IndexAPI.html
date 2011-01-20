@@ -66,7 +66,7 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
         <dd>
             <ul>
                 
-                <li><a href="#M000013">category</a></li>
+                <li><a href="#M000016">category</a></li>
                 
             </ul>
         </dd>
@@ -75,9 +75,9 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
         <dd>
             <ul>
                 
-                <li><a href="#M000012">define_category</a>,</li>
+                <li><a href="#M000015">define_category</a>,</li>
                 
-                <li><a href="#M000014">define_ranged_category</a></li>
+                <li><a href="#M000017">define_ranged_category</a></li>
                 
             </ul>
         </dd>
@@ -86,7 +86,7 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
         <dd>
             <ul>
                 
-                <li><a href="#M000011">new</a></li>
+                <li><a href="#M000014">new</a></li>
                 
             </ul>
         </dd>
@@ -95,7 +95,7 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
         <dd>
             <ul>
                 
-                <li><a href="#M000015">ranged_category</a></li>
+                <li><a href="#M000018">ranged_category</a></li>
                 
             </ul>
         </dd>
@@ -146,9 +146,9 @@ Note: An Index holds both an <b>Indexed</b>::<b>Index</b> and an
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000011">
+                <div class="title" id="M000014">
                     
-                    <a name="M000011"></a><b>new</b>(name, source, options = {})
+                    <a name="M000014"></a><b>new</b>(name, source, options = {})
                     
                 </div>
                 
@@ -163,7 +163,7 @@ front end.
 
 </li>
 <li>source: Where the data comes from, e.g. <a
-href="Sources/CSV.html#M000043">Sources::CSV.new(...)</a>
+href="Sources/CSV.html#M000048">Sources::CSV.new(...)</a>
 
 </li>
 </ul>
@@ -186,12 +186,12 @@ given after_indexing as SQL after the indexing process.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000011_source')" id="l_M000011_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/bbab420f47d279547f3620aee75845c3f86de4c9/server/lib/picky/index_api.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/618dc412c3b59a3a5d7bcf1648b5b50c94f644fe/server/lib/picky/index_api.rb#L22" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000011_source" class="dyn-source">
+                    <div id="M000014_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 22</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span> = {}
     <span class="ruby-ivar">@name</span>     = <span class="ruby-identifier">name</span>
@@ -210,15 +210,15 @@ given after_indexing as SQL after the indexing process.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000013">
+                <div class="title" id="M000016">
                     
-                    <a name="M000013"></a><b>category</b>(category_name, options = {})
+                    <a name="M000016"></a><b>category</b>(category_name, options = {})
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Alias for <a href="IndexAPI.html#M000012">define_category</a>
+Alias for <a href="IndexAPI.html#M000015">define_category</a>
 </p>
 
                 </div>
@@ -228,9 +228,9 @@ Alias for <a href="IndexAPI.html#M000012">define_category</a>
             </div>
             
             <div class="method">
-                <div class="title" id="M000012">
+                <div class="title" id="M000015">
                     
-                    <a name="M000012"></a><b>define_category</b>(category_name, options = {})
+                    <a name="M000015"></a><b>define_category</b>(category_name, options = {})
                     
                 </div>
                 
@@ -275,10 +275,10 @@ mailing list first with your application.rb :)
 </li>
 <li>from: Take the data from the data category with this name. Example: You
 have a source <a
-href="Sources/CSV.html#M000043">Sources::CSV.new</a>(:title,
+href="Sources/CSV.html#M000048">Sources::CSV.new</a>(:title,
 file:&#8217;some_file.csv&#8217;) but you want the category to be called
 differently. The you use from: <a
-href="IndexAPI.html#M000012">define_category</a>(:similar_title, :from =>
+href="IndexAPI.html#M000015">define_category</a>(:similar_title, :from =>
 :title).
 
 </li>
@@ -290,7 +290,7 @@ href="IndexAPI.html#M000012">define_category</a>(:similar_title, :from =>
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="IndexAPI.html#M000013">category</a>
+                    <a href="IndexAPI.html#M000016">category</a>
                     
                 </div>
                 
@@ -298,12 +298,12 @@ href="IndexAPI.html#M000012">define_category</a>(:similar_title, :from =>
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000012_source')" id="l_M000012_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000015_source')" id="l_M000015_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/bbab420f47d279547f3620aee75845c3f86de4c9/server/lib/picky/index_api.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/618dc412c3b59a3a5d7bcf1648b5b50c94f644fe/server/lib/picky/index_api.rb#L45" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000012_source" class="dyn-source">
+                    <div id="M000015_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 45</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">options</span> = {}
     <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category_name</span>.<span class="ruby-identifier">to_sym</span>
@@ -321,9 +321,9 @@ href="IndexAPI.html#M000012">define_category</a>(:similar_title, :from =>
             </div>
             
             <div class="method">
-                <div class="title" id="M000014">
+                <div class="title" id="M000017">
                     
-                    <a name="M000014"></a><b>define_ranged_category</b>(category_name, range, options = {})
+                    <a name="M000017"></a><b>define_ranged_category</b>(category_name, range, options = {})
                     
                 </div>
                 
@@ -402,7 +402,7 @@ Or go crazy and use 4 ranged categories for a space/time search! ;)
 <h3>Parameters</h3>
 <ul>
 <li>category_name: The category_name as used in <a
-href="IndexAPI.html#M000012">define_category</a>.
+href="IndexAPI.html#M000015">define_category</a>.
 
 </li>
 <li>range: The range (in the units of your data values) around the query point
@@ -419,7 +419,7 @@ where we search for results.
 margin, slower) makes sense.
 
 </li>
-<li>&#8230; all options of <a href="IndexAPI.html#M000012">define_category</a>.
+<li>&#8230; all options of <a href="IndexAPI.html#M000015">define_category</a>.
 
 </li>
 </ul>
@@ -430,7 +430,7 @@ margin, slower) makes sense.
                 <div class="aka">
                     This method is also aliased as
                     
-                    <a href="IndexAPI.html#M000015">ranged_category</a>
+                    <a href="IndexAPI.html#M000018">ranged_category</a>
                     
                 </div>
                 
@@ -438,12 +438,12 @@ margin, slower) makes sense.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000014_source')" id="l_M000014_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000017_source')" id="l_M000017_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/bbab420f47d279547f3620aee75845c3f86de4c9/server/lib/picky/index_api.rb#L116" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/618dc412c3b59a3a5d7bcf1648b5b50c94f644fe/server/lib/picky/index_api.rb#L116" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000014_source" class="dyn-source">
+                    <div id="M000017_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/index_api.rb, line 116</span>
   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">define_ranged_category</span> <span class="ruby-identifier">category_name</span>, <span class="ruby-identifier">range</span>, <span class="ruby-identifier">options</span> = {}
     <span class="ruby-identifier">precision</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:precision</span>]
@@ -465,15 +465,15 @@ margin, slower) makes sense.
             </div>
             
             <div class="method">
-                <div class="title" id="M000015">
+                <div class="title" id="M000018">
                     
-                    <a name="M000015"></a><b>ranged_category</b>(category_name, range, options = {})
+                    <a name="M000018"></a><b>ranged_category</b>(category_name, range, options = {})
                     
                 </div>
                 
                 <div class="description">
                   <p>
-Alias for <a href="IndexAPI.html#M000014">define_ranged_category</a>
+Alias for <a href="IndexAPI.html#M000017">define_ranged_category</a>
 </p>
 
                 </div>

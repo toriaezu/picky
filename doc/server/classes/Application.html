@@ -293,7 +293,9 @@ That&#8217;s actually already a full-blown Picky App!
         <dd>
             <ul>
                 
-                <li><a href="#M000003">call</a></li>
+                <li><a href="#M000003">call</a>,</li>
+                
+                <li><a href="#M000010">check_external_interface</a></li>
                 
             </ul>
         </dd>
@@ -358,13 +360,40 @@ Delegates to its routing to handle a request.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/bbab420f47d279547f3620aee75845c3f86de4c9/server/lib/picky/application.rb#L200" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L200" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000003_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 200</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
-      <span class="ruby-identifier">routing</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
+      <span class="ruby-identifier">rack_adapter</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000010">
+                    
+                    <a name="M000010"></a><b>check_external_interface</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000010_source')" id="l_M000010_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L239" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000010_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 239</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_external_interface</span>
+      <span class="ruby-node">&quot;WARNING: No routes defined for application configuration in #{self.class}.&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rack_adapter</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -392,7 +421,7 @@ Returns a configured tokenizer that is used for indexing by default.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/bbab420f47d279547f3620aee75845c3f86de4c9/server/lib/picky/application.rb#L161" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L161" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000000_source" class="dyn-source">
@@ -426,7 +455,7 @@ Returns a configured tokenizer that is used for querying by default.
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/bbab420f47d279547f3620aee75845c3f86de4c9/server/lib/picky/application.rb#L168" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L168" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000001_source" class="dyn-source">
@@ -469,8 +498,7 @@ Parameters:
 </ul>
 </li>
 <li>source: The source the data comes from. See <a
-href="Sources/Base.html">Sources::Base</a>. # TODO <a
-href="Sources.html">Sources</a> (all).
+href="Sources/Base.html">Sources::Base</a>.
 
 </li>
 </ul>
@@ -478,7 +506,8 @@ href="Sources.html">Sources</a> (all).
 Options:
 </p>
 <ul>
-<li>result_identifier: # TODO Rename.
+<li>result_identifier: Use if you&#8217;d like a different identifier/name in
+the results JSON than the name of the index.
 
 </li>
 </ul>
@@ -492,7 +521,7 @@ Options:
                     <p class="source-link">
                         Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/bbab420f47d279547f3620aee75845c3f86de4c9/server/lib/picky/application.rb#L184" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L184" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
                     <div id="M000002_source" class="dyn-source">
