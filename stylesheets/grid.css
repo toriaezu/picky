@@ -27,6 +27,11 @@
 	margin-right: 10px;
 }
 
+.container_2 .grid_1, .grid_2 {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
 /* Grid >> Children (Alpha ~ First, Omega ~ Last)
 ----------------------------------------------------------------------------------------------------*/
 
