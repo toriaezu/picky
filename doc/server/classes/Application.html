@@ -189,10 +189,10 @@ Nice, right? Your first query!
 Maybe you don&#8217;t find everything. We need to process the data before
 it goes into the index.
 </p>
-<h2><a href="Application.html#M000000">default_indexing</a>(options = {})</h2>
+<h2><a href="Application.html#M000007">default_indexing</a>(options = {})</h2>
 <p>
 That&#8217;s what the <tt><a
-href="Application.html#M000000">default_indexing</a></tt> method is for:
+href="Application.html#M000007">default_indexing</a></tt> method is for:
 </p>
 <pre>
   default_indexing options
@@ -204,11 +204,11 @@ href="http://github.com/floere/picky/wiki/Indexing-configuration">github.com/flo
 <p>
 Same thing with the search text – we need to process that as well.
 </p>
-<h2><a href="Application.html#M000001">default_querying</a>(options = {})</h2>
+<h2><a href="Application.html#M000008">default_querying</a>(options = {})</h2>
 <p>
-Analog to the <a href="Application.html#M000000">default_indexing</a>
+Analog to the <a href="Application.html#M000007">default_indexing</a>
 method, we use the <tt><a
-href="Application.html#M000001">default_querying</a></tt> method.
+href="Application.html#M000008">default_querying</a></tt> method.
 </p>
 <pre>
   default_querying options
@@ -293,9 +293,9 @@ That&#8217;s actually already a full-blown Picky App!
         <dd>
             <ul>
                 
-                <li><a href="#M000003">call</a>,</li>
+                <li><a href="#M000010">call</a>,</li>
                 
-                <li><a href="#M000010">check_external_interface</a></li>
+                <li><a href="#M000017">check_external_interface</a></li>
                 
             </ul>
         </dd>
@@ -304,9 +304,9 @@ That&#8217;s actually already a full-blown Picky App!
         <dd>
             <ul>
                 
-                <li><a href="#M000000">default_indexing</a>,</li>
+                <li><a href="#M000007">default_indexing</a>,</li>
                 
-                <li><a href="#M000001">default_querying</a></li>
+                <li><a href="#M000008">default_querying</a></li>
                 
             </ul>
         </dd>
@@ -315,7 +315,7 @@ That&#8217;s actually already a full-blown Picky App!
         <dd>
             <ul>
                 
-                <li><a href="#M000002">index</a></li>
+                <li><a href="#M000009">index</a></li>
                 
             </ul>
         </dd>
@@ -337,9 +337,9 @@ That&#8217;s actually already a full-blown Picky App!
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000003">
+                <div class="title" id="M000010">
                     
-                    <a name="M000003"></a><b>call</b>(env)
+                    <a name="M000010"></a><b>call</b>(env)
                     
                 </div>
                 
@@ -358,12 +358,12 @@ Delegates to its routing to handle a request.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000010_source')" id="l_M000010_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L200" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000003_source" class="dyn-source">
+                    <div id="M000010_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 200</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
       <span class="ruby-identifier">rack_adapter</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">env</span>
@@ -374,9 +374,9 @@ Delegates to its routing to handle a request.
             </div>
             
             <div class="method">
-                <div class="title" id="M000010">
+                <div class="title" id="M000017">
                     
-                    <a name="M000010"></a><b>check_external_interface</b>()
+                    <a name="M000017"></a><b>check_external_interface</b>()
                     
                 </div>
                 
@@ -385,12 +385,12 @@ Delegates to its routing to handle a request.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000010_source')" id="l_M000010_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000017_source')" id="l_M000017_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L239" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000010_source" class="dyn-source">
+                    <div id="M000017_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 239</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_external_interface</span>
       <span class="ruby-node">&quot;WARNING: No routes defined for application configuration in #{self.class}.&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rack_adapter</span>.<span class="ruby-identifier">empty?</span>
@@ -401,9 +401,9 @@ Delegates to its routing to handle a request.
             </div>
             
             <div class="method">
-                <div class="title" id="M000000">
+                <div class="title" id="M000007">
                     
-                    <a name="M000000"></a><b>default_indexing</b>(options = {})
+                    <a name="M000007"></a><b>default_indexing</b>(options = {})
                     
                 </div>
                 
@@ -419,12 +419,12 @@ Returns a configured tokenizer that is used for indexing by default.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000007_source')" id="l_M000007_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L161" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000000_source" class="dyn-source">
+                    <div id="M000007_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 161</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_indexing</span> <span class="ruby-identifier">options</span> = {}
       <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">default</span> = <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
@@ -435,9 +435,9 @@ Returns a configured tokenizer that is used for indexing by default.
             </div>
             
             <div class="method">
-                <div class="title" id="M000001">
+                <div class="title" id="M000008">
                     
-                    <a name="M000001"></a><b>default_querying</b>(options = {})
+                    <a name="M000008"></a><b>default_querying</b>(options = {})
                     
                 </div>
                 
@@ -453,12 +453,12 @@ Returns a configured tokenizer that is used for querying by default.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000008_source')" id="l_M000008_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L168" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000001_source" class="dyn-source">
+                    <div id="M000008_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 168</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_querying</span> <span class="ruby-identifier">options</span> = {}
       <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Query</span>.<span class="ruby-identifier">default</span> = <span class="ruby-constant">Tokenizers</span><span class="ruby-operator">::</span><span class="ruby-constant">Query</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
@@ -469,9 +469,9 @@ Returns a configured tokenizer that is used for querying by default.
             </div>
             
             <div class="method">
-                <div class="title" id="M000002">
+                <div class="title" id="M000009">
                     
-                    <a name="M000002"></a><b>index</b>(name, source, options = {})
+                    <a name="M000009"></a><b>index</b>(name, source, options = {})
                     
                 </div>
                 
@@ -519,12 +519,12 @@ the results JSON than the name of the index.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000009_source')" id="l_M000009_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/207d6a6496a1ab9c82ccad2a06e0516eaa592dc2/server/lib/picky/application.rb#L184" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000002_source" class="dyn-source">
+                    <div id="M000009_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/application.rb, line 184</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span> = {}
       <span class="ruby-constant">IndexAPI</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span>

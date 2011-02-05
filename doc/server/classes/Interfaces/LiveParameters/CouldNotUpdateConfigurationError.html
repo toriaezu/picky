@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Sources::Couch::IntegerKeys</title>
+    <title>Interfaces::LiveParameters::CouldNotUpdateConfigurationError</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
@@ -16,34 +16,23 @@
     <div class="banner">
         <h1>
             <span class="type">Class</span> 
-            Sources::Couch::IntegerKeys 
+            Interfaces::LiveParameters::CouldNotUpdateConfigurationError 
             
                 <span class="parent">&lt; 
                     
-                    <a href="../../Object.html">Object</a>
+                    StandardError
                     
                 </span>
             
         </h1>
         <ul class="files">
             
-            <li><a href="../../../files/lib/picky/sources/couch_rb.html">lib/picky/sources/couch.rb</a></li>
+            <li><a href="../../../files/lib/picky/interfaces/live_parameters_rb.html">lib/picky/interfaces/live_parameters.rb</a></li>
             
         </ul>
     </div>
     <div id="bodyContent">
         <div id="content">
-    
-    <div class="description">
-        <p>
-If your <a href="../Couch.html">Couch</a> <a href="../DB.html">DB</a> uses
-Integer keys, use
-</p>
-<pre>
- Sources::Couch.new(:title, keys: Sources::Couch::IntegerKeys.new)
-</pre>
-
-    </div>
     
 
     
@@ -56,11 +45,11 @@ Integer keys, use
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
     
-        <dt>T</dt>
+        <dt>N</dt>
         <dd>
             <ul>
                 
-                <li><a href="#M000042">to_i</a></li>
+                <li><a href="#M000056">new</a></li>
                 
             </ul>
         </dd>
@@ -77,14 +66,27 @@ Integer keys, use
     
 
     
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>config_key</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
 
     
-            <div class="sectiontitle">Instance Public methods</div>
+            <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000042">
+                <div class="title" id="M000056">
                     
-                    <a name="M000042"></a><b>to_i</b>(id)
+                    <a name="M000056"></a><b>new</b>(config_key, message)
                     
                 </div>
                 
@@ -93,15 +95,16 @@ Integer keys, use
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000042_source')" id="l_M000042_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000056_source')" id="l_M000056_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/dd023f07a86409ab318e8e88f0562eebdc535b6e/server/lib/picky/sources/couch.rb#L76" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/631c1856c0feb2134436f94615f0e3177b3bd4f7/server/lib/picky/interfaces/live_parameters.rb#L109" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000042_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 76</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_i</span> <span class="ruby-identifier">id</span>
-        <span class="ruby-identifier">id</span>
+                    <div id="M000056_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/interfaces/live_parameters.rb, line 109</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">config_key</span>, <span class="ruby-identifier">message</span>
+        <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">message</span>
+        <span class="ruby-ivar">@config_key</span> = <span class="ruby-identifier">config_key</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

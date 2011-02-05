@@ -77,7 +77,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000066">harvest</a></li>
+                <li><a href="#M000106">harvest</a></li>
                 
             </ul>
         </dd>
@@ -86,7 +86,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000064">new</a></li>
+                <li><a href="#M000104">new</a></li>
                 
             </ul>
         </dd>
@@ -108,9 +108,9 @@ Examples:
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000064">
+                <div class="title" id="M000104">
                     
-                    <a name="M000064"></a><b>new</b>(username, password)
+                    <a name="M000104"></a><b>new</b>(username, password)
                     
                 </div>
                 
@@ -119,12 +119,12 @@ Examples:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000064_source')" id="l_M000064_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000104_source')" id="l_M000104_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/b44108b047120cc2994e9bfdfaacd5ec79ce5ae7/server/lib/picky/sources/delicious.rb#L15" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/8b9261017cab5d8daf3309a96822e483a8931c61/server/lib/picky/sources/delicious.rb#L15" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000064_source" class="dyn-source">
+                    <div id="M000104_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/delicious.rb, line 15</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>
       <span class="ruby-identifier">check_gem</span>
@@ -139,9 +139,9 @@ Examples:
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000066">
+                <div class="title" id="M000106">
                     
-                    <a name="M000066"></a><b>harvest</b>(_, category)
+                    <a name="M000106"></a><b>harvest</b>(_, category)
                     
                 </div>
                 
@@ -157,16 +157,15 @@ Harvests the data to index.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000066_source')" id="l_M000066_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000106_source')" id="l_M000106_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/b44108b047120cc2994e9bfdfaacd5ec79ce5ae7/server/lib/picky/sources/delicious.rb#L29" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/8b9261017cab5d8daf3309a96822e483a8931c61/server/lib/picky/sources/delicious.rb#L29" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000066_source" class="dyn-source">
+                    <div id="M000106_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/delicious.rb, line 29</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">_</span>, <span class="ruby-identifier">category</span>
-      <span class="ruby-identifier">get_data</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uid</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">indexed_id</span> = <span class="ruby-identifier">uid</span>
+      <span class="ruby-identifier">get_data</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indexed_id</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">text</span> = <span class="ruby-identifier">data</span>[<span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>]
         <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">text</span>
         <span class="ruby-identifier">text</span>.<span class="ruby-identifier">force_encoding</span> <span class="ruby-value str">'utf-8'</span> <span class="ruby-comment cmt"># TODO Still needed?</span>

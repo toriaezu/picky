@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Sources::Couch::HexKeys</title>
+    <title>Adapters::Rack::Base</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
@@ -16,7 +16,7 @@
     <div class="banner">
         <h1>
             <span class="type">Class</span> 
-            Sources::Couch::HexKeys 
+            Adapters::Rack::Base 
             
                 <span class="parent">&lt; 
                     
@@ -27,7 +27,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../../../files/lib/picky/sources/couch_rb.html">lib/picky/sources/couch.rb</a></li>
+            <li><a href="../../../files/lib/picky/adapters/rack/base_rb.html">lib/picky/adapters/rack/base.rb</a></li>
             
         </ul>
     </div>
@@ -36,18 +36,13 @@
     
     <div class="description">
         <p>
-If your <a href="../Couch.html">Couch</a> <a href="../DB.html">DB</a> uses
-Hex keys, use
+Subclasses of this class should respond to
 </p>
-<pre>
- Sources::Couch.new(:title, keys: Sources::Couch::HexKeys.new)
-</pre>
-<p>
-Do not forget to reconvert the Hex Key from an integer in the client:
-</p>
-<pre>
- id.to_s(16)
-</pre>
+<ul>
+<li>to_app(options)
+
+</li>
+</ul>
 
     </div>
     
@@ -62,11 +57,11 @@ Do not forget to reconvert the Hex Key from an integer in the client:
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
     
-        <dt>T</dt>
+        <dt>R</dt>
         <dd>
             <ul>
                 
-                <li><a href="#M000041">to_i</a></li>
+                <li><a href="#M000000">respond_with</a></li>
                 
             </ul>
         </dd>
@@ -88,10 +83,22 @@ Do not forget to reconvert the Hex Key from an integer in the client:
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000041">
+                <div class="title" id="M000000">
                     
-                    <a name="M000041"></a><b>to_i</b>(id)
+                    <a name="M000000"></a><b>respond_with</b>(response, content_type = 'application/json')
                     
+                </div>
+                
+                <div class="description">
+                  <p>
+Puts together an appropriately structured <a href="../Rack.html">Rack</a>
+response.
+</p>
+<p>
+Note: Bytesize is needed to have special characters not trip up <a
+href="../Rack.html">Rack</a>.
+</p>
+
                 </div>
                 
                 
@@ -99,15 +106,15 @@ Do not forget to reconvert the Hex Key from an integer in the client:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000041_source')" id="l_M000041_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/dd023f07a86409ab318e8e88f0562eebdc535b6e/server/lib/picky/sources/couch.rb#L67" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/0e551b153b4fadf0f61eac861ac332fbfcb2c381/server/lib/picky/adapters/rack/base.rb#L15" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000041_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 67</span>
-      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_i</span> <span class="ruby-identifier">id</span>
-        <span class="ruby-identifier">id</span>.<span class="ruby-identifier">hex</span>
+                    <div id="M000000_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/adapters/rack/base.rb, line 15</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">respond_with</span> <span class="ruby-identifier">response</span>, <span class="ruby-identifier">content_type</span> = <span class="ruby-value str">'application/json'</span>
+        [<span class="ruby-value">200</span>, { <span class="ruby-value str">'Content-Type'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">content_type</span>, <span class="ruby-value str">'Content-Length'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">bytesize</span>.<span class="ruby-identifier">to_s</span> }, [<span class="ruby-identifier">response</span>]]
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
