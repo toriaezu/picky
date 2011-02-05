@@ -8,7 +8,7 @@ layout: enterprise
   .grid_2.white
     %p
       Yes.
-    %h2 Surely you're kidding!
+    %h3 Surely you're kidding!
     %p
       Don't be deceived by the cute appearance! Picky is a tough little bastard.
     %p
@@ -17,9 +17,9 @@ layout: enterprise
         %a{ :href => '#use_case_1' } see use case 1
       where it can handle more than 10 million moderately complex search requests per day. 
 .container_2
-  %h2 Features
+  %h2 Enterprisey Features
   .grid_1
-    %h2 Stability
+    %h3 Stability
     %p
       Codewise, Picky is tested by around 900 unit and integration specs. Code size is extremely small (~4000 loc), making it easy to maintain.
     %p
@@ -31,7 +31,7 @@ layout: enterprise
       After filling the Unicorn request buffers, Picky predictably went down, but recuperating like fresh spring dew after the torrent was over.
     %p
       In the mentioned project, Picky has been running without fail now for more than a year. It has been shown to be totally maintenance free.
-    %h2 Scalability (requests)
+    %h3 Scalability (requests)
     %p
       Picky scales very well with your data.
     %p
@@ -44,7 +44,7 @@ layout: enterprise
       etc.
     %p
       We've added two servers to the first one like this, without problems. We just needed to add the new server to the varnish front end round robin list.
-    %h2 Scalability (data)
+    %h3 Scalability (data)
     %p
       Picky is a combinatorial search engine. Meaning: All the data needs to be available for combining.
     %p
@@ -55,7 +55,7 @@ layout: enterprise
       If your data is slowly growing (linearly), we recommend to use Picky.
       
   .grid_1
-    %h2 Speed
+    %h3 Speed
     %p
       Most people think – since it is written in Ruby – it must be slow.
     %p
@@ -66,7 +66,7 @@ layout: enterprise
       Lots of consideration went into writing performant Ruby code. For example, each request has a very small memory footprint.
     %p
       Around 100 specs test for possible performance reductions. Critical parts have been rewritten in C, giving it the edge it needs.
-    %h2 Modularity
+    %h3 Modularity
     %p
       From the ground up, Picky is designed to be very flexible.
     %p
@@ -76,7 +76,7 @@ layout: enterprise
 .container_2
   %h2 Use Cases
   .grid_1
-    %h2#use_case_1 Case 1: Telephone Search
+    %h3#use_case_1 Case 1: Telephone Search
     %p
       Picky was used in a telephone search engine, where it was possible to search for address, phone number, names, organization, and many other search features.
     %h3 Amount of Data
