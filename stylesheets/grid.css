@@ -29,7 +29,17 @@
 
 .container_2 .grid_1, .grid_2 {
   margin-left: 0px;
-  margin-right: 10px;
+  margin-right: 0px;
+}
+.container_2 .grid_1:first-of-type {
+  margin-right: 40px;
+}
+
+.container_2 .grid_2 .grid_1:first-of-type {
+  margin-right: 20px;
+}
+.container_2 .grid_2 .grid_1:last-of-type {
+  margin-right: 0px;
 }
 
 /* Grid >> Children (Alpha ~ First, Omega ~ Last)

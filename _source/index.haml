@@ -11,7 +11,8 @@ layout: default
       Picky is a really
       %strong easy to use
       and
-      %strong fast
+      %strong
+        %a{ :href => 'enterprise.html#use_case_1' } fast
       Ruby search engine that helps your users
       %strong find what they are looking for.
     %h3 Try…
@@ -27,16 +28,24 @@ layout: default
             %a{ :href => 'http://twixtel.com' } TwixTel online
     %h3 What it is
     %p
-      A small-text search engine for categorized data, such as varchar fields from a database (such as most data).
+      A
+      %a{ :href => 'details.html' } small-text search engine
+      for categorized data, such as varchar fields from a database (probably like most – if not all – data in your application).
     %p
-      It offers a HTTP interface, and a comfortable web front end for your application.
-    %p
-      Continue reading in the
-      = succeed('.') do
-        %a{ :href => 'details.html' } in Detail section
+      The
+      %a{ :href => 'features.html#server' } server
+      offers a HTTP interface, and a
+      %a{ :href => 'features.html#client' } comfortable web front end
+      for your application. There's also a
+      %a{ :href => 'features.html#statistics' } statistics web app
+      and a
+      %a{ :href => 'features.html#live' } live interface
+      for changing parameters inside the running server.
     %h3 What it is not
     %p
-      A full-text search engine for uncategorized data (like text from a book). If you need that, look at
+      A
+      %a{ :href => 'http://en.wikipedia.org/wiki/Full-text' } full-text search engine
+      for uncategorized data (like text from a book). If you need that, look at
       %a{ :href => 'http://sphinxsearch.com/' } Sphinx
       or
       = succeed('.') do
