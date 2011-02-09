@@ -70,7 +70,10 @@ layout: default
       But don't call him that. He likes to be called "Octor the Destroyer".
     %h3 Who wrote it?
     %p
-      Mainly me, Florian Hanke, but I also had
+      Mainly me,
+      = succeed(', ') do
+        %a{ :href => 'http://florianhanke.com' } Florian Hanke
+      but I also had
       %a{ :href => 'status.html' } excellent help
       by friends and coworkers.
     %h3 Why the LGPL license?
