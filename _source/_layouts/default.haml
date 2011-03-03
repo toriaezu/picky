@@ -4,7 +4,7 @@
     %meta{ :'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
     %meta{ :'http-equiv' => 'Content-Language', :content => 'EN' }
     %meta{ :name => 'author', :content => 'Florian Hanke, florianhanke.com' }
-    %meta{ :name => 'keywords', :content => 'picky, ruby, small text, single field, search engine' }
+    %meta{ :name => 'keywords', :content => 'picky, ruby, single field, semantic small text, search engine' }
     %meta{ :name => 'abstract', :content => 'Picky: The fast and easy to configure Ruby search engine' }
     %meta{ :name => 'description', :content => 'Picky: The fast and easy to configure Ruby search engine. Offers a server, a client, and a statistics interface.' }
     %meta{ :name => 'robots', :content => 'index, follow' }
@@ -36,7 +36,7 @@
       .navigation
         - def class_for(url, klass = ''); if page.url == url then "current #{klass}" else klass end end
         %a{ :href => 'index.html', :class => class_for('/index.html') } about
-        %a{ :href => 'details.html', :class => class_for('/details.html') } small-text?
+        %a{ :href => 'details.html', :class => class_for('/details.html') } semantic-text?
         %a{ :href => 'getting_started.html', :class => class_for('/getting_started.html') } getting started
         %a{ :href => 'features.html', :class => class_for('/features.html') } features
         
