@@ -71,7 +71,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000093">harvest</a></li>
+                <li><a href="#M000172">harvest</a></li>
                 
             </ul>
         </dd>
@@ -80,7 +80,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000091">new</a></li>
+                <li><a href="#M000170">new</a></li>
                 
             </ul>
         </dd>
@@ -116,7 +116,7 @@ The <a href="CSV.html">CSV</a> file&#8217;s path, relative to PICKY_ROOT.
             </td>
             <td class='attr-name'>csv_options</td>
             <td class='attr-desc'><p>
-The options that were passed into <a href="CSV.html#M000091">new</a>.
+The options that were passed into <a href="CSV.html#M000170">new</a>.
 </p></td>
         </tr>
         
@@ -126,7 +126,7 @@ The options that were passed into <a href="CSV.html#M000091">new</a>.
             </td>
             <td class='attr-name'>key_format</td>
             <td class='attr-desc'><p>
-The options that were passed into <a href="CSV.html#M000091">new</a>.
+The options that were passed into <a href="CSV.html#M000170">new</a>.
 </p></td>
         </tr>
         
@@ -147,9 +147,9 @@ The data category names.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000091">
+                <div class="title" id="M000170">
                     
-                    <a name="M000091"></a><b>new</b>(*category_names, options)
+                    <a name="M000170"></a><b>new</b>(*category_names, options)
                     
                 </div>
                 
@@ -158,12 +158,12 @@ The data category names.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000091_source')" id="l_M000091_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000170_source')" id="l_M000170_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d770e5fbb48308d1aa9db2753027c281e64f3a8a/server/lib/picky/sources/csv.rb#L35" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000091_source" class="dyn-source">
+                    <div id="M000170_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/csv.rb, line 35</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">category_names</span>, <span class="ruby-identifier">options</span>
       <span class="ruby-identifier">require</span> <span class="ruby-value str">'csv'</span>
@@ -183,9 +183,9 @@ The data category names.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000093">
+                <div class="title" id="M000172">
                     
-                    <a name="M000093"></a><b>harvest</b>(_, category)
+                    <a name="M000172"></a><b>harvest</b>(_, category)
                     
                 </div>
                 
@@ -201,12 +201,12 @@ Harvests the data to index.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000093_source')" id="l_M000093_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000172_source')" id="l_M000172_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/d770e5fbb48308d1aa9db2753027c281e64f3a8a/server/lib/picky/sources/csv.rb#L54" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000093_source" class="dyn-source">
+                    <div id="M000172_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/csv.rb, line 54</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">_</span>, <span class="ruby-identifier">category</span>
       <span class="ruby-identifier">index</span> = <span class="ruby-identifier">category_names</span>.<span class="ruby-identifier">index</span> <span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>

@@ -75,7 +75,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000088">harvest</a></li>
+                <li><a href="#M000164">harvest</a></li>
                 
             </ul>
         </dd>
@@ -84,7 +84,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000086">key_format</a></li>
+                <li><a href="#M000162">key_format</a></li>
                 
             </ul>
         </dd>
@@ -93,7 +93,7 @@ Examples:
         <dd>
             <ul>
                 
-                <li><a href="#M000085">new</a></li>
+                <li><a href="#M000161">new</a></li>
                 
             </ul>
         </dd>
@@ -115,9 +115,9 @@ Examples:
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000085">
+                <div class="title" id="M000161">
                     
-                    <a name="M000085"></a><b>new</b>(*category_names, options)
+                    <a name="M000161"></a><b>new</b>(*category_names, options)
                     
                 </div>
                 
@@ -126,12 +126,12 @@ Examples:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000085_source')" id="l_M000085_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000161_source')" id="l_M000161_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/8b9261017cab5d8daf3309a96822e483a8931c61/server/lib/picky/sources/couch.rb#L25" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000085_source" class="dyn-source">
+                    <div id="M000161_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 25</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-operator">*</span><span class="ruby-identifier">category_names</span>, <span class="ruby-identifier">options</span>
       <span class="ruby-identifier">check_gem</span>
@@ -147,9 +147,9 @@ Examples:
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000088">
+                <div class="title" id="M000164">
                     
-                    <a name="M000088"></a><b>harvest</b>(type, category)
+                    <a name="M000164"></a><b>harvest</b>(type, category)
                     
                 </div>
                 
@@ -158,12 +158,12 @@ Examples:
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000088_source')" id="l_M000088_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000164_source')" id="l_M000164_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/8b9261017cab5d8daf3309a96822e483a8931c61/server/lib/picky/sources/couch.rb#L52" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000088_source" class="dyn-source">
+                    <div id="M000164_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 52</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">type</span>, <span class="ruby-identifier">category</span>
       <span class="ruby-identifier">category_name</span> = <span class="ruby-identifier">category</span>.<span class="ruby-identifier">from</span>.<span class="ruby-identifier">to_s</span>
@@ -177,9 +177,9 @@ Examples:
             </div>
             
             <div class="method">
-                <div class="title" id="M000086">
+                <div class="title" id="M000162">
                     
-                    <a name="M000086"></a><b>key_format</b>()
+                    <a name="M000162"></a><b>key_format</b>()
                     
                 </div>
                 
@@ -195,12 +195,12 @@ Default key format method for couch <a href="DB.html">DB</a> is to_sym.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000086_source')" id="l_M000086_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000162_source')" id="l_M000162_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/8b9261017cab5d8daf3309a96822e483a8931c61/server/lib/picky/sources/couch.rb#L34" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000086_source" class="dyn-source">
+                    <div id="M000162_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/couch.rb, line 34</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_format</span>
       <span class="ruby-identifier">:to_sym</span>

@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/index.rake</li>
-            <li>Last modified: 2010-11-21 18:31:07 +0100</li>
+            <li>Last modified: 2011-02-28 19:43:13 +0100</li>
         </ul>
     </div>
 
@@ -45,11 +45,11 @@
     Indexes.take_snapshot
   end
 
-  desc &quot;Generates a specific index from index snapshots.&quot;
+  desc &quot;Generates a specific index from index snapshots (category optional).&quot;
   task :specific, [:index, :category] =&gt; :application do |_, options|
     index, category = options.index, options.category
-    Indexes.generate_index_only index.to_sym, category.to_sym
-    Indexes.generate_cache_only index.to_sym, category.to_sym
+    Indexes.generate_index_only index.to_sym, category &amp;&amp; category.to_sym
+    Indexes.generate_cache_only index.to_sym, category &amp;&amp; category.to_sym
   end
 
   desc 'Checks the index files for files that are suspiciously small or missing.'

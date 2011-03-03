@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/try.rake</li>
-            <li>Last modified: 2010-11-24 21:47:34 +0100</li>
+            <li>Last modified: 2011-02-28 16:52:46 +0100</li>
         </ul>
     </div>
 
@@ -35,7 +35,7 @@
   task :index, [:text, :index_and_category] =&gt; :application do |_, options|
     text, index_and_category = options.text, options.index_and_category
 
-    tokenizer = index_and_category ? Indexes.find(*index_and_category.split(':')).tokenizer : Tokenizers::Index.default
+    tokenizer = index_and_category ? Indexes.find(*index_and_category.split(':')).tokenizer : Internals::Tokenizers::Index.default
 
     puts &quot;\&quot;#{text}\&quot; is saved in the index as             #{tokenizer.tokenize(text.dup).to_a}&quot;
   end
@@ -44,7 +44,7 @@
   task :query, [:text] =&gt; :application do |_, options|
     text = options.text
 
-    puts &quot;\&quot;#{text}\&quot; as a query will be preprocessed into #{Tokenizers::Query.default.tokenize(text.dup).to_a.map(&amp;:to_s).map(&amp;:to_sym)}&quot;
+    puts &quot;\&quot;#{text}\&quot; as a query will be preprocessed into #{Internals::Tokenizers::Query.default.tokenize(text.dup).to_a.map(&amp;:to_s).map(&amp;:to_sym)}&quot;
   end
 
   # desc &quot;Try the given text with both the index and the query (type:category optional).&quot;
