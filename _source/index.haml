@@ -58,7 +58,9 @@ layout: default
       He usually pays his rent on time.
   .grid_1
     %p
-      Getting started: Got 5 minutes?
+      = succeed(':') do
+        %strong Getting started
+      Got 5 minutes?
       %a{ :href => 'getting_started.html' } Install and run Picky
       on your computer and adapt the examples.
     %h3 Feedback
