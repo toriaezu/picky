@@ -15,7 +15,7 @@ layout: default
       That's the basic setup. The things to remember are:
       %ol
         %li The Picky server calculates IDs for a query.
-        %li Your app server renders results for the IDs.
+        %li Your app server renders results for the resulting IDs.
     %p
       Together they are like a small A-Team, something like "Action Search Squad Alpha"! «We've got the results and are heading back to base now, Sir!» Bam!
     %p
@@ -45,7 +45,7 @@ layout: default
         :preserve
           # Generates a directory "app_name"
           # with a new Picky server project based on Unicorn.
-          
+
           picky generate unicorn_server app_name
       %pre
         :preserve
@@ -76,7 +76,7 @@ layout: default
       :preserve
         # Generates a directory "app_name"
         # with a new Picky client Sinatra project.
-        
+
         picky generate sinatra_client app_name
     %pre
       :preserve
