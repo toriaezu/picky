@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/routes.rake</li>
-            <li>Last modified: 2010-10-30 00:10:22 +0200</li>
+            <li>Last modified: 2011-03-13 10:14:33 +0100</li>
         </ul>
     </div>
 
@@ -28,13 +28,12 @@
     
     <div class="description">
         <p>
-desc &#8220;Shows the available URL paths&#8221; task :routes =>
-:application do
+# Routing tasks. # desc &#8220;Shows the available URL paths&#8221; task
+:routes => :application do
 </p>
 <pre>
-  puts &quot;Note: Anchored (\u2713) regexps are faster, e.g. /\\A.*\\Z/ or /^.*$/.\n\n&quot;
   Application.apps.each do |app|
-    p app
+    puts app.to_routes
   end
 </pre>
 <p>

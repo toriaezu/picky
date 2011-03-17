@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/framework.rake</li>
-            <li>Last modified: 2010-10-24 23:26:40 +0200</li>
+            <li>Last modified: 2011-03-13 10:14:33 +0100</li>
         </ul>
     </div>
 
@@ -28,7 +28,8 @@
     
     <div class="description">
         <p>
-# desc &#8220;Loads the framework.&#8221; task :framework do
+# desc &#8220;Loads the framework.&#8221; # # Note: This is used by tasks
+to load the framework as a dependency. # task :framework do
 </p>
 <pre>
   require File.expand_path '../../picky', __FILE__

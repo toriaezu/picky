@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/index.rake</li>
-            <li>Last modified: 2011-02-28 19:43:13 +0100</li>
+            <li>Last modified: 2011-03-13 10:14:33 +0100</li>
         </ul>
     </div>
 
@@ -28,7 +28,8 @@
     
     <div class="description">
         <p>
-# Global. # namespace :index do
+# <a href="../../../classes/Indexing.html">Indexing</a> tasks. # namespace
+:index do
 </p>
 <pre>
   desc &quot;Takes a snapshot, indexes, and caches in random order.&quot;
@@ -41,6 +42,10 @@
   end
 
   # desc &quot;Generates the index snapshots.&quot;
+  #
+  # Note: Hidden since it is only needed by pro users.
+  #
+  # desc &quot;Generate the data snapshots (intermediate table on a DB source)&quot;
   task :generate_snapshots =&gt; :application do
     Indexes.take_snapshot
   end
@@ -50,12 +55,6 @@
     index, category = options.index, options.category
     Indexes.generate_index_only index.to_sym, category &amp;&amp; category.to_sym
     Indexes.generate_cache_only index.to_sym, category &amp;&amp; category.to_sym
-  end
-
-  desc 'Checks the index files for files that are suspiciously small or missing.'
-  task :check =&gt; :application do
-    Indexes.check_caches
-    puts &quot;All indexes look ok.&quot;
   end
 </pre>
 <p>

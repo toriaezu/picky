@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/application.rake</li>
-            <li>Last modified: 2010-10-30 01:03:23 +0200</li>
+            <li>Last modified: 2011-03-13 10:14:33 +0100</li>
         </ul>
     </div>
 
@@ -28,8 +28,9 @@
     
     <div class="description">
         <p>
-# desc &#8220;Loads the application, including its configuration.&#8221;
-task :application => :framework do
+# desc &#8220;Loads the application, including its configuration.&#8221; #
+# Note: This is used by tasks to load the application (and the framework)
+as a dependency. # task :application => :framework do
 </p>
 <pre>
   Loader.load_application

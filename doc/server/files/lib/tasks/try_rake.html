@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/try.rake</li>
-            <li>Last modified: 2011-02-28 16:52:46 +0100</li>
+            <li>Last modified: 2011-03-13 10:14:33 +0100</li>
         </ul>
     </div>
 
@@ -32,10 +32,10 @@
 </p>
 <pre>
   # desc &quot;Try how a given word would be tokenized when indexing (type:category optional).&quot;
-  task :index, [:text, :index_and_category] =&gt; :application do |_, options|
-    text, index_and_category = options.text, options.index_and_category
+  task :index, [:text, :index, :category] =&gt; :application do |_, options|
+    text, index, category = options.text, options.index, options.category
 
-    tokenizer = index_and_category ? Indexes.find(*index_and_category.split(':')).tokenizer : Internals::Tokenizers::Index.default
+    tokenizer = index &amp;&amp; category ? Indexes.find(index, category).tokenizer : Internals::Tokenizers::Index.default
 
     puts &quot;\&quot;#{text}\&quot; is saved in the index as             #{tokenizer.tokenize(text.dup).to_a}&quot;
   end
@@ -48,10 +48,10 @@
   end
 
   # desc &quot;Try the given text with both the index and the query (type:category optional).&quot;
-  task :both, [:text, :index_and_category] =&gt; :application do |_, options|
-    text, index_and_category = options.text, options.index_and_category
+  task :both, [:text, :index, :category] =&gt; :application do |_, options|
+    text, index, category = options.text, options.index, options.category
 
-    Rake::Task[:&quot;try:index&quot;].invoke text, index_and_category
+    Rake::Task[:&quot;try:index&quot;].invoke text, index, category
     Rake::Task[:&quot;try:query&quot;].invoke text
   end
 </pre>

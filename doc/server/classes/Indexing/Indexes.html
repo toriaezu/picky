@@ -56,7 +56,7 @@ Registers the indexes held at index time, for indexing.
         <dd>
             <ul>
                 
-                <li><a href="#M000021">clear</a></li>
+                <li><a href="#M000036">clear</a></li>
                 
             </ul>
         </dd>
@@ -65,7 +65,7 @@ Registers the indexes held at index time, for indexing.
         <dd>
             <ul>
                 
-                <li><a href="#M000027">find</a></li>
+                <li><a href="#M000049">find</a></li>
                 
             </ul>
         </dd>
@@ -74,9 +74,9 @@ Registers the indexes held at index time, for indexing.
         <dd>
             <ul>
                 
-                <li><a href="#M000026">generate_cache_only</a>,</li>
+                <li><a href="#M000041">generate_cache_only</a>,</li>
                 
-                <li><a href="#M000025">generate_index_only</a></li>
+                <li><a href="#M000040">generate_index_only</a></li>
                 
             </ul>
         </dd>
@@ -85,9 +85,9 @@ Registers the indexes held at index time, for indexing.
         <dd>
             <ul>
                 
-                <li><a href="#M000023">index</a>,</li>
+                <li><a href="#M000038">index</a>,</li>
                 
-                <li><a href="#M000024">index_for_tests</a></li>
+                <li><a href="#M000039">index_for_tests</a></li>
                 
             </ul>
         </dd>
@@ -96,7 +96,7 @@ Registers the indexes held at index time, for indexing.
         <dd>
             <ul>
                 
-                <li><a href="#M000020">new</a></li>
+                <li><a href="#M000034">new</a></li>
                 
             </ul>
         </dd>
@@ -105,7 +105,16 @@ Registers the indexes held at index time, for indexing.
         <dd>
             <ul>
                 
-                <li><a href="#M000022">register</a></li>
+                <li><a href="#M000037">register</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000035">to_s</a></li>
                 
             </ul>
         </dd>
@@ -140,9 +149,9 @@ Registers the indexes held at index time, for indexing.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000020">
+                <div class="title" id="M000034">
                     
-                    <a name="M000020"></a><b>new</b>()
+                    <a name="M000034"></a><b>new</b>()
                     
                 </div>
                 
@@ -151,12 +160,12 @@ Registers the indexes held at index time, for indexing.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000020_source')" id="l_M000020_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000034_source')" id="l_M000034_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L18" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L18" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000020_source" class="dyn-source">
+                    <div id="M000034_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 18</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
       <span class="ruby-identifier">clear</span>
@@ -169,9 +178,9 @@ Registers the indexes held at index time, for indexing.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000021">
+                <div class="title" id="M000036">
                     
-                    <a name="M000021"></a><b>clear</b>()
+                    <a name="M000036"></a><b>clear</b>()
                     
                 </div>
                 
@@ -187,13 +196,13 @@ Clears the array of indexes.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000021_source')" id="l_M000021_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000036_source')" id="l_M000036_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L28" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000021_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 24</span>
+                    <div id="M000036_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 28</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
       <span class="ruby-ivar">@indexes</span> = []
     <span class="ruby-keyword kw">end</span></pre>
@@ -203,9 +212,9 @@ Clears the array of indexes.
             </div>
             
             <div class="method">
-                <div class="title" id="M000027">
+                <div class="title" id="M000049">
                     
-                    <a name="M000027"></a><b>find</b>(index_name, category_name)
+                    <a name="M000049"></a><b>find</b>(index_name, category_name)
                     
                 </div>
                 
@@ -221,25 +230,25 @@ Find a given index:category pair.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000027_source')" id="l_M000027_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000049_source')" id="l_M000049_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L83" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L85" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000027_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 83</span>
+                    <div id="M000049_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 85</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">category_name</span>
       <span class="ruby-identifier">index_name</span> = <span class="ruby-identifier">index_name</span>.<span class="ruby-identifier">to_sym</span>
-      
+
       <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">index_name</span>
-        
+
         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">index</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">category_name</span>
-        
+
         <span class="ruby-identifier">found</span> = <span class="ruby-identifier">index</span>.<span class="ruby-identifier">categories</span>.<span class="ruby-identifier">find</span> <span class="ruby-identifier">category_name</span>
         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">found</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">found</span>
       <span class="ruby-keyword kw">end</span>
-      
+
       <span class="ruby-identifier">raise</span> <span class="ruby-node">%Q{Index &quot;#{index_name}&quot; not found. Possible indexes: &quot;#{indexes.map(&amp;:name).join('&quot;, &quot;')}&quot;.}</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
@@ -248,9 +257,9 @@ Find a given index:category pair.
             </div>
             
             <div class="method">
-                <div class="title" id="M000026">
+                <div class="title" id="M000041">
                     
-                    <a name="M000026"></a><b>generate_cache_only</b>(index_name, category_name = nil)
+                    <a name="M000041"></a><b>generate_cache_only</b>(index_name, category_name = nil)
                     
                 </div>
                 
@@ -266,13 +275,13 @@ Generate only the cache for the given index:category pair.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000026_source')" id="l_M000026_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000041_source')" id="l_M000041_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L76" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L78" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000026_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 76</span>
+                    <div id="M000041_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 78</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate_cache_only</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">category_name</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">found</span> = <span class="ruby-identifier">find</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">category_name</span>
       <span class="ruby-identifier">found</span>.<span class="ruby-identifier">generate_caches</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">found</span>
@@ -283,9 +292,9 @@ Generate only the cache for the given index:category pair.
             </div>
             
             <div class="method">
-                <div class="title" id="M000025">
+                <div class="title" id="M000040">
                     
-                    <a name="M000025"></a><b>generate_index_only</b>(index_name, category_name = nil)
+                    <a name="M000040"></a><b>generate_index_only</b>(index_name, category_name = nil)
                     
                 </div>
                 
@@ -301,13 +310,13 @@ Generate only the index for the given index:category pair.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000025_source')" id="l_M000025_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000040_source')" id="l_M000040_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L70" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L72" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000025_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 70</span>
+                    <div id="M000040_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 72</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate_index_only</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">category_name</span> = <span class="ruby-keyword kw">nil</span>
       <span class="ruby-identifier">found</span> = <span class="ruby-identifier">find</span> <span class="ruby-identifier">index_name</span>, <span class="ruby-identifier">category_name</span>
       <span class="ruby-identifier">found</span>.<span class="ruby-identifier">index</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">found</span>
@@ -318,9 +327,9 @@ Generate only the index for the given index:category pair.
             </div>
             
             <div class="method">
-                <div class="title" id="M000023">
+                <div class="title" id="M000038">
                     
-                    <a name="M000023"></a><b>index</b>(randomly = true)
+                    <a name="M000038"></a><b>index</b>(randomly = true)
                     
                 </div>
                 
@@ -339,30 +348,28 @@ TODO Spec.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000023_source')" id="l_M000023_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000038_source')" id="l_M000038_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L42" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000023_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 38</span>
+                    <div id="M000038_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 42</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span> <span class="ruby-identifier">randomly</span> = <span class="ruby-keyword kw">true</span>
       <span class="ruby-identifier">take_snapshot</span>
-      
+
       <span class="ruby-comment cmt"># Run in parallel.</span>
       <span class="ruby-comment cmt">#</span>
-      <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;INDEXING USING #{Cores.max_processors} PROCESSORS, IN #{randomly ? 'RANDOM' : 'GIVEN'} ORDER.&quot;</span>
-      
-      <span class="ruby-comment cmt"># TODO Think about having serial work units.</span>
+      <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-node">&quot;Indexing using #{Cores.max_processors} processors, in #{randomly ? 'random' : 'given'} order.&quot;</span>
+
+      <span class="ruby-comment cmt"># Run indexing/caching forked.</span>
       <span class="ruby-comment cmt">#</span>
       <span class="ruby-constant">Cores</span>.<span class="ruby-identifier">forked</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">indexes</span>, { <span class="ruby-identifier">randomly</span><span class="ruby-operator">:</span> <span class="ruby-identifier">randomly</span> } <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">an_index</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">an_index</span>.<span class="ruby-identifier">index</span>
-      <span class="ruby-comment cmt"># TODO</span>
-      <span class="ruby-comment cmt"># end</span>
-      <span class="ruby-comment cmt"># Cores.forked self.indexes, { randomly: randomly } do |an_index|</span>
         <span class="ruby-identifier">an_index</span>.<span class="ruby-identifier">cache</span>
       <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-value str">&quot;INDEXING FINISHED.&quot;</span>
+
+      <span class="ruby-identifier">timed_exclaim</span> <span class="ruby-value str">&quot;Indexing finished.&quot;</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -370,9 +377,9 @@ TODO Spec.
             </div>
             
             <div class="method">
-                <div class="title" id="M000024">
+                <div class="title" id="M000039">
                     
-                    <a name="M000024"></a><b>index_for_tests</b>()
+                    <a name="M000039"></a><b>index_for_tests</b>()
                     
                 </div>
                 
@@ -389,16 +396,16 @@ shouting ;)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000024_source')" id="l_M000024_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000039_source')" id="l_M000039_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L59" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L61" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000024_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 59</span>
+                    <div id="M000039_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 61</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index_for_tests</span>
       <span class="ruby-identifier">take_snapshot</span>
-      
+
       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">an_index</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">an_index</span>.<span class="ruby-identifier">index</span>
         <span class="ruby-identifier">an_index</span>.<span class="ruby-identifier">cache</span>
@@ -410,9 +417,9 @@ shouting ;)
             </div>
             
             <div class="method">
-                <div class="title" id="M000022">
+                <div class="title" id="M000037">
                     
-                    <a name="M000022"></a><b>register</b>(index)
+                    <a name="M000037"></a><b>register</b>(index)
                     
                 </div>
                 
@@ -428,15 +435,42 @@ Registers an index with the indexes.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000022_source')" id="l_M000022_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000037_source')" id="l_M000037_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/42ed61742605bf129586963b31bacddbd1f478f0/server/lib/picky/indexing/indexes.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L34" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000022_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 30</span>
+                    <div id="M000037_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 34</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register</span> <span class="ruby-identifier">index</span>
       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">indexes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">index</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000035">
+                    
+                    <a name="M000035"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000035_source')" id="l_M000035_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/indexing/indexes.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000035_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/indexing/indexes.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">indented_to_s</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

@@ -57,7 +57,7 @@ href="JSON.html">JSON</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000093">dump</a></li>
+                <li><a href="#M000112">dump</a></li>
                 
             </ul>
         </dd>
@@ -66,7 +66,7 @@ href="JSON.html">JSON</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000091">extension</a></li>
+                <li><a href="#M000110">extension</a></li>
                 
             </ul>
         </dd>
@@ -75,7 +75,7 @@ href="JSON.html">JSON</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000092">load</a></li>
+                <li><a href="#M000111">load</a></li>
                 
             </ul>
         </dd>
@@ -84,7 +84,7 @@ href="JSON.html">JSON</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000094">retrieve</a></li>
+                <li><a href="#M000113">retrieve</a></li>
                 
             </ul>
         </dd>
@@ -106,9 +106,9 @@ href="JSON.html">JSON</a> format.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000093">
+                <div class="title" id="M000112">
                     
-                    <a name="M000093"></a><b>dump</b>(hash)
+                    <a name="M000112"></a><b>dump</b>(hash)
                     
                 </div>
                 
@@ -124,12 +124,12 @@ Dumps the index hash in json format.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000093_source')" id="l_M000093_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000112_source')" id="l_M000112_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/json.rb#L23" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000093_source" class="dyn-source">
+                    <div id="M000112_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/json.rb, line 23</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
           <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">dump_json</span> <span class="ruby-identifier">cache_path</span>
@@ -140,9 +140,9 @@ Dumps the index hash in json format.
             </div>
             
             <div class="method">
-                <div class="title" id="M000091">
+                <div class="title" id="M000110">
                     
-                    <a name="M000091"></a><b>extension</b>()
+                    <a name="M000110"></a><b>extension</b>()
                     
                 </div>
                 
@@ -158,12 +158,12 @@ Uses the extension &#8220;json&#8221;.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000091_source')" id="l_M000091_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000110_source')" id="l_M000110_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/json.rb#L13" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000091_source" class="dyn-source">
+                    <div id="M000110_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/json.rb, line 13</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>
           <span class="ruby-identifier">:json</span>
@@ -174,9 +174,9 @@ Uses the extension &#8220;json&#8221;.
             </div>
             
             <div class="method">
-                <div class="title" id="M000092">
+                <div class="title" id="M000111">
                     
-                    <a name="M000092"></a><b>load</b>()
+                    <a name="M000111"></a><b>load</b>()
                     
                 </div>
                 
@@ -192,12 +192,12 @@ Loads the index hash from json format.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000092_source')" id="l_M000092_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000111_source')" id="l_M000111_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/json.rb#L18" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000092_source" class="dyn-source">
+                    <div id="M000111_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/json.rb, line 18</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>
           <span class="ruby-constant">Yajl</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-value str">'r'</span>), <span class="ruby-identifier">symbolize_keys</span><span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
@@ -208,9 +208,9 @@ Loads the index hash from json format.
             </div>
             
             <div class="method">
-                <div class="title" id="M000094">
+                <div class="title" id="M000113">
                     
-                    <a name="M000094"></a><b>retrieve</b>()
+                    <a name="M000113"></a><b>retrieve</b>()
                     
                 </div>
                 
@@ -226,12 +226,12 @@ A json file does not provide retrieve functionality.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000094_source')" id="l_M000094_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000113_source')" id="l_M000113_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/json.rb#L28" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000094_source" class="dyn-source">
+                    <div id="M000113_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/json.rb, line 28</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">retrieve</span>
           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Can't retrieve from JSON file. Use text file.&quot;</span>

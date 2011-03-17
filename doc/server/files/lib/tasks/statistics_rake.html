@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/statistics.rake</li>
-            <li>Last modified: 2010-10-24 23:27:06 +0200</li>
+            <li>Last modified: 2011-03-13 10:14:33 +0100</li>
         </ul>
     </div>
 
@@ -28,18 +28,27 @@
     
     <div class="description">
         <p>
-namespace :statistics do
+# <a href="../../../classes/Statistics.html">Statistics</a> tasks. #
+namespace :stats do
 </p>
 <pre>
-  # desc &quot;start the server&quot;
-  # task :start =&gt; :application do
-  #   Statistics.start unless PICKY_ENVIRONMENT == 'test'
-  # end
-
-  # desc &quot;stop the server&quot;
-  # task :stop =&gt; :application do
-  #   Statistics.stop unless PICKY_ENVIRONMENT == 'test'
-  # end
+  task :prepare =&gt; :application do
+    require File.expand_path('../../picky/statistics', __FILE__)
+    statistics = Statistics.instance
+  end
+  task :app =&gt; :prepare do
+    Statistics.instance.application
+    puts Statistics.instance
+  end
+  task :analyze =&gt; :prepare do
+    begin
+      Statistics.instance.analyze
+    rescue StandardError
+      puts &quot;\n\033[31mNote: rake analyze needs prepared indexes. Run rake index first.\033[m\n\n&quot;
+      raise
+    end
+    puts Statistics.instance
+  end
 </pre>
 <p>
 end

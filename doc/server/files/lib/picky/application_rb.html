@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/picky/application.rb</li>
-            <li>Last modified: 2011-02-28 16:29:36 +0100</li>
+            <li>Last modified: 2011-03-16 16:48:53 +0100</li>
         </ul>
     </div>
 
@@ -53,10 +53,10 @@ The generator
 will generate an example <tt>project_name/app/application.rb</tt> file for
 you with some example code inside.
 </p>
-<h2><a href="../../../classes/Index/Memory.html#M000017">Index::Memory.new</a>(name, source)</h2>
+<h2><a href="../../../classes/Index/Memory.html#M000029">Index::Memory.new</a>(name, source)</h2>
 <p>
 Next, define where your data comes from. You use the <tt><a
-href="../../../classes/Index/Memory.html#M000017">Index::Memory.new</a></tt>
+href="../../../classes/Index/Memory.html#M000029">Index::Memory.new</a></tt>
 method for that:
 </p>
 <pre>
@@ -82,7 +82,7 @@ That on itself won&#8217;t do much good.
 </p>
 <p>
 Note that a Redis index is also available: <a
-href="../../../classes/Index/Redis.html#M000019">Index::Redis.new</a>.
+href="../../../classes/Index/Redis.html#M000033">Index::Redis.new</a>.
 </p>
 <h2>index_instance.define_category(identifier, options = {})</h2>
 <p>
@@ -120,7 +120,7 @@ for info)
 So now we have indexed data (the title), but nobody to ask the index
 anything.
 </p>
-<h2>Query::Full.new(*indexes, options = {})</h2>
+<h2><a href="../../../classes/Search.html#M000168">Search.new</a>(*indexes, options = {})</h2>
 <p>
 We need somebody who asks the index (a <a
 href="../../../classes/Query.html">Query</a> object, also see <a
@@ -128,25 +128,19 @@ href="http://github.com/floere/picky/wiki/Queries-Configuration">github.com/floe
 That works like this:
 </p>
 <pre>
-   full_books_query = Query::Full.new books
+   books_search = Search.new books
 </pre>
-<p>
-Full just means that the ids are returned with the results. Picky also
-offers a <a href="../../../classes/Query.html">Query</a> that returns live
-results, <a href="../../../classes/Query/Live.html">Query::Live</a>. But
-that&#8217;s not important right now.
-</p>
 <p>
 Now we have somebody we can ask about the index. But no external interface.
 </p>
-<h2>route(/regexp1/ => query1, /regexp2/ => query2, &#8230;)</h2>
+<h2>route(/regexp1/ => search1, /regexp2/ => search2, &#8230;)</h2>
 <p>
 Let&#8217;s add a URL path (a Route, see <a
 href="http://github.com/floere/picky/wiki/Routing-configuration">github.com/floere/picky/wiki/Routing-configuration</a>)
 to which we can send our queries. We do that with the route method:
 </p>
 <pre>
-  route %r{^/books/full$} =&gt; full_books_query
+  route %r{^/books$} =&gt; books_query
 </pre>
 <p>
 In full glory:
@@ -157,7 +151,7 @@ In full glory:
     books = index :books, Sources::CSV.new(:title, :author, :isbn, file:'app/library.csv')
     books.define_category :title
 
-    route %r{^/books/full$} =&gt; Query::Full.new(books)
+    route %r{^/books$} =&gt; Search.new(books)
 
   end
 </pre>
@@ -255,10 +249,9 @@ Our example, fully fleshed out with indexing, querying, and weights:
                           partial: Partial::Substring.new(:from =&gt; -2)
     books.define_category :isbn
 
-    query_options = { :weights =&gt; { [:title, :author] =&gt; +3, [:author, :title] =&gt; -1 } }
+    options = { :weights =&gt; { [:title, :author] =&gt; +3, [:author, :title] =&gt; -1 } }
 
-    route %r{^/books/full$} =&gt; Query::Full.new(books, query_options)
-    route %r{^/books/live$} =&gt; Query::Live.new(books, query_options)
+    route %r{^/books$} =&gt; Search.new(books, options)
 
   end
 </pre>

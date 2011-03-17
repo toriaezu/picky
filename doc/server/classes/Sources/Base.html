@@ -42,7 +42,7 @@
 A source has 1 mandatory and 2 optional methods:
 </p>
 <ul>
-<li><a href="Base.html#M000167">connect_backend</a> (<em>optional</em>): called
+<li><a href="Base.html#M000182">connect_backend</a> (<em>optional</em>): called
 once for each type/category pair.
 
 </li>
@@ -50,7 +50,7 @@ once for each type/category pair.
 or integer) and a string value.
 
 </li>
-<li><a href="Base.html#M000169">take_snapshot</a> (<em>optional</em>): called
+<li><a href="Base.html#M000183">take_snapshot</a> (<em>optional</em>): called
 once for each type.
 
 </li>
@@ -78,16 +78,7 @@ Base</tt> and override the methods in your source to do something.
         <dd>
             <ul>
                 
-                <li><a href="#M000167">connect_backend</a></li>
-                
-            </ul>
-        </dd>
-    
-        <dt>H</dt>
-        <dd>
-            <ul>
-                
-                <li><a href="#M000168">harvest</a></li>
+                <li><a href="#M000182">connect_backend</a></li>
                 
             </ul>
         </dd>
@@ -96,7 +87,7 @@ Base</tt> and override the methods in your source to do something.
         <dd>
             <ul>
                 
-                <li><a href="#M000169">take_snapshot</a></li>
+                <li><a href="#M000183">take_snapshot</a></li>
                 
             </ul>
         </dd>
@@ -131,9 +122,9 @@ Base</tt> and override the methods in your source to do something.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000167">
+                <div class="title" id="M000182">
                     
-                    <a name="M000167"></a><b>connect_backend</b>()
+                    <a name="M000182"></a><b>connect_backend</b>()
                     
                 </div>
                 
@@ -167,57 +158,15 @@ adapter.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000167_source')" id="l_M000167_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000182_source')" id="l_M000182_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d058f20e3b6a82143164c2cf44d20a2249ecfe47/server/lib/picky/sources/base.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/a4d636c7c8c034c6eb3f2e9134596ba4b49356ef/server/lib/picky/sources/base.rb#L39" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000167_source" class="dyn-source">
+                    <div id="M000182_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 39</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect_backend</span>
-      
-    <span class="ruby-keyword kw">end</span></pre>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="method">
-                <div class="title" id="M000168">
-                    
-                    <a name="M000168"></a><b>harvest</b>(index, category)
-                    
-                </div>
-                
-                <div class="description">
-                  <p>
-Called by the indexer when gathering data.
-</p>
-<p>
-Yields the data (id, text for id) for the given type and category.
-</p>
-<p>
-When implementing or overriding your own, be sure to <tt>yield(id,
-text_for_id)</tt> (or <tt>block.call(id, text_for_id)</tt>) for the given
-type symbol and category symbol.
-</p>
 
-                </div>
-                
-                
-                
-                
-                <div class="sourcecode">
-                    <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000168_source')" id="l_M000168_source">show</a>
-                        
-                        | <a href="http://github.com/floere/picky/blob/d058f20e3b6a82143164c2cf44d20a2249ecfe47/server/lib/picky/sources/base.rb#L51" target="_blank" class="github_url">on GitHub</a>
-                        
-                    </p>
-                    <div id="M000168_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 51</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">harvest</span> <span class="ruby-identifier">index</span>, <span class="ruby-identifier">category</span> <span class="ruby-comment cmt"># :yields: id, text_for_id</span>
-      <span class="ruby-comment cmt"># This concrete implementation yields &quot;nothing&quot;, override in subclasses.</span>
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -225,9 +174,9 @@ type symbol and category symbol.
             </div>
             
             <div class="method">
-                <div class="title" id="M000169">
+                <div class="title" id="M000183">
                     
-                    <a name="M000169"></a><b>take_snapshot</b>(index)
+                    <a name="M000183"></a><b>take_snapshot</b>(index)
                     
                 </div>
                 
@@ -255,15 +204,15 @@ select statement is created.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000169_source')" id="l_M000169_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000183_source')" id="l_M000183_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/d058f20e3b6a82143164c2cf44d20a2249ecfe47/server/lib/picky/sources/base.rb#L62" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/a4d636c7c8c034c6eb3f2e9134596ba4b49356ef/server/lib/picky/sources/base.rb#L64" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000169_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 62</span>
+                    <div id="M000183_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/sources/base.rb, line 64</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span> <span class="ruby-identifier">index</span>
-      
+
     <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

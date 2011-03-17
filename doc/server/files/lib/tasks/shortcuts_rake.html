@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/tasks/shortcuts.rake</li>
-            <li>Last modified: 2010-11-21 18:31:23 +0100</li>
+            <li>Last modified: 2011-03-13 11:23:45 +0100</li>
         </ul>
     </div>
 
@@ -28,6 +28,9 @@
     
     <div class="description">
         <p>
+# Shortcut tasks. #
+</p>
+<p>
 desc &#8220;Generate the index (random order).&#8221; task :index =>
 :application do
 </p>
@@ -38,14 +41,31 @@ desc &#8220;Generate the index (random order).&#8221; task :index =>
 end
 </p>
 <p>
-desc &#8220;Try the given text in the indexer/query (index:category
-optional).&#8221; task :try, [:text, :index_and_category] => :application
-do |_, options|
+desc &#8220;Try the given text in the indexer/query (index and category
+optional).&#8221; task :try, [:text, :index, :category] => :application do
+|_, options|
 </p>
 <pre>
-  text, index_and_category = options.text, options.index_and_category
+  text, index, category = options.text, options.index, options.category
 
-  Rake::Task[:'try:both'].invoke text, index_and_category
+  Rake::Task[:'try:both'].invoke text, index, category
+</pre>
+<p>
+end
+</p>
+<p>
+desc &#8220;<a href="../../../classes/Application.html">Application</a>
+summary.&#8221; task :stats do
+</p>
+<pre>
+  Rake::Task[:'stats:app'].invoke
+</pre>
+<p>
+end desc &#8220;Analyze your indexes (needs rake index).&#8221; task
+:analyze do
+</p>
+<pre>
+  Rake::Task[:'stats:analyze'].invoke
 </pre>
 <p>
 end

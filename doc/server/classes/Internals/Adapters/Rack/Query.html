@@ -49,7 +49,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000058">extracted</a></li>
+                <li><a href="#M000075">extracted</a></li>
                 
             </ul>
         </dd>
@@ -58,7 +58,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000055">new</a></li>
+                <li><a href="#M000073">new</a></li>
                 
             </ul>
         </dd>
@@ -67,7 +67,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000056">to_app</a></li>
+                <li><a href="#M000074">to_app</a></li>
                 
             </ul>
         </dd>
@@ -96,6 +96,9 @@
             <td colspan="2" class="attr-desc"><p>
 Helper method to extract the params
 </p>
+<p>
+Defaults are 20 ids, offset 0.
+</p>
 </td>
         </tr>
         
@@ -109,9 +112,9 @@ Helper method to extract the params
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000055">
+                <div class="title" id="M000073">
                     
-                    <a name="M000055"></a><b>new</b>(query)
+                    <a name="M000073"></a><b>new</b>(query)
                     
                 </div>
                 
@@ -120,13 +123,13 @@ Helper method to extract the params
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000055_source')" id="l_M000055_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000073_source')" id="l_M000073_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9bce795492a4a0d51987f2cae4f33dfe7e94dfe7/server/lib/picky/internals/adapters/rack/query.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/736335cf162da179b6ec3f20c1a637cca6556601/server/lib/picky/internals/adapters/rack/query.rb#L23" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000055_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/adapters/rack/query.rb, line 22</span>
+                    <div id="M000073_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/adapters/rack/query.rb, line 23</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">query</span>
           <span class="ruby-ivar">@query</span>    = <span class="ruby-identifier">query</span>
           <span class="ruby-ivar">@defaults</span> = <span class="ruby-ivar">@@defaults</span>.<span class="ruby-identifier">dup</span>
@@ -139,9 +142,9 @@ Helper method to extract the params
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000058">
+                <div class="title" id="M000075">
                     
-                    <a name="M000058"></a><b>extracted</b>(params)
+                    <a name="M000075"></a><b>extracted</b>(params)
                     
                 </div>
                 
@@ -150,18 +153,19 @@ Helper method to extract the params
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000058_source')" id="l_M000058_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000075_source')" id="l_M000075_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9bce795492a4a0d51987f2cae4f33dfe7e94dfe7/server/lib/picky/internals/adapters/rack/query.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/736335cf162da179b6ec3f20c1a637cca6556601/server/lib/picky/internals/adapters/rack/query.rb#L51" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000058_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/adapters/rack/query.rb, line 48</span>
+                    <div id="M000075_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/adapters/rack/query.rb, line 51</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extracted</span> <span class="ruby-identifier">params</span>
           [
             <span class="ruby-comment cmt"># query is encoded in ASCII</span>
             <span class="ruby-comment cmt">#</span>
             <span class="ruby-identifier">params</span>[<span class="ruby-ivar">@defaults</span>[<span class="ruby-identifier">:query_key</span>]]  <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-ivar">@defaults</span>[<span class="ruby-identifier">:query_key</span>]].<span class="ruby-identifier">force_encoding</span>(<span class="ruby-constant">UTF8_STRING</span>),
+            <span class="ruby-identifier">params</span>[<span class="ruby-ivar">@defaults</span>[<span class="ruby-identifier">:ids_key</span>]]    <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-ivar">@defaults</span>[<span class="ruby-identifier">:ids_key</span>]].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">||</span> <span class="ruby-value">20</span>,
             <span class="ruby-identifier">params</span>[<span class="ruby-ivar">@defaults</span>[<span class="ruby-identifier">:offset_key</span>]] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-ivar">@defaults</span>[<span class="ruby-identifier">:offset_key</span>]].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
           ]
         <span class="ruby-keyword kw">end</span></pre>
@@ -171,9 +175,9 @@ Helper method to extract the params
             </div>
             
             <div class="method">
-                <div class="title" id="M000056">
+                <div class="title" id="M000074">
                     
-                    <a name="M000056"></a><b>to_app</b>(options = {})
+                    <a name="M000074"></a><b>to_app</b>(options = {})
                     
                 </div>
                 
@@ -182,13 +186,13 @@ Helper method to extract the params
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000056_source')" id="l_M000056_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000074_source')" id="l_M000074_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/9bce795492a4a0d51987f2cae4f33dfe7e94dfe7/server/lib/picky/internals/adapters/rack/query.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/736335cf162da179b6ec3f20c1a637cca6556601/server/lib/picky/internals/adapters/rack/query.rb#L28" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000056_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/adapters/rack/query.rb, line 27</span>
+                    <div id="M000074_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/adapters/rack/query.rb, line 28</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_app</span> <span class="ruby-identifier">options</span> = {}
           <span class="ruby-comment cmt"># For capturing in the lambda.</span>
           <span class="ruby-comment cmt">#</span>

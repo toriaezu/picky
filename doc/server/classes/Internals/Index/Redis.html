@@ -62,7 +62,7 @@ TODO Needs a reconnect to be run after forking.
         <dd>
             <ul>
                 
-                <li><a href="#M000120">ids</a></li>
+                <li><a href="#M000140">ids</a></li>
                 
             </ul>
         </dd>
@@ -71,7 +71,7 @@ TODO Needs a reconnect to be run after forking.
         <dd>
             <ul>
                 
-                <li><a href="#M000119">new</a></li>
+                <li><a href="#M000139">new</a></li>
                 
             </ul>
         </dd>
@@ -80,7 +80,7 @@ TODO Needs a reconnect to be run after forking.
         <dd>
             <ul>
                 
-                <li><a href="#M000122">setting</a></li>
+                <li><a href="#M000142">setting</a></li>
                 
             </ul>
         </dd>
@@ -89,7 +89,7 @@ TODO Needs a reconnect to be run after forking.
         <dd>
             <ul>
                 
-                <li><a href="#M000121">weight</a></li>
+                <li><a href="#M000141">weight</a></li>
                 
             </ul>
         </dd>
@@ -122,9 +122,9 @@ TODO Needs a reconnect to be run after forking.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000119">
+                <div class="title" id="M000139">
                     
-                    <a name="M000119"></a><b>new</b>(bundle_name, config)
+                    <a name="M000139"></a><b>new</b>(bundle_name, config)
                     
                 </div>
                 
@@ -133,17 +133,17 @@ TODO Needs a reconnect to be run after forking.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000119_source')" id="l_M000119_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000139_source')" id="l_M000139_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/redis.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/redis.rb#L9" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000119_source" class="dyn-source">
+                    <div id="M000139_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis.rb, line 9</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">bundle_name</span>, <span class="ruby-identifier">config</span>
         <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">bundle_name</span>, <span class="ruby-identifier">config</span>
-      
-        <span class="ruby-comment cmt"># TODO</span>
+
+        <span class="ruby-comment cmt"># Refine a few Redis &quot;types&quot;.</span>
         <span class="ruby-comment cmt">#</span>
         <span class="ruby-ivar">@index</span>         = <span class="ruby-constant">Redis</span><span class="ruby-operator">::</span><span class="ruby-constant">ListHash</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">&quot;#{config.identifier}:#{bundle_name}:index&quot;</span>
         <span class="ruby-ivar">@weights</span>       = <span class="ruby-constant">Redis</span><span class="ruby-operator">::</span><span class="ruby-constant">StringHash</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">&quot;#{config.identifier}:#{bundle_name}:weights&quot;</span>
@@ -158,9 +158,9 @@ TODO Needs a reconnect to be run after forking.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000120">
+                <div class="title" id="M000140">
                     
-                    <a name="M000120"></a><b>ids</b>(sym)
+                    <a name="M000140"></a><b>ids</b>(sym)
                     
                 </div>
                 
@@ -176,15 +176,15 @@ Delegate to the right collection.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000120_source')" id="l_M000120_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000140_source')" id="l_M000140_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/redis.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/redis.rb#L22" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000120_source" class="dyn-source">
+                    <div id="M000140_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis.rb, line 22</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ids</span> <span class="ruby-identifier">sym</span>
-        <span class="ruby-ivar">@index</span>.<span class="ruby-identifier">collection</span> <span class="ruby-identifier">sym</span>
+        <span class="ruby-identifier">index</span>.<span class="ruby-identifier">collection</span> <span class="ruby-identifier">sym</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -192,9 +192,9 @@ Delegate to the right collection.
             </div>
             
             <div class="method">
-                <div class="title" id="M000122">
+                <div class="title" id="M000142">
                     
-                    <a name="M000122"></a><b>setting</b>(sym)
+                    <a name="M000142"></a><b>setting</b>(sym)
                     
                 </div>
                 
@@ -210,15 +210,15 @@ Delegate to a member value.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000122_source')" id="l_M000122_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000142_source')" id="l_M000142_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/redis.rb#L36" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/redis.rb#L36" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000122_source" class="dyn-source">
+                    <div id="M000142_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis.rb, line 36</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setting</span> <span class="ruby-identifier">sym</span>
-        <span class="ruby-ivar">@configuration</span>.<span class="ruby-identifier">member</span> <span class="ruby-identifier">sym</span>
+        <span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">member</span> <span class="ruby-identifier">sym</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
@@ -226,9 +226,9 @@ Delegate to a member value.
             </div>
             
             <div class="method">
-                <div class="title" id="M000121">
+                <div class="title" id="M000141">
                     
-                    <a name="M000121"></a><b>weight</b>(sym)
+                    <a name="M000141"></a><b>weight</b>(sym)
                     
                 </div>
                 
@@ -247,15 +247,15 @@ Note: Converts to float.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000121_source')" id="l_M000121_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000141_source')" id="l_M000141_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/redis.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/redis.rb#L30" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000121_source" class="dyn-source">
+                    <div id="M000141_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis.rb, line 30</span>
       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">weight</span> <span class="ruby-identifier">sym</span>
-        <span class="ruby-ivar">@weights</span>.<span class="ruby-identifier">member</span>(<span class="ruby-identifier">sym</span>).<span class="ruby-identifier">to_f</span>
+        <span class="ruby-identifier">weights</span>.<span class="ruby-identifier">member</span>(<span class="ruby-identifier">sym</span>).<span class="ruby-identifier">to_f</span>
       <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>

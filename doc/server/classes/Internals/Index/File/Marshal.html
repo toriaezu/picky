@@ -57,7 +57,7 @@ href="Marshal.html">Marshal</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000097">dump</a></li>
+                <li><a href="#M000116">dump</a></li>
                 
             </ul>
         </dd>
@@ -66,7 +66,7 @@ href="Marshal.html">Marshal</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000095">extension</a></li>
+                <li><a href="#M000114">extension</a></li>
                 
             </ul>
         </dd>
@@ -75,7 +75,7 @@ href="Marshal.html">Marshal</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000096">load</a></li>
+                <li><a href="#M000115">load</a></li>
                 
             </ul>
         </dd>
@@ -84,7 +84,7 @@ href="Marshal.html">Marshal</a> format.
         <dd>
             <ul>
                 
-                <li><a href="#M000098">retrieve</a></li>
+                <li><a href="#M000117">retrieve</a></li>
                 
             </ul>
         </dd>
@@ -106,9 +106,9 @@ href="Marshal.html">Marshal</a> format.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000097">
+                <div class="title" id="M000116">
                     
-                    <a name="M000097"></a><b>dump</b>(hash)
+                    <a name="M000116"></a><b>dump</b>(hash)
                     
                 </div>
                 
@@ -124,12 +124,12 @@ Dumps the index hash in marshal format.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000097_source')" id="l_M000097_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000116_source')" id="l_M000116_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/marshal.rb#L23" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000097_source" class="dyn-source">
+                    <div id="M000116_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/marshal.rb, line 23</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
           <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">dump_marshalled</span> <span class="ruby-identifier">cache_path</span>
@@ -140,9 +140,9 @@ Dumps the index hash in marshal format.
             </div>
             
             <div class="method">
-                <div class="title" id="M000095">
+                <div class="title" id="M000114">
                     
-                    <a name="M000095"></a><b>extension</b>()
+                    <a name="M000114"></a><b>extension</b>()
                     
                 </div>
                 
@@ -158,12 +158,12 @@ Uses the extension &#8220;dump&#8221;.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000095_source')" id="l_M000095_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000114_source')" id="l_M000114_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/marshal.rb#L13" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000095_source" class="dyn-source">
+                    <div id="M000114_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/marshal.rb, line 13</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>
           <span class="ruby-identifier">:dump</span>
@@ -174,9 +174,9 @@ Uses the extension &#8220;dump&#8221;.
             </div>
             
             <div class="method">
-                <div class="title" id="M000096">
+                <div class="title" id="M000115">
                     
-                    <a name="M000096"></a><b>load</b>()
+                    <a name="M000115"></a><b>load</b>()
                     
                 </div>
                 
@@ -192,12 +192,12 @@ Loads the index hash from marshal format.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000096_source')" id="l_M000096_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000115_source')" id="l_M000115_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/marshal.rb#L18" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000096_source" class="dyn-source">
+                    <div id="M000115_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/marshal.rb, line 18</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>
           <span class="ruby-operator">::</span><span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-value str">'r:binary'</span>)
@@ -208,9 +208,9 @@ Loads the index hash from marshal format.
             </div>
             
             <div class="method">
-                <div class="title" id="M000098">
+                <div class="title" id="M000117">
                     
-                    <a name="M000098"></a><b>retrieve</b>()
+                    <a name="M000117"></a><b>retrieve</b>()
                     
                 </div>
                 
@@ -226,12 +226,12 @@ A marshal file does not provide retrieve functionality.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000098_source')" id="l_M000098_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000117_source')" id="l_M000117_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/marshal.rb#L28" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000098_source" class="dyn-source">
+                    <div id="M000117_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/marshal.rb, line 28</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">retrieve</span>
           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Can't retrieve from marshalled file. Use text file.&quot;</span>

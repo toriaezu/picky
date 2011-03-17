@@ -49,7 +49,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000114">collection</a></li>
+                <li><a href="#M000134">collection</a></li>
                 
             </ul>
         </dd>
@@ -58,7 +58,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000113">dump</a></li>
+                <li><a href="#M000133">dump</a></li>
                 
             </ul>
         </dd>
@@ -67,7 +67,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000115">member</a></li>
+                <li><a href="#M000135">member</a></li>
                 
             </ul>
         </dd>
@@ -89,9 +89,9 @@
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000114">
+                <div class="title" id="M000134">
                     
-                    <a name="M000114"></a><b>collection</b>(sym)
+                    <a name="M000134"></a><b>collection</b>(sym)
                     
                 </div>
                 
@@ -107,12 +107,12 @@ Get a collection.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000114_source')" id="l_M000114_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000134_source')" id="l_M000134_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/redis/list_hash.rb#L30" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000114_source" class="dyn-source">
+                    <div id="M000134_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis/list_hash.rb, line 30</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collection</span> <span class="ruby-identifier">sym</span>
           <span class="ruby-ivar">@backend</span>.<span class="ruby-identifier">lrange</span> <span class="ruby-node">&quot;#{namespace}:#{sym}&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">-1</span>
@@ -123,9 +123,9 @@ Get a collection.
             </div>
             
             <div class="method">
-                <div class="title" id="M000113">
+                <div class="title" id="M000133">
                     
-                    <a name="M000113"></a><b>dump</b>(hash)
+                    <a name="M000133"></a><b>dump</b>(hash)
                     
                 </div>
                 
@@ -145,12 +145,12 @@ together in an array first.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000113_source')" id="l_M000113_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000133_source')" id="l_M000133_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/redis/list_hash.rb#L13" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000113_source" class="dyn-source">
+                    <div id="M000133_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis/list_hash.rb, line 13</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
           <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span>
@@ -172,9 +172,9 @@ together in an array first.
             </div>
             
             <div class="method">
-                <div class="title" id="M000115">
+                <div class="title" id="M000135">
                     
-                    <a name="M000115"></a><b>member</b>(sym)
+                    <a name="M000135"></a><b>member</b>(sym)
                     
                 </div>
                 
@@ -190,12 +190,12 @@ Get a single value.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000115_source')" id="l_M000115_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000135_source')" id="l_M000135_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/redis/list_hash.rb#L36" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000115_source" class="dyn-source">
+                    <div id="M000135_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis/list_hash.rb, line 36</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">member</span> <span class="ruby-identifier">sym</span>
           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Can't retrieve a single value from a Redis ListHash. Use Index::Redis::StringHash.&quot;</span>

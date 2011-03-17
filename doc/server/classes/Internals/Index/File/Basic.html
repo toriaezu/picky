@@ -60,11 +60,11 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000082">backup</a>,</li>
+                <li><a href="#M000101">backup</a>,</li>
                 
-                <li><a href="#M000083">backup_directory</a>,</li>
+                <li><a href="#M000102">backup_directory</a>,</li>
                 
-                <li><a href="#M000086">backup_file_path_of</a></li>
+                <li><a href="#M000105">backup_file_path_of</a></li>
                 
             </ul>
         </dd>
@@ -73,9 +73,9 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000089">cache_ok?</a>,</li>
+                <li><a href="#M000108">cache_ok?</a>,</li>
                 
-                <li><a href="#M000088">cache_small?</a></li>
+                <li><a href="#M000107">cache_small?</a></li>
                 
             </ul>
         </dd>
@@ -84,7 +84,7 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000087">delete</a></li>
+                <li><a href="#M000106">delete</a></li>
                 
             </ul>
         </dd>
@@ -93,7 +93,7 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000081">extension</a></li>
+                <li><a href="#M000100">extension</a></li>
                 
             </ul>
         </dd>
@@ -102,7 +102,7 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000080">new</a></li>
+                <li><a href="#M000098">new</a></li>
                 
             </ul>
         </dd>
@@ -111,7 +111,7 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000084">prepare_backup</a></li>
+                <li><a href="#M000103">prepare_backup</a></li>
                 
             </ul>
         </dd>
@@ -120,7 +120,7 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000085">restore</a></li>
+                <li><a href="#M000104">restore</a></li>
                 
             </ul>
         </dd>
@@ -129,7 +129,16 @@ as it does not provide dump/load methods.
         <dd>
             <ul>
                 
-                <li><a href="#M000090">size_of</a></li>
+                <li><a href="#M000109">size_of</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000099">to_s</a></li>
                 
             </ul>
         </dd>
@@ -164,9 +173,9 @@ as it does not provide dump/load methods.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000080">
+                <div class="title" id="M000098">
                     
-                    <a name="M000080"></a><b>new</b>(cache_path)
+                    <a name="M000098"></a><b>new</b>(cache_path)
                     
                 </div>
                 
@@ -183,12 +192,12 @@ by the subclasses.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000080_source')" id="l_M000080_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000098_source')" id="l_M000098_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L23" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000080_source" class="dyn-source">
+                    <div id="M000098_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 23</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">cache_path</span>
           <span class="ruby-ivar">@cache_path</span> = <span class="ruby-node">&quot;#{cache_path}.#{extension}&quot;</span>
@@ -201,9 +210,9 @@ by the subclasses.
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000082">
+                <div class="title" id="M000101">
                     
-                    <a name="M000082"></a><b>backup</b>()
+                    <a name="M000101"></a><b>backup</b>()
                     
                 </div>
                 
@@ -220,13 +229,13 @@ Will copy the index file to a location that is in a directory named
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000082_source')" id="l_M000082_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000101_source')" id="l_M000101_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L37" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L41" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000082_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 37</span>
+                    <div id="M000101_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 41</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup</span>
           <span class="ruby-identifier">prepare_backup</span> <span class="ruby-identifier">backup_directory</span>
           <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">verbose</span><span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
@@ -237,9 +246,9 @@ Will copy the index file to a location that is in a directory named
             </div>
             
             <div class="method">
-                <div class="title" id="M000083">
+                <div class="title" id="M000102">
                     
-                    <a name="M000083"></a><b>backup_directory</b>()
+                    <a name="M000102"></a><b>backup_directory</b>()
                     
                 </div>
                 
@@ -256,13 +265,13 @@ The backup directory of this file. Equal to the file&#8217;s dirname plus
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000083_source')" id="l_M000083_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000102_source')" id="l_M000102_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L48" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000083_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 44</span>
+                    <div id="M000102_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 48</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup_directory</span>
           <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">cache_path</span>), <span class="ruby-value str">'backup'</span>
         <span class="ruby-keyword kw">end</span></pre>
@@ -272,9 +281,9 @@ The backup directory of this file. Equal to the file&#8217;s dirname plus
             </div>
             
             <div class="method">
-                <div class="title" id="M000086">
+                <div class="title" id="M000105">
                     
-                    <a name="M000086"></a><b>backup_file_path_of</b>(path)
+                    <a name="M000105"></a><b>backup_file_path_of</b>(path)
                     
                 </div>
                 
@@ -290,13 +299,13 @@ The backup filename.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000086_source')" id="l_M000086_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000105_source')" id="l_M000105_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L65" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000086_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 61</span>
+                    <div id="M000105_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 65</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">backup_file_path_of</span> <span class="ruby-identifier">path</span>
           <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">name</span> = <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">split</span> <span class="ruby-identifier">path</span>
           <span class="ruby-operator">::</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">dir</span>, <span class="ruby-value str">'backup'</span>, <span class="ruby-identifier">name</span>
@@ -307,9 +316,9 @@ The backup filename.
             </div>
             
             <div class="method">
-                <div class="title" id="M000089">
+                <div class="title" id="M000108">
                     
-                    <a name="M000089"></a><b>cache_ok?</b>()
+                    <a name="M000108"></a><b>cache_ok?</b>()
                     
                 </div>
                 
@@ -328,13 +337,13 @@ A small cache is still ok.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000089_source')" id="l_M000089_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000108_source')" id="l_M000108_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L86" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L90" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000089_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 86</span>
+                    <div id="M000108_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 90</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_ok?</span>
           <span class="ruby-identifier">size_of</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
         <span class="ruby-keyword kw">end</span></pre>
@@ -344,9 +353,9 @@ A small cache is still ok.
             </div>
             
             <div class="method">
-                <div class="title" id="M000088">
+                <div class="title" id="M000107">
                     
-                    <a name="M000088"></a><b>cache_small?</b>()
+                    <a name="M000107"></a><b>cache_small?</b>()
                     
                 </div>
                 
@@ -362,13 +371,13 @@ Is this cache file suspiciously small? (less than 8 Bytes of size)
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000088_source')" id="l_M000088_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000107_source')" id="l_M000107_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L78" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L82" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000088_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 78</span>
+                    <div id="M000107_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 82</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_small?</span>
           <span class="ruby-identifier">size_of</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-value">8</span>
         <span class="ruby-keyword kw">end</span></pre>
@@ -378,9 +387,9 @@ Is this cache file suspiciously small? (less than 8 Bytes of size)
             </div>
             
             <div class="method">
-                <div class="title" id="M000087">
+                <div class="title" id="M000106">
                     
-                    <a name="M000087"></a><b>delete</b>()
+                    <a name="M000106"></a><b>delete</b>()
                     
                 </div>
                 
@@ -396,13 +405,13 @@ Deletes the file.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000087_source')" id="l_M000087_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000106_source')" id="l_M000106_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L72" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000087_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 68</span>
+                    <div id="M000106_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 72</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>
           <span class="ruby-node">`rm -Rf #{cache_path}`</span>
         <span class="ruby-keyword kw">end</span></pre>
@@ -412,9 +421,9 @@ Deletes the file.
             </div>
             
             <div class="method">
-                <div class="title" id="M000081">
+                <div class="title" id="M000100">
                     
-                    <a name="M000081"></a><b>extension</b>()
+                    <a name="M000100"></a><b>extension</b>()
                     
                 </div>
                 
@@ -430,13 +439,13 @@ The default extension for index files is &#8220;index&#8221;.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000081_source')" id="l_M000081_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000100_source')" id="l_M000100_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L29" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L33" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000081_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 29</span>
+                    <div id="M000100_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 33</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extension</span>
           <span class="ruby-identifier">:index</span>
         <span class="ruby-keyword kw">end</span></pre>
@@ -446,9 +455,9 @@ The default extension for index files is &#8220;index&#8221;.
             </div>
             
             <div class="method">
-                <div class="title" id="M000084">
+                <div class="title" id="M000103">
                     
-                    <a name="M000084"></a><b>prepare_backup</b>(target)
+                    <a name="M000103"></a><b>prepare_backup</b>(target)
                     
                 </div>
                 
@@ -464,13 +473,13 @@ Prepares the backup directory for the file.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000084_source')" id="l_M000084_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000103_source')" id="l_M000103_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L53" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000084_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 49</span>
+                    <div id="M000103_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 53</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare_backup</span> <span class="ruby-identifier">target</span>
           <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-identifier">target</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">target</span>)
         <span class="ruby-keyword kw">end</span></pre>
@@ -480,9 +489,9 @@ Prepares the backup directory for the file.
             </div>
             
             <div class="method">
-                <div class="title" id="M000085">
+                <div class="title" id="M000104">
                     
-                    <a name="M000085"></a><b>restore</b>()
+                    <a name="M000104"></a><b>restore</b>()
                     
                 </div>
                 
@@ -498,13 +507,13 @@ Copies the file from its backup location back to the original location.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000085_source')" id="l_M000085_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000104_source')" id="l_M000104_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L56" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L60" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000085_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 56</span>
+                    <div id="M000104_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 60</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">restore</span>
           <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-identifier">backup_file_path_of</span>(<span class="ruby-identifier">cache_path</span>), <span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">verbose</span><span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
         <span class="ruby-keyword kw">end</span></pre>
@@ -514,9 +523,9 @@ Copies the file from its backup location back to the original location.
             </div>
             
             <div class="method">
-                <div class="title" id="M000090">
+                <div class="title" id="M000109">
                     
-                    <a name="M000090"></a><b>size_of</b>(path)
+                    <a name="M000109"></a><b>size_of</b>(path)
                     
                 </div>
                 
@@ -532,15 +541,42 @@ Extracts the size of the file in Bytes.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000090_source')" id="l_M000090_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000109_source')" id="l_M000109_source">show</a>
                         
-                        | <a href="http://github.com/floere/picky/blob/2116d5fc34cb8a42b0068a755d91a0e56cd0201a/server/lib/picky/internals/index/file/basic.rb#L91" target="_blank" class="github_url">on GitHub</a>
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L95" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000090_source" class="dyn-source">
-                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 91</span>
+                    <div id="M000109_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 95</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size_of</span> <span class="ruby-identifier">path</span>
           <span class="ruby-node">`ls -l #{path} | awk '{print $5}'`</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000099">
+                    
+                    <a name="M000099"></a><b>to_s</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000099_source')" id="l_M000099_source">show</a>
+                        
+                        | <a href="http://github.com/floere/picky/blob/64dab00d2d4890edac2ae9ab786d9c32e829ea0f/server/lib/picky/internals/index/file/basic.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000099_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/file/basic.rb, line 27</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+          <span class="ruby-identifier">cache_path</span>
         <span class="ruby-keyword kw">end</span></pre>
                     </div>
                 </div>
