@@ -19,7 +19,7 @@
         </h1>
         <ul class="files">
             <li>lib/picky-client/client.rb</li>
-            <li>Last modified: 2010-12-17 14:32:15 +0100</li>
+            <li>Last modified: 2011-03-16 23:21:34 +0100</li>
         </ul>
     </div>
 
@@ -39,8 +39,7 @@ href="../../../classes/Picky.html">Picky</a> search engine.
   # Use the right host, port where your Picky server runs. Then, choose a URL path as defined
   # in your &lt;tt&gt;app/application.rb&lt;/tt&gt; in the server.
   #
-  FullBooks = Picky::Client::Full.new :host =&gt; 'localhost', :port =&gt; 8080, :path =&gt; '/books/full'
-  LiveBooks = Picky::Client::Live.new :host =&gt; 'localhost', :port =&gt; 8080, :path =&gt; '/books/live'
+  BookSearch = Picky::Client.new :host =&gt; 'localhost', :port =&gt; 8080, :path =&gt; '/books'
 </pre>
 <h4>2. Get results.</h4>
 <pre>
@@ -48,7 +47,7 @@ href="../../../classes/Picky.html">Picky</a> search engine.
   #
   # You will get back a Hash with categorized results.
   #
-  results = FullBooks.search 'my query', :offset =&gt; 10
+  results = BookSearch.search 'my query', :offset =&gt; 10
 </pre>
 <h4>3. Work with the results.</h4>
 <pre>

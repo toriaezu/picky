@@ -56,7 +56,7 @@ An index that is persisted in <a href="Redis.html">Redis</a>.
         <dd>
             <ul>
                 
-                <li><a href="#M000033">new</a></li>
+                <li><a href="#M000022">new</a></li>
                 
             </ul>
         </dd>
@@ -78,9 +78,9 @@ An index that is persisted in <a href="Redis.html">Redis</a>.
             <div class="sectiontitle">Class Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000033">
+                <div class="title" id="M000022">
                     
-                    <a name="M000033"></a><b>new</b>(name, source, options = {})
+                    <a name="M000022"></a><b>new</b>(name, source, options = {})
                     
                 </div>
                 
@@ -129,12 +129,12 @@ the results JSON than the name of the index.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000033_source')" id="l_M000033_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000022_source')" id="l_M000022_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/a99e630af93a069f0eb8a189dd8a8fd901b37b47/server/lib/picky/index/redis.rb#L19" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000033_source" class="dyn-source">
+                    <div id="M000022_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/index/redis.rb, line 19</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span> = {}
       <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:indexing_bundle_class</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Internals</span><span class="ruby-operator">::</span><span class="ruby-constant">Indexing</span><span class="ruby-operator">::</span><span class="ruby-constant">Bundle</span><span class="ruby-operator">::</span><span class="ruby-constant">Redis</span>

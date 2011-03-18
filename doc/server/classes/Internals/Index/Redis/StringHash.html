@@ -49,7 +49,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000137">collection</a></li>
+                <li><a href="#M000110">collection</a></li>
                 
             </ul>
         </dd>
@@ -58,7 +58,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000136">dump</a></li>
+                <li><a href="#M000109">dump</a></li>
                 
             </ul>
         </dd>
@@ -67,7 +67,7 @@
         <dd>
             <ul>
                 
-                <li><a href="#M000138">member</a></li>
+                <li><a href="#M000111">member</a></li>
                 
             </ul>
         </dd>
@@ -89,9 +89,9 @@
             <div class="sectiontitle">Instance Public methods</div>
             
             <div class="method">
-                <div class="title" id="M000137">
+                <div class="title" id="M000110">
                     
-                    <a name="M000137"></a><b>collection</b>(sym)
+                    <a name="M000110"></a><b>collection</b>(sym)
                     
                 </div>
                 
@@ -107,12 +107,12 @@ Get a collection.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000137_source')" id="l_M000137_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000110_source')" id="l_M000110_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/c7a9033407ec9a4f501b80abf5640c9c38e28193/server/lib/picky/internals/index/redis/string_hash.rb#L20" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000137_source" class="dyn-source">
+                    <div id="M000110_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis/string_hash.rb, line 20</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collection</span> <span class="ruby-identifier">sym</span>
           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Can't retrieve a collection from a StringHash. Use Index::Redis::ListHash.&quot;</span>
@@ -123,9 +123,9 @@ Get a collection.
             </div>
             
             <div class="method">
-                <div class="title" id="M000136">
+                <div class="title" id="M000109">
                     
-                    <a name="M000136"></a><b>dump</b>(hash)
+                    <a name="M000109"></a><b>dump</b>(hash)
                     
                 </div>
                 
@@ -141,12 +141,12 @@ Writes the hash into <a href="../Redis.html">Redis</a>.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000136_source')" id="l_M000136_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000109_source')" id="l_M000109_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/c7a9033407ec9a4f501b80abf5640c9c38e28193/server/lib/picky/internals/index/redis/string_hash.rb#L11" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000136_source" class="dyn-source">
+                    <div id="M000109_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis/string_hash.rb, line 11</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dump</span> <span class="ruby-identifier">hash</span>
           <span class="ruby-identifier">redis</span> = <span class="ruby-identifier">backend</span>
@@ -160,9 +160,9 @@ Writes the hash into <a href="../Redis.html">Redis</a>.
             </div>
             
             <div class="method">
-                <div class="title" id="M000138">
+                <div class="title" id="M000111">
                     
-                    <a name="M000138"></a><b>member</b>(sym)
+                    <a name="M000111"></a><b>member</b>(sym)
                     
                 </div>
                 
@@ -178,12 +178,12 @@ Get a single value.
                 
                 <div class="sourcecode">
                     <p class="source-link">
-                        Source: <a href="javascript:toggleSource('M000138_source')" id="l_M000138_source">show</a>
+                        Source: <a href="javascript:toggleSource('M000111_source')" id="l_M000111_source">show</a>
                         
                         | <a href="http://github.com/floere/picky/blob/c7a9033407ec9a4f501b80abf5640c9c38e28193/server/lib/picky/internals/index/redis/string_hash.rb#L26" target="_blank" class="github_url">on GitHub</a>
                         
                     </p>
-                    <div id="M000138_source" class="dyn-source">
+                    <div id="M000111_source" class="dyn-source">
                         <pre><span class="ruby-comment cmt"># File lib/picky/internals/index/redis/string_hash.rb, line 26</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">member</span> <span class="ruby-identifier">sym</span>
           <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">hget</span> <span class="ruby-identifier">namespace</span>, <span class="ruby-identifier">sym</span>
