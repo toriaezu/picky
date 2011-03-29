@@ -18,7 +18,7 @@ layout: default
       %pre
         :preserve
           gem install picky-client
-          
+
           gem 'picky-client'
     %p
       Don't forget to do a
@@ -43,11 +43,11 @@ layout: default
       %pre
         :preserve
           gem install picky-generators
-    
+
           picky generate unicorn_server library_search
-    
+
           cd library_search
-    
+
           bundle install
     %p
       You now have a nice directory (library_search) set up with all the needed Gems, ready to go!
@@ -67,9 +67,9 @@ layout: default
           # Options are:
           #  * host  # e.g. 'localhost'
           #  * port  # e.g. 8080
-          #  * path  # e.g. '/books/full'
+          #  * path  # e.g. '/books'
           #
-          Picky::Client::&lt;Full or Live&gt;.new options
+          Picky::Client.new options
     %p
       Usually, what I do is save the Picky client instance in a constant, like FullBooks, or BookSearch.
       This is so I can reuse that instance.
@@ -80,18 +80,13 @@ layout: default
         :preserve
           # In development.rb:
           #
-          FullBooks = Picky::Client::Full.new(
+          BookSearch = Picky::Client.new(
             :host => 'localhost',
             :port => 8080,
-            :path => '/books/full'
-          )
-          LiveBooks = Picky::Client::Live.new(
-            :host => 'localhost',
-            :port => 8080,
-            :path => '/books/live'
+            :path => '/books'
           )
     %p
-      The FullBooks and LiveBooks constants are ready for use in your controller actions!
+      The BookSearch constant is ready for use in your controller actions!
     %p
       Please continue below to see how to use the configured searches.
   .grid_1
@@ -125,31 +120,30 @@ layout: default
           # (With a database source, the categories are equivalent
           # to the fields)
           #
-          books_index = index :books, Sources::DB.new(
+          books_index = Index::Memory.new :books, Sources::DB.new(
               'SELECT id, title, author, description FROM books',
               :file => 'app/db.yml'
-            )
-          books_index.category(
-              :title, # identifier
-              :qualifiers => [:t, :title],
-              :similarity => Similarity::DoubleLevenshtone.new(3)
-            )
-          books_index.category(...
+            ) do
+            category :title, # identifier
+                     :qualifiers => [:t, :title],
+                     :similarity => Similarity::DoubleLevenshtone.new(3)
+            category ...
+          end
     %p
       An index has
       %ol
         %li an identifier (for index directory naming/referencing by Indexes[:identifier]),
-  
+
         %li
           a data source (find out more on
           %a{ :href => 'http://github.com/floere/picky/wiki/Sources-Configuration' } Sources in the Wiki
           ), and
-  
+
         %li
           a number of categories (find out more
           %a{ :href => 'http://github.com/floere/picky/wiki/Categories-Configuration' } Categories in the Wiki
           in the Wiki), and finally,
-  
+
         %li a number of options.
     %h4 Define how querying works, i.e., query text is handled.
     %p
@@ -259,11 +253,11 @@ layout: default
           # Still in the controller action:
           #
           results = FullBooks.search ...
-    
+
           # Make the hash a bit more self-aware.
           #
           results.extend Picky::Convenience
-    
+
           # Now you get:
           #
           results.empty?
@@ -272,7 +266,7 @@ layout: default
           results.allocations
           results.allocations_size
           results.total     # The total amount of found ids.
-    
+
           # The method I use most often is
           # populate_with, as this populates the results
           # with rendered results (using the ids), not
@@ -284,7 +278,7 @@ layout: default
             # book is a model. Render it however you want.
             book.to_s
           end
-    
+
           # If you use the provided Picky JavaScript frontend,
           # then encode it in JSON before sending it off.
           #
@@ -298,7 +292,7 @@ layout: default
           #
           FullBooks = Picky::Client::Full.new ...
           LiveBooks = Picky::Client::Live.new ...
-    
+
           # In a controller action.
           #
           results = FullBooks.search ...
@@ -315,7 +309,7 @@ layout: default
           #
           results = FullBooks.search ...
           results.populate_with Book
-    
+
           # In your view:
           #
           results.entries do |book|
@@ -328,7 +322,7 @@ layout: default
       Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
     %code
       %pre
-        curl 'localhost:8080/books/full?offset=10&query=test'
+        curl 'localhost:8080/books?offset=10&query=test'
     %p
       Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
     %h3 Is something not correctly indexed?
@@ -385,35 +379,35 @@ layout: default
             // A full query displays the rendered results.
             //
             full: '/search/full',
-      
+
             // A live query just updates the count.
             //
             live: '/search/live',
-      
+
             // Optional. Default is 10.
             //
             showResultsLimit: 20,
-      
+
             // Optional. Before Picky sends any data.
             //
             before: function(params, query, offset) {
               console.log('Going to send your query. Oh boy!');
             },
-      
+
             // Optional. Just after Picky receives data.
             //           (Get a PickyData object)
             //
             success: function(data, query) {
               console.log('Received the data.');
             },
-      
+
             // Optional. After Picky has handled the
             //           data and updated the view.
             //
             after: function(data, query) {
               console.log('Found what you were looking for?');
             },
-      
+
             // This is used to generate the correct query
             // strings, localized. E.g. "subject:war".
             //
@@ -426,7 +420,7 @@ layout: default
                 subjects:  'subject'
               }
             },
-      
+
             // This is used to explain the preceding word
             // in the suggestion text, localized.
             // E.g. "Peter (author)".
@@ -445,7 +439,7 @@ layout: default
               }
             }
           });
-    
+
           // An initial search text.
           //
           pickyClient.insert('initial search text');

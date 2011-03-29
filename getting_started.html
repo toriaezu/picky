@@ -98,12 +98,12 @@
         <p>The server generates a library example, which you can run right away.</p>
         <code><pre># Generates a directory "app_name"&#x000A;# with a new Picky server project based on Unicorn.&#x000A;&#x000A;picky generate unicorn_server app_name</pre>
         <pre>cd app_name&#x000A;bundle install</pre></code>
-        <h4>Index the data</h4>
+        <h4>1. Index the data</h4>
         <code><pre>rake index</pre></code>
-        <h4>Start the Picky server</h4>
+        <h4>2. Start the server</h4>
         <code><pre>rake start</pre></code>
-        <h4>Try a query!</h4>
-        <code><pre>curl localhost:8080/books/full?query=test</pre></code>
+        <h4>3. Try a query</h4>
+        <code><pre>curl localhost:8080/books?query=test</pre></code>
         <p>
           Don't worry about the strange looking results!
           The next part (client) will take care of them.
@@ -117,9 +117,9 @@
         <code></code>
         <pre># Generates a directory "app_name"&#x000A;# with a new Picky client Sinatra project.&#x000A;&#x000A;picky generate sinatra_client app_name</pre>
         <pre>cd app_name&#x000A;bundle install</pre>
-        <h4>Start the app server</h4>
+        <h4>1. Start the app server</h4>
         <code><pre>unicorn -p 3000</pre></code>
-        <h4>Admire your work</h4>
+        <h4>2. Admire your work</h4>
         <p>
           Go to
           <a href="http://localhost:3000/">http://localhost:3000/</a>
@@ -132,7 +132,7 @@
         </p>
         <h4>The server</h4>
         <p>In the server directory, just type</p>
-        <code><pre>rake</pre></code>
+        <code><pre>rake todo</pre></code>
         <p>and it will tell you where to change the server configuration.</p>
         <h4>The client</h4>
         <p>

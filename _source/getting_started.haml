@@ -51,18 +51,18 @@ layout: default
         :preserve
           cd app_name
           bundle install
-    %h4 Index the data
+    %h4 1. Index the data
     %code
       %pre
         rake index
-    %h4 Start the Picky server
+    %h4 2. Start the server
     %code
       %pre
         rake start
-    %h4 Try a query!
+    %h4 3. Try a query
     %code
       %pre
-        curl localhost:8080/books/full?query=test
+        curl localhost:8080/books?query=test
     %p
       Don't worry about the strange looking results!
       The next part (client) will take care of them.
@@ -82,11 +82,11 @@ layout: default
       :preserve
         cd app_name
         bundle install
-    %h4 Start the app server
+    %h4 1. Start the app server
     %code
       %pre
         unicorn -p 3000
-    %h4 Admire your work
+    %h4 2. Admire your work
     %p
       Go to
       %a{ :href => 'http://localhost:3000/' } http://localhost:3000/
@@ -99,7 +99,7 @@ layout: default
     %p In the server directory, just type
     %code
       %pre
-        rake
+        rake todo
     %p and it will tell you where to change the server configuration.
     %h4 The client
     %p

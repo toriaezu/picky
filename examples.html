@@ -116,17 +116,17 @@
         <p>
           The Picky client provides an API to access the server. It looks like this:
         </p>
-        <code><pre># The options define where the Picky server that&#x000A;# you have already set up is found.&#x000A;# (Haven't set it up yet – see the right column on&#x000A;# how to do this, then come back here)&#x000A;#&#x000A;# Options are:&#x000A;#  * host  # e.g. 'localhost'&#x000A;#  * port  # e.g. 8080&#x000A;#  * path  # e.g. '/books/full'&#x000A;#&#x000A;Picky::Client::&lt;Full or Live&gt;.new options</pre></code>
+        <code><pre># The options define where the Picky server that&#x000A;# you have already set up is found.&#x000A;# (Haven't set it up yet – see the right column on&#x000A;# how to do this, then come back here)&#x000A;#&#x000A;# Options are:&#x000A;#  * host  # e.g. 'localhost'&#x000A;#  * port  # e.g. 8080&#x000A;#  * path  # e.g. '/books'&#x000A;#&#x000A;Picky::Client.new options</pre></code>
         <p>
-          Usually, what I do is save the Picky client instance in a constant, like FullBooks, or BookSearch.
+          Usually, what I do is save the Picky client instance in a constant, like Books, or BookSearch.
           This is so I can reuse that instance.
         </p>
         <p>
           Since this configuration is environment specific, it is best – in Rails – to put it into development.rb / production.rb / test.rb.
         </p>
-        <code><pre># In development.rb:&#x000A;#&#x000A;FullBooks = Picky::Client::Full.new(&#x000A;  :host => 'localhost',&#x000A;  :port => 8080,&#x000A;  :path => '/books/full'&#x000A;)&#x000A;LiveBooks = Picky::Client::Live.new(&#x000A;  :host => 'localhost',&#x000A;  :port => 8080,&#x000A;  :path => '/books/live'&#x000A;)</pre></code>
+        <code><pre># In development.rb:&#x000A;#&#x000A;BookSearch = Picky::Client.new(&#x000A;  :host => 'localhost',&#x000A;  :port => 8080,&#x000A;  :path => '/books'&#x000A;)</pre></code>
         <p>
-          The FullBooks and LiveBooks constants are ready for use in your controller actions!
+          The BookSearch constant is ready for use in your controller actions!
         </p>
         <p>
           Please continue below to see how to use the configured searches.
@@ -234,7 +234,7 @@
         <p>
           Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
         </p>
-        <code><pre>curl 'localhost:8080/books/full?offset=10&query=test'</pre></code>
+        <code><pre>curl 'localhost:8080/books?offset=10&query=test'</pre></code>
         <p>
           Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
         </p>

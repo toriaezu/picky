@@ -80,11 +80,11 @@ layout: default
           # Options are:
           #  * host  # e.g. 'localhost'
           #  * port  # e.g. 8080
-          #  * path  # e.g. '/books/full'
+          #  * path  # e.g. '/books'
           #
-          Picky::Client::&lt;Full or Live&gt;.new options
+          Picky::Client.new options
     %p
-      Usually, what I do is save the Picky client instance in a constant, like FullBooks, or BookSearch.
+      Usually, what I do is save the Picky client instance in a constant, like Books, or BookSearch.
       This is so I can reuse that instance.
     %p
       Since this configuration is environment specific, it is best – in Rails – to put it into development.rb / production.rb / test.rb.
@@ -93,18 +93,13 @@ layout: default
         :preserve
           # In development.rb:
           #
-          FullBooks = Picky::Client::Full.new(
+          BookSearch = Picky::Client.new(
             :host => 'localhost',
             :port => 8080,
-            :path => '/books/full'
-          )
-          LiveBooks = Picky::Client::Live.new(
-            :host => 'localhost',
-            :port => 8080,
-            :path => '/books/live'
+            :path => '/books'
           )
     %p
-      The FullBooks and LiveBooks constants are ready for use in your controller actions!
+      The BookSearch constant is ready for use in your controller actions!
     %p
       Please continue below to see how to use the configured searches.
   .grid_1
@@ -341,7 +336,7 @@ layout: default
       Either from Sinatra/Rails/Padrino/Camping etc. through the picky client (see left column) or using for example curl to access the json data from the server directly:
     %code
       %pre
-        curl 'localhost:8080/books/full?offset=10&query=test'
+        curl 'localhost:8080/books?offset=10&query=test'
     %p
       Or access it from any app server in any language. The data you get is JSON, for which lots of good libraries are available.
     %h3 Is something not correctly indexed?
