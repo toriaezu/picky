@@ -15,7 +15,9 @@ describe "Integration Tests" do
     @books      = Search.new Indexes[:books]
     @sym        = Search.new Indexes[:symbol_keys]
     @csv        = Search.new Indexes[:csv_test]
+    @indexing   = Search.new Indexes[:special_indexing]
     @memory_geo = Search.new Indexes[:memory_geo]
+    @real_geo   = Search.new Indexes[:real_geo]
     @redis      = Search.new Indexes[:redis]
   end
   
@@ -32,6 +34,11 @@ describe "Integration Tests" do
   def self.it_should_find_ids_in_memory_geo text, expected_ids
     it 'should return the right ids' do
       @memory_geo.search_with_text(text).ids.should == expected_ids
+    end
+  end
+  def self.it_should_find_ids_in_real_geo text, expected_ids
+    it 'should return the right ids' do
+      @real_geo.search_with_text(text).ids.should == expected_ids
     end
   end
   def self.it_should_find_ids_in_redis text, expected_ids
@@ -115,7 +122,7 @@ describe "Integration Tests" do
     # Stopwords.
     #
     it_should_find_ids_in_csv "and the history or fergus", [4, 4]
-    it_should_find_ids_in_csv "und and the or on of in is to from as at an history fergus", [4, 4]
+    it_should_find_ids_in_csv "and the or on of in is to from as at an history fergus", [4, 4]
     
     # Normalization.
     #
@@ -140,9 +147,13 @@ describe "Integration Tests" do
     it_should_find_ids_in_csv "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", []
     it_should_find_ids_in_csv "glorfgnorfblorf", []
     
-    # Location based search. Memory.
+    # Range based area search. Memory.
     #
     it_should_find_ids_in_memory_geo "north1:47.41,east1:8.55", [1413, 10346, 10661, 10746, 10861]
+    
+    # Geo based area search.
+    #
+    it_should_find_ids_in_real_geo "north1:47.41,east1:8.55", [1413, 5015, 9168, 10346, 10661, 10746, 10768, 10861]
     
     # Redis.
     #
@@ -160,6 +171,15 @@ describe "Integration Tests" do
     end
     it 'uses categorization' do
       @csv.search_with_text('title:religion').ids.should_not == @csv.search_with_text('subject:religion').ids
+    end
+    
+    # Index-specific tokenizer.
+    #
+    it 'does not find abc' do
+      @indexing.search_with_text('human perception').ids.should == []
+    end
+    it 'does find without a or b or c' do
+      @indexing.search_with_text('humn pereption').ids.should == [72]
     end
     
     # Downcasing.

@@ -4,10 +4,9 @@ module Internals
 
     class Category
 
-      attr_reader :exact, :partial, :name, :configuration, :indexer
+      include Internals::Shared::Category
 
-      delegate :identifier, :prepare_index_directory, :to => :configuration
-      delegate :source, :source=, :tokenizer, :tokenizer=, :to => :indexer
+      attr_reader :name, :index, :exact, :partial
 
       # Mandatory params:
       #  * name: Category name to use as identifier and file names.
@@ -16,26 +15,20 @@ module Internals
       # Options:
       #  * partial: Partial::None.new, Partial::Substring.new(from:start_char, to:up_to_char) (defaults from:-3, to:-1)
       #  * similarity: Similarity::None.new (default), Similarity::DoubleMetaphone.new(amount_of_similarly_linked_words)
-      #  * source: Use if the category should use a different source.
       #  * from: The source category identifier to take the data from.
       #
       # Advanced Options:
-      #
+      #  * source: Use if the category should use a different source.
       #  * weights: Query::Weights.new( [:category1, :category2] => +2, ... )
       #  * tokenizer: Use a subclass of Tokenizers::Base that implements #tokens_for and #empty_tokens.
       #
-      # TODO Should source be not optional, or taken from the index?
-      #
       def initialize name, index, options = {}
-        @name = name
-        @from = options[:from]
+        @name  = name
+        @index = index
 
-        # Now we have enough info to combine the index and the category.
-        #
-        @configuration = Configuration::Index.new index, self
-
-        @tokenizer = options[:tokenizer] || Tokenizers::Index.default
-        @indexer = Indexers::Serial.new configuration, options[:source], @tokenizer
+        @source    = options[:source]
+        @from      = options[:from]
+        @tokenizer = options[:tokenizer]
 
         # TODO Push into Bundle. At least the weights.
         #
@@ -44,20 +37,30 @@ module Internals
         similarity = options[:similarity] || Generators::Similarity::Default
 
         bundle_class = options[:indexing_bundle_class] || Bundle::Memory
-        @exact   = bundle_class.new(:exact,   configuration, similarity, Generators::Partial::None.new, weights)
-        @partial = bundle_class.new(:partial, configuration, Generators::Similarity::None.new, partial, weights)
+        @exact   = bundle_class.new(:exact,   self, similarity, Generators::Partial::None.new, weights)
+        @partial = bundle_class.new(:partial, self, Generators::Similarity::None.new, partial, weights)
       end
 
-      def to_s
-        <<-CATEGORY
-Category(#{name} from #{from}):
-  Exact:
-#{exact.indented_to_s(4)}
-  Partial:
-#{partial.indented_to_s(4)}
-        CATEGORY
+      # Return an appropriate source.
+      #
+      def source
+        @source || @index.source
+      end
+      # The indexer is lazily generated and cached.
+      #
+      def indexer
+        @indexer ||= Indexers::Serial.new self
+      end
+      # Returns an appropriate tokenizer.
+      # If one isn't set on this category, will try the index,
+      # and finally the default index tokenizer.
+      #
+      def tokenizer
+        @tokenizer || @index.tokenizer || Tokenizers::Index.default
       end
 
+      # Where the data is taken from.
+      #
       def from
         @from || name
       end
@@ -83,14 +86,14 @@ Category(#{name} from #{from}):
         partial.delete
       end
 
-      def index
+      def index!
         prepare_index_directory
         indexer.index
       end
 
       # Generates all caches for this category.
       #
-      def cache
+      def cache!
         prepare_index_directory
         configure
         generate_caches

@@ -25,13 +25,52 @@ class Search
   #
   # TODO Add identifiers_to_remove (rename) and reduce_allocations_to_amount (rename).
   #
+  # It is also possible to define the tokenizer and weights like so.
+  # Example:
+  #   Search.new(index1, index2, index3) do
+  #     searching removes_characters: /[^a-z]/, etc.
+  #     weights [:author, :title] => +3, [:title, :isbn] => +1
+  #   end
+  #
   def initialize *index_definitions
     options      = Hash === index_definitions.last ? index_definitions.pop : {}
 
-    @indexes     = Internals::Query::Indexes.new *index_definitions, combinations_type_for(index_definitions)
-    @tokenizer   = options[:tokenizer] || Internals::Tokenizers::Query.default
-    weights      = options[:weights] || Query::Weights.new
-    @weights     = Hash === weights ? Query::Weights.new(weights) : weights
+    @indexes  = Internals::Query::Indexes.new *index_definitions, combinations_type_for(index_definitions)
+    searching options[:tokenizer]
+    boost     options[:weights]
+
+    instance_eval(&Proc.new) if block_given?
+  end
+
+  # TODO Doc. Spec.
+  #
+  # Example:
+  #   Search.new(index1, index2, index3) do
+  #     searching removes_characters: /[^a-z]/, etc.
+  #     weights [:author, :title] => +3, [:title, :isbn] => +1
+  #   end
+  #
+  def searching options
+    @tokenizer = if options.respond_to?(:tokenize)
+      options
+    else
+      options && Internals::Tokenizers::Query.new(options)
+    end
+  end
+  def tokenizer
+    @tokenizer || Internals::Tokenizers::Query.default
+  end
+  # TODO Doc. Spec.
+  #
+  # Example:
+  #   Search.new(index1, index2, index3) do
+  #     searching removes_characters: /[^a-z]/, etc.
+  #     boost [:author, :title] => +3, [:title, :isbn] => +1
+  #   end
+  #
+  def boost options
+    weights  = options || Query::Weights.new
+    @weights = Hash === weights ? Query::Weights.new(weights) : weights
   end
 
   # Returns the right combinations strategy for
@@ -110,7 +149,7 @@ class Search
   # * text: The text to tokenize.
   #
   def tokenized text
-    @tokenizer.tokenize text
+    tokenizer.tokenize text
   end
 
   # Gets sorted allocations for the tokens.

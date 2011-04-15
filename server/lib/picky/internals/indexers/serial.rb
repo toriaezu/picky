@@ -2,60 +2,38 @@
 #
 module Indexers
 
-  # The indexer defines the control flow.
+  # Uses a category to index its data.
   #
-  class Serial
+  # Note: It is called serial since it indexes each
+  #
+  class Serial < Base
 
-    attr_accessor :tokenizer, :source
+    attr_reader :category
 
-    def initialize configuration, source, tokenizer
-      @configuration = configuration
-      @source        = source || raise_no_source
-      @tokenizer     = tokenizer
+    delegate :source, :to => :category
+
+    def initialize category
+      @category = category
     end
 
-    # Raise a no source exception.
+    # The tokenizer used is a cached tokenizer from the category.
     #
-    def raise_no_source
-      raise NoSourceSpecifiedException.new("No source given for #{@configuration}.")
+    def tokenizer
+      @tokenizer ||= category.tokenizer
     end
 
-    # Delegates the key format to the source.
+    # Harvest the data from the source, tokenize,
+    # and write to an intermediate "prepared index" file.
     #
-    # Default is to_i.
-    #
-    def key_format
-      @source.key_format || :to_i
-    end
-
-    # Selects the original id (indexed id) and a column to process. The column data is called "token".
-    #
-    # Note: Puts together the parts first in an array, then releasing the array from time to time by joining.
-    #
-    def index
-      indexing_message
-      process
-    end
     def process
       comma   = ?,
       newline = ?\n
 
-      # TODO Move open to config?
-      #
-      # @category.prepared_index do |file|
-      #   source.harvest(@index, @category) do |indexed_id, text|
-      #     tokenizer.tokenize(text).each do |token_text|
-      #       next unless token_text
-      #       file.buffer indexed_id << comma << token_text << newline
-      #     end
-      #     file.write_maybe
-      #   end
-      # end
-      #
-      @configuration.prepared_index_file do |file|
+      local_tokenizer = tokenizer
+      category.prepared_index_file do |file|
         result = []
-        source.harvest(@configuration.index, @configuration.category) do |indexed_id, text|
-          tokenizer.tokenize(text).each do |token_text|
+        source.harvest(category) do |indexed_id, text|
+          local_tokenizer.tokenize(text).each do |token_text|
             next unless token_text
             result << indexed_id << comma << token_text << newline
           end
@@ -64,8 +42,10 @@ module Indexers
         file.write result.join
       end
     end
+    #
+    #
     def indexing_message
-      timed_exclaim %Q{"#{@configuration.identifier}": Starting indexing.}
+      timed_exclaim %Q{"#{@category.identifier}": Starting serial indexing.}
     end
 
   end

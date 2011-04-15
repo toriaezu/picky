@@ -8,7 +8,7 @@ describe Application do
     it "should run ok" do
       lambda {
         class MinimalTestApplication < Application
-          books = Index::Memory.new :books, Sources::DB.new('SELECT id, title FROM books', :file => 'app/db.yml')
+          books = Index::Memory.new :books, source: Sources::DB.new('SELECT id, title FROM books', :file => 'app/db.yml')
           books.define_category :title
           
           rack_adapter.stub! :exclaim # Stopping it from exclaiming.
@@ -24,23 +24,23 @@ describe Application do
         # Here we just test if the API can be called ok.
         #
         class TestApplication < Application
-          default_indexing removes_characters:                 /[^a-zA-Z0-9\s\/\-\"\&\.]/,
-                           stopwords:                          /\b(and|the|of|it|in|for)\b/,
-                           splits_text_on:                     /[\s\/\-\"\&\.]/,
-                           removes_characters_after_splitting: /[\.]/,
-                           normalizes_words:                   [[/\$(\w+)/i, '\1 dollars']],
-                           reject_token_if:                    lambda { |token| token.blank? || token == :amistad }
+          indexing  removes_characters:                 /[^a-zA-Z0-9\s\/\-\"\&\.]/,
+                    stopwords:                          /\b(and|the|of|it|in|for)\b/,
+                    splits_text_on:                     /[\s\/\-\"\&\.]/,
+                    removes_characters_after_splitting: /[\.]/,
+                    normalizes_words:                   [[/\$(\w+)/i, '\1 dollars']],
+                    rejects_token_if:                   lambda { |token| token.blank? || token == :amistad }
                            
-          default_querying removes_characters: /[^a-zA-Z0-9äöü\s\/\-\,\&\"\~\*\:]/,
-                           stopwords:          /\b(and|the|of|it|in|for)\b/,
-                           splits_text_on:     /[\s\/\-\,\&]+/,
-                           normalizes_words:   [[/Deoxyribonucleic Acid/i, 'DNA']],
-                           
-                           substitutes_characters_with: CharacterSubstituters::WestEuropean.new,
-                           maximum_tokens: 5
+          searching removes_characters: /[^a-zA-Z0-9äöü\s\/\-\,\&\"\~\*\:]/,
+                    stopwords:          /\b(and|the|of|it|in|for)\b/,
+                    splits_text_on:     /[\s\/\-\,\&]+/,
+                    normalizes_words:   [[/Deoxyribonucleic Acid/i, 'DNA']],
+                    
+                    substitutes_characters_with: CharacterSubstituters::WestEuropean.new,
+                    maximum_tokens: 5 # TODO maximum_words?
           
           books_index = Index::Memory.new :books,
-                              Sources::DB.new('SELECT id, title, author, isbn13 as isbn FROM books', :file => 'app/db.yml')
+                                          source: Sources::DB.new('SELECT id, title, author, isbn13 as isbn FROM books', :file => 'app/db.yml')
           books_index.define_category :title,
                                       similarity: Similarity::DoubleMetaphone.new(3) # Up to three similar title word indexed.
           books_index.define_category :author,
@@ -48,7 +48,9 @@ describe Application do
           books_index.define_category :isbn,
                                       partial: Partial::None.new # Partially searching on an ISBN makes not much sense.
           
-          geo_index = Index::Memory.new :geo, Sources::CSV.new(:location, :north, :east, file: 'data/ch.csv', col_sep: ',') do
+          geo_index = Index::Memory.new :geo do
+            source          Sources::CSV.new(:location, :north, :east, file: 'data/ch.csv', col_sep: ',')
+            indexing        removes_characters: /[^a-z]/
             category        :location,
                             similarity: Similarity::Metaphone.new(4)
             ranged_category :north1, 1, precision: 3, from: :north
@@ -58,6 +60,9 @@ describe Application do
           rack_adapter.stub! :exclaim # Stopping it from exclaiming.
           
           route %r{^/books} => Search.new(books_index)
+          route %r{^/buks}  => Search.new(books_index) do
+            searching removes_characters: /[buks]/
+          end
         end
       }.should_not raise_error
     end

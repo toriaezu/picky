@@ -6,14 +6,63 @@ describe Search do
   
   before(:each) do
     @type      = stub :type
-    @index     = stub :some_index, :indexed => @type
+    @index     = stub :some_index, :internal_indexed => @type
+  end
+  
+  describe 'tokenized' do
+    let(:search) { described_class.new }
+    it 'delegates to the tokenizer' do
+      tokenizer = stub :tokenizer
+      search.stub! :tokenizer => tokenizer
+      
+      tokenizer.should_receive(:tokenize).once.with :some_text
+      
+      search.tokenized :some_text
+    end
+  end
+  
+  describe 'boost' do
+    let(:search) do
+      described_class.new do
+        boost [:a, :b] => +3,
+              [:c, :d] => -1
+      end
+    end
+    it 'works' do
+      search.weights.should == Query::Weights.new([:a, :b] => 3, [:c, :d] => -1)
+    end
+  end
+  
+  describe 'tokenizer' do
+    context 'no tokenizer predefined' do
+      let(:search) { described_class.new }
+      it 'returns the default tokenizer' do
+        search.tokenizer.should == Internals::Tokenizers::Query.default
+      end
+    end
+    context 'tokenizer predefined' do
+      let(:predefined) { stub(:tokenizer, :tokenize => nil) }
+      context 'by way of hash' do
+        let(:search) { described_class.new(tokenizer: predefined) }
+        it 'returns the predefined tokenizer' do
+          search.tokenizer.should == predefined
+        end
+      end
+      context 'by way of DSL' do
+        let(:search) { pre = predefined; described_class.new { searching pre } }
+        it 'returns the predefined tokenizer' do
+          search.tokenizer.should == predefined
+        end
+      end
+    end
+    
   end
   
   describe 'combinations_type_for' do
     let(:search) { described_class.new }
     it 'returns a specific Combination for a specific input' do
       some_source = stub(:source, :harvest => nil)
-      search.combinations_type_for([Index::Memory.new(:gu, some_source)]).should == Internals::Query::Combinations::Memory
+      search.combinations_type_for([Index::Memory.new(:gu, source: some_source)]).should == Internals::Query::Combinations::Memory
     end
     it 'just works on the same types' do
       search.combinations_type_for([:blorf, :blarf]).should == Internals::Query::Combinations::Memory

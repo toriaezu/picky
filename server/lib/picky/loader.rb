@@ -109,8 +109,9 @@ module Loader # :nodoc:all
 
     # Index generation strategies.
     #
-    load_internals 'indexers/no_source_specified_error'
+    load_internals 'indexers/base'
     load_internals 'indexers/serial'
+    load_internals 'indexers/parallel'
 
     # Generators.
     #
@@ -146,6 +147,10 @@ module Loader # :nodoc:all
     load_internals 'generators/weights_generator'
     load_internals 'generators/similarity_generator'
 
+    # Shared index elements.
+    #
+    load_internals 'shared/category'
+
     # Index store handling.
     #
     load_internals 'index/backend'
@@ -169,8 +174,10 @@ module Loader # :nodoc:all
     load_internals 'indexing/bundle/memory'
     load_internals 'indexing/bundle/redis'
     load_internals 'indexing/category'
-    load_internals 'indexing/categories'
+    # load_internals 'indexing/categories'
     load_internals 'indexing/index'
+
+    load_internals 'indexing/wrappers/category/location'
 
     load_internals 'indexed/bundle/base'
     load_internals 'indexed/bundle/memory'
@@ -186,6 +193,8 @@ module Loader # :nodoc:all
     load_internals 'indexed/wrappers/bundle/wrapper'
     load_internals 'indexed/wrappers/bundle/calculation'
     load_internals 'indexed/wrappers/bundle/location'
+
+    load_internals 'indexed/wrappers/category/location'
 
     # Tokens.
     #
@@ -216,7 +225,7 @@ module Loader # :nodoc:all
 
     # Configuration.
     #
-    load_internals 'configuration/index'
+    # load_internals 'configuration/index'
 
     # Adapters.
     #
@@ -235,6 +244,10 @@ module Loader # :nodoc:all
     # Load harakiri.
     #
     load_relative 'rack/harakiri'
+
+    # Errors.
+    #
+    load_relative 'no_source_specified_exception'
 
     # Load analyzer.
     #

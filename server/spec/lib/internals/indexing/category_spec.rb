@@ -106,6 +106,21 @@ describe Internals::Indexing::Category do
       end
     end
     
+    describe 'source' do
+      context 'with explicit source' do
+        let(:category) { described_class.new(:some_category, @index, :source => :category_source) }
+        it 'returns the right source' do
+          category.source.should == :category_source
+        end
+      end
+      context 'without explicit source' do
+        let(:category) { described_class.new(:some_category, @index.tap{ |index| index.stub! :source => :index_source }) }
+        it 'returns the right source' do
+          category.source.should == :index_source
+        end
+      end
+    end
+    
     describe "cache" do
       before(:each) do
         category.stub! :generate_caches
@@ -113,12 +128,12 @@ describe Internals::Indexing::Category do
       it "prepares the cache directory" do
         category.should_receive(:prepare_index_directory).once.with
         
-        category.cache
+        category.cache!
       end
       it "tells the indexer to index" do
         category.should_receive(:generate_caches).once.with
         
-        category.cache
+        category.cache!
       end
     end
     describe "index" do
@@ -129,18 +144,18 @@ describe Internals::Indexing::Category do
       it "prepares the cache directory" do
         category.should_receive(:prepare_index_directory).once.with
         
-        category.index
+        category.index!
       end
       it "tells the indexer to index" do
         @indexer.should_receive(:index).once.with
         
-        category.index
+        category.index!
       end
     end
     describe "source" do
       context "without source" do
-        it "raises" do
-          lambda { described_class.new :some_name, @index }.should raise_error(Indexers::NoSourceSpecifiedException)
+        it "has no problem with that" do
+          lambda { described_class.new :some_name, @index }.should_not raise_error
         end
       end
     end
