@@ -15,26 +15,28 @@ module Sources
   # See http://github.com/archiloque/rest-client.
   #
   # Examples:
-  #  Sources::Couch.new(:title, :author, :isbn, url:'localhost:5984')
-  #  Sources::Couch.new(:title, :author, :isbn, url:'localhost:5984', user:'someuser', password:'somepassword')
-
-  #  Sources::Mongo.new(:collection => "", :limit => 10 , url:'',user:'', passowrd:'') 
-  #  Sources::Mongo.new(:collection => "", :db => "somedb", :query => { a => 10 }, :limit => 10, url: '', )
   #  http://123.123.123.123:3124/database/collection/query
-  class Mongo < Base
 
+  class Mongo < Base
+		@@id_key = '_id'
     #
     #
     def initialize *category_names, options
       check_gem
-
-      Hash === options && options[:url] || raise_no_db_given(category_names)
-
-      @db = RestClient::Resource.new options.delete(:url), options
+	
+			unless options.try(:[], :url) && options.try(:[], :db)
+				raise_no_db_given(category_names)
+			end
+		
+		  @db = RestClient::Resource.new options.delete(:url), options
 			@database = options.delete(:db)
-			
-      @key_format  = key_format && key_format.to_sym || :to_sym
-    end
+	
+		  @key_format  = key_format && key_format.to_sym || :to_sym
+		end
+
+		def initialize
+			@key_format = :to_sym
+		end
 
     # Tries to require the rest_client gem.
     #
@@ -46,13 +48,13 @@ module Sources
     end
 
 
-		def harvest type, category
-			category_name = category.to_s
-			resp = @db["/#{@database}/#{category_name}/?@limit=0"].get
+		def harvest category
+			collection = category.from.to_s || category.index_name.to_s
+			resp = @db["/#{@database}/#{category.index_name.to_s}/?@limit=0"].get
 			JSON.parse(resp)['rows'].each do |row|
 				index_key = row.fetch(@@id_key).values
 				row.delete(@@id_key)
-				text = row
+				text = row[collection].to_s
 				next unless text
 				yield index_key, text
 			end
