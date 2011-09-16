@@ -122,11 +122,22 @@ var PickyResultsRenderer = function(addination, config) {
   //
   this.render = function(data) {
     var results = $('#picky div.results'); // TODO Extract, also from view.
+    var container = $("div.header span.explanation:contains('users working for m*')");
+    
     data.allocations.each(function(i, allocation) {
-      results.append(renderHeader(data, allocation)) // TODO header.render(data);
-             .append(allocation.entries.join(''))
-             .append(addination.render(data));
-      results.children('li').wrapAll(allocationWrapper);
+      // hard coded for now...  
+      if(container.length > 0) {
+        container.append(allocation.entries.join(''))
+                 .append(addination.render(data));
+        results.children('li').wrapAll(allocationWrapper);
+      } else {
+        results.append(renderHeader(data, allocation)) // TODO header.render(data);
+               .append(allocation.entries.join(''))
+               .append(addination.render(data));
+        results.children('li').wrapAll(allocationWrapper);
+      }
+      
+      
     });
   };
 };
